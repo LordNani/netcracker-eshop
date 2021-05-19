@@ -9,8 +9,7 @@ import {Router} from '@angular/router';
   styleUrls: ['./email.component.css']
 })
 export class EmailComponent implements OnInit {
-  email: string;
-  emailEntered = false;
+  userEmail: string;
 
   constructor(private authService: AuthService,
               private router: Router) {
@@ -20,19 +19,17 @@ export class EmailComponent implements OnInit {
   }
 
   sendEmail(): void {
-    this.authService.sendUserEmail(this.email).subscribe(
+    this.authService.sendUserEmail(this.userEmail).subscribe(
       res => {
-        this.emailEntered = true;
-        this.router.navigate(['/main']);
       },
       error => {
         if (error instanceof HttpErrorResponse) {
           if (error.status === 401) {
             console.log(error); // ?????
-            this.router.navigate(['/main']);
           }
         }
       }
     );
+    this.router.navigate(['/main']);
   }
 }

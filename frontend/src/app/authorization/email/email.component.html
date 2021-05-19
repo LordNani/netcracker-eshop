@@ -12,10 +12,15 @@
             <label>
               <h4>Email</h4>
             </label>
-            <input type="email" class="form-control rounded-0" name="email" required email
-                   [(ngModel)]="email">
+            <input type="email" class="form-control rounded-0" [(ngModel)]="userEmail"
+                   name="email" #email="ngModel" required=""
+                   pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$">
+            <div [hidden]="email.valid || email.untouched" class="alert alert-danger">
+              Incorrect email
+            </div>
           </div>
           <button type="button" class="btn btn-success float-right"
+                  [disabled]="email.invalid"
                   (click)="sendEmail()">Submit</button>
         </form>
       </div>
