@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {User} from '../../_model/user';
-import {ActivatedRoute, Router} from '@angular/router';
 import {AuthService} from '../../_services/auth.service';
 import {HttpErrorResponse} from '@angular/common/http';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-registration',
@@ -10,21 +10,17 @@ import {HttpErrorResponse} from '@angular/common/http';
   styleUrls: ['./registration.component.css']
 })
 export class RegistrationComponent implements OnInit {
-  registerUserData: User;
+  registerUserData = new User();
   constructor(private router: Router,
-              private activatedRoute: ActivatedRoute,
-              private authService: AuthService) { }
+              private authService: AuthService) {
+  }
   ngOnInit(): void {
-    this.activatedRoute.params.subscribe(
-      params => this.registerUserData.email = params.email
-    );
   }
   register(): void{
     console.log(this.registerUserData);
     this.authService.registerUser(this.registerUserData).subscribe(
       res => {
         localStorage.setItem('token', res.token);
-        this.router.navigate(['/main']);
       },
       error => {
         if (error instanceof HttpErrorResponse) {
@@ -34,5 +30,6 @@ export class RegistrationComponent implements OnInit {
         }
       }
     );
+    this.router.navigate(['/main']);
   }
 }
