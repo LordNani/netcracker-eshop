@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthService} from '../../_services/auth.service';
 import {HttpErrorResponse} from '@angular/common/http';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-email',
@@ -11,7 +12,8 @@ export class EmailComponent implements OnInit {
   email: string;
   emailEntered = false;
 
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService,
+              private router: Router) {
   }
 
   ngOnInit(): void {
@@ -19,11 +21,15 @@ export class EmailComponent implements OnInit {
 
   sendEmail(): void {
     this.authService.sendUserEmail(this.email).subscribe(
-      res => this.emailEntered = true,
+      res => {
+        this.emailEntered = true;
+        this.router.navigate(['/main']);
+      },
       error => {
         if (error instanceof HttpErrorResponse) {
           if (error.status === 401) {
             console.log(error); // ?????
+            this.router.navigate(['/main']);
           }
         }
       }
