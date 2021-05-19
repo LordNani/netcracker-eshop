@@ -4,6 +4,9 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { MainPageComponent } from './main-page/main-page.component';
 import {AuthorizationModule} from './authorization/authorization.module';
+import {AuthService} from './_services/auth.service';
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
+import {TokenInterceptorService} from './_services/token-interceptor.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -13,8 +16,14 @@ import {AuthorizationModule} from './authorization/authorization.module';
     BrowserModule,
     AppRoutingModule,
     AuthorizationModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [AuthService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptorService,
+      multi: true
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

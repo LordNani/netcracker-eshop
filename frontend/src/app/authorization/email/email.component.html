@@ -1,0 +1,24 @@
+<div class="row pt-5">
+  <div class="col-md-6 mx-auto">
+    <div class="card rounded-0">
+      <div class="card-header">
+        <div class="alert alert-success" role="alert">
+          <h6>After entering your email you will receive a letter on your mail.</h6>
+        </div>
+      </div>
+      <div class="card-body">
+        <form class="form">
+          <div class="form-group">
+            <label>
+              <h4>Email</h4>
+            </label>
+            <input type="email" class="form-control rounded-0" name="email" required email
+                   [(ngModel)]="email">
+          </div>
+          <button type="button" class="btn btn-success float-right"
+                  (click)="sendEmail()">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
