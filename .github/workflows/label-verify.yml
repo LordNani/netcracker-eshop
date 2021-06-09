@@ -1,0 +1,23 @@
+name: "Verify type labels of a pull request"
+
+on:
+  pull_request:
+    types: [opened, labeled, unlabeled, synchronize]
+
+jobs:
+  verifier:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: zwaldowski/match-label-action@v1
+        with:
+          allowed: >
+            type:fix-backend
+            type:features-backend
+            type:documentation-backend
+            type:tests-backend
+            type:config-backend
+            type:fix-frontend
+            type:features-frontend
+            type:documentation-frontend
+            type:tests-frontend
+            type:config-frontend

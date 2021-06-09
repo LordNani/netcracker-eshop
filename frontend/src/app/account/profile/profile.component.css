@@ -1,0 +1,25 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /*flex-direction: center;*/
+}
+
+.container > * {
+  width: 40%;
+}
+mat-radio-button{
+  margin-right: 40px;
+}
+.add-bottom-padding{
+  margin-top: 10px;
+}
+button{
+
+  width: 40%;
+}
+.footer-buttons{
+  display: flex;
+  justify-content: space-between;
+}
