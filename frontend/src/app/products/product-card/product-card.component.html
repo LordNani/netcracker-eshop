@@ -1,0 +1,17 @@
+<div *ngIf="product">
+  <div class="card">
+    <img class="card-img-top" src="../../../assets/img/default.png" class="img-fluid" alt="">
+    <div class="card-body">
+      <a routerLink="/product-list/product/{{product.id}}"><h5 class="post-title">{{product.productName}}</h5></a>
+      <div class="row">
+        <div class="col-sm-6">
+          <p>Price: ${{product.productPrice}}</p>
+        </div>
+        <div class="col-sm-6">
+          <a href="#" class="btn btn-secondary">Add to cart</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

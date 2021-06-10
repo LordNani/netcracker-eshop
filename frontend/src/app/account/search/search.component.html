@@ -1,0 +1,114 @@
+<!--<form class="form-inline md-form form-sm active-cyan-2">-->
+<!--  <div class="container">-->
+<!--  <input class="form-control form-control-sm mr-3 w-75"  type="text"  placeholder="Search" aria-label="Search"-->
+<!--         mdbInput>-->
+<!--    <mat-icon matPrefix>search</mat-icon>-->
+<!--  </div>-->
+<!--
+<h1>Search</h1>
+<div>
+-->
+<!--  <a class="nav-link" routerLink="/account/profile" routerLinkActive="active"></a>-->
+  <!--
+<button mat-button (click)="onCreate()">
+  Create
+  <mat-icon matSuffix>add_circle_outline</mat-icon>
+</button>
+
+
+<nav class="navbar" >
+
+  <input class="form-control" type="text" name="firstName" [(ngModel)]="firstName" (ngModelChange)="Search()"
+         placeholder="Enter First name">
+</nav>
+</div>
+-->
+<!--  <mat-icon matPrefix>search</mat-icon>-->
+<!--
+  <table class="table table-bordered">
+    <thead>
+    <tr>
+      <th> Manager id</th>
+      <th> First name</th>
+      <th> Last name </th>
+      <th> Email</th>
+      <th> Phone number</th>
+      <th> Role</th>
+      <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let manager of managers">
+
+      <td (click)="getID(manager.id)">{{manager.id}}</td>
+
+      <td>{{manager.firstName}}</td>
+      <td>{{manager.lastName}}</td>
+      <td>{{manager.email}}</td>
+      <td>{{manager.phoneNumber}}</td>
+      <td>{{manager.role}}</td>
+
+      <button mat-icon-button color="primary"  title="Edit Contact"><mat-icon>edit</mat-icon></button>
+      <button mat-icon-button color="primary" (click)="onDelete(manager.id)" title="Delete Contact"><mat-icon>delete</mat-icon></button>
+    </tr>
+    </tbody>
+  </table>
+
+-->
+
+<!--<button class="btn btn-lg btn-outline-primary"-->
+<!--        (click)="open(content)">-->
+<!--  Popup using Angular and Bootstrap-->
+<!--</button>-->
+<!--<div class="overlay" *ngIf="popup">-->
+<!--  <div class="popup">-->
+<!--    <ng-template #content let-modal>-->
+<!--      <div class="modal-header">-->
+<!--        <h4 class="modal-title"-->
+<!--            id="modal-basic-title">-->
+<!--          Geeks of Geeks-->
+<!--        </h4>-->
+<!--        <button type="button" class="close"-->
+<!--                aria-label="Close" (click)=-->
+<!--                  "modal.dismiss('Cross click')">-->
+
+<!--			<span aria-hidden="true">-->
+<!--				×-->
+<!--			</span>-->
+<!--        </button>-->
+<!--      </div>-->
+<!--      <div class="modal-body">-->
+<!--        <form>-->
+<!--          <div class="form-group">-->
+<!--            <label for="dateOfBirth">-->
+<!--              Date of birth-->
+<!--            </label>-->
+<!--            <div class="input-group">-->
+<!--              <input id="dateOfBirth"-->
+<!--                     class="form-control"-->
+<!--                     placeholder="yyyy-mm-dd"-->
+<!--                     name="dp" ngbDatepicker-->
+<!--                     #dp="ngbDatepicker">-->
+
+<!--              <div class="input-group-append">-->
+<!--                <button class="btn-->
+<!--							btn-outline-secondary calendar"-->
+<!--                        (click)="dp.toggle()"-->
+<!--                        type="button">-->
+<!--                </button>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </form>-->
+<!--      </div>-->
+<!--      <div class="modal-footer">-->
+<!--        <button type="button"-->
+<!--                class="btn btn-outline-dark"-->
+<!--                (click)="modal.close('Save click')">-->
+<!--          Save-->
+<!--        </button>-->
+<!--      </div>-->
+<!--    </ng-template>-->
+<!--  </div>-->
+<!--</div>-->
+<!--</form>-->

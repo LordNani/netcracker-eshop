@@ -1,0 +1,29 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  },
+  "Managers": [
+    {
+      "firstName": "Фісун Єлизавета Борисівна",
+      "lastName": "Fisun",
+      "email": "Elyzaveta13fsn@gmail.com",
+      "phoneNumber": "066-721-50-93",
+      "role": "manager",
+      "id": 3
+    }
+  ]
+}

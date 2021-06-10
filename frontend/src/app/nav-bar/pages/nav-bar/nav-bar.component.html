@@ -1,0 +1,45 @@
+
+<nav class="navbar navbar-expand-lg">
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <app-home-link></app-home-link>
+      </li>
+      <li class="nav-item">
+        <app-catalogue-link></app-catalogue-link>
+      </li>
+      <li class="nav-item" *ngIf="role==anonymous||role==authorized">
+        <app-shopping-cart-link></app-shopping-cart-link>
+      </li>
+      <li class="nav-item" *ngIf="role==admin">
+<!--        <app-admin-work-space-link>-->
+          <a  routerLink="search" routerLinkActive="active">Admin</a>
+<!--        </app-admin-work-space-link>-->
+      </li>
+    </ul>
+
+
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" style="cursor:pointer"  routerLink="/settings" routerLinkActive="active" >
+          <img src="../../../../assets/img/person.png" width="30" height="30"/>
+        </a>
+      </li>
+      <li>
+        <a class="nav-link" *ngIf="role==anonymous" routerLink="/login" routerLinkActive="active" >
+          Login</a>
+      </li>
+      <li>
+        <a class="nav-link" *ngIf="role==anonymous" routerLink="/register" routerLinkActive="active" >
+          Register</a>
+      </li>
+      <li>
+        <a class="nav-link" style="cursor:pointer" *ngIf="role!=anonymous" >Log out
+          <img src="../../../../assets/img/logout.png" width="30" height="30"/></a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+
+

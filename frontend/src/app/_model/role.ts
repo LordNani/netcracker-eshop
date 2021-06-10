@@ -1,0 +1,7 @@
+export enum Role{
+  AUTHORIZED_USER,
+  ANONYMOUS_USER,
+  COURIER,
+  MANAGER,
+  ADMIN
+}
