@@ -1,0 +1,6 @@
+.text-product-link {
+  color: #5a6268 !important;
+}
+.text-product-link:hover, .text-product-link:active {
+  color: #6c757d !important;
+}

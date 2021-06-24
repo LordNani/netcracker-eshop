@@ -1,101 +1,121 @@
-<button (click)="filter()" class="btn btn-outline-secondary my-2 my-sm-0 " type="secondary">Filter</button>
-<ul class="productCategories pt-4">
-  <li>
-    <p>Author</p>
-    <ul class="authors">
-      <li *ngFor="let author of authors">
-        <div class="form-check">
-          <input (change)="authorChecked(author.id)" class="form-check-input" type="checkbox" value="" id="flexboxAuthor">
-          <label class="form-check-label" for="flexboxAuthor">
-            {{author.authorName}}
-          </label>
-        </div>
-      </li>
-    </ul>
-  </li>
-  <li>
-    <p>Cover-Type</p>
-    <ul class="cover-types">
-      <li *ngFor="let coverType of coverTypes">
-        <div class="form-check">
-          <input (change)="coverTypeChecked(coverType.id)" class="form-check-input" type="checkbox" value="" id="flexboxCover">
-          <label class="form-check-label" for="flexboxCover">
-            {{coverType.coverTypeName}}
-          </label>
-        </div>
-      </li>
-    </ul>
-  </li>
-  <li>
-    <p>Genre</p>
-    <ul class="genres">
-      <li *ngFor="let genre of genres">
-        <div class="form-check">
-          <input (change)="genreChecked(genre.id)" class="form-check-input" type="checkbox" value="" id="flexboxGenre">
-          <label class="form-check-label" for="flexboxGenre">
-            {{genre.genreName}}
-          </label>
-        </div>
-      </li>
-    </ul>
-  </li>
-  <li>
-    <p>Language</p>
-    <ul class="languages">
-      <li *ngFor="let language of languages">
-        <div class="form-check">
-          <input (change)="languageChecked(language.id)" class="form-check-input" type="checkbox" value="" id="flexboxLanguage">
-          <label class="form-check-label" for="flexboxLanguage">
-            {{language.languageName}}
-          </label>
-        </div>
-      </li>
-    </ul>
-  </li>
-  <li>
-    <p>Publisher</p>
-    <ul class="publishers">
-      <li *ngFor="let publisher of publishers">
-        <div class="form-check">
-          <input (change)="publisherChecked(publisher.id)" class="form-check-input" type="checkbox" value="" id="flexboxPublisher">
-          <label class="form-check-label" for="flexboxPublisher">
-            {{publisher.publisherName}}
-          </label>
-        </div>
-      </li>
-    </ul>
-  </li>
-</ul>
+<button (click)="filter()" class="btn btn-outline-secondary my-2 my-sm-0 btn-block" type="secondary">Filter</button>
 
-<!--<ul class="productCategories pt-4">-->
-<!--  <li *ngFor="let typesOfCategory of categories()">-->
-<!--    <p>{{typesOfCategory}}</p>-->
 
+<div class="category-header-text">Author</div>
+  <div *ngFor="let author of authors">
+    <div class="form-check">
+      <input (change)="authorChecked(author.id)" class="form-check-input" type="checkbox" value="" id="flexboxAuthor">
+      <label class="form-check-label" for="flexboxAuthor">
+        {{author.authorName}}
+      </label>
+    </div>
+  </div>
+
+
+<div class="category-header-text">Cover-Type</div>
+  <div *ngFor="let coverType of coverTypes">
+    <div class="form-check">
+      <input (change)="coverTypeChecked(coverType.id)" class="form-check-input" type="checkbox" value=""
+             id="flexboxCover">
+      <label class="form-check-label" for="flexboxCover">
+        {{coverType.coverTypeName}}
+      </label>
+    </div>
+  </div>
+
+<div class="category-header-text">Genre</div>
+  <div *ngFor="let genre of genres">
+    <div class="form-check">
+      <input (change)="genreChecked(genre.id)" class="form-check-input" type="checkbox" value="" id="flexboxGenre">
+      <label class="form-check-label" for="flexboxGenre">
+        {{genre.genreName}}
+      </label>
+    </div>
+  </div>
+
+<div class="category-header-text">Language</div>
+  <div *ngFor="let language of languages">
+    <div class="form-check">
+      <input (change)="languageChecked(language.id)" class="form-check-input" type="checkbox" value=""
+             id="flexboxLanguage">
+      <label class="form-check-label" for="flexboxLanguage">
+        {{language.languageName}}
+      </label>
+    </div>
+  </div>
+
+<div class="category-header-text">Publisher</div>
+  <div *ngFor="let publisher of publishers">
+    <div class="form-check">
+      <input (change)="publisherChecked(publisher.id)" class="form-check-input" type="checkbox" value=""
+             id="flexboxPublisher">
+      <label class="form-check-label" for="flexboxPublisher">
+        {{publisher.publisherName}}
+      </label>
+    </div>
+  </div>
+
+
+
+<!--<h4 class="align-content-center">Author</h4>-->
+<!--<ul class="authors">-->
+<!--  <li *ngFor="let author of authors">-->
+<!--    <div class="form-check">-->
+<!--      <input (change)="authorChecked(author.id)" class="form-check-input" type="checkbox" value="" id="flexboxAuthor">-->
+<!--      <label class="form-check-label" for="flexboxAuthor">-->
+<!--        {{author.authorName}}-->
+<!--      </label>-->
+<!--    </div>-->
 <!--  </li>-->
 <!--</ul>-->
 
-<!--        <li *ngFor="let productCategory of ">-->
-<!--          <div class="form-check">-->
-<!--            <input (change)="($event, productCategory.id)" class="form-check-input" type="checkbox" value=""-->
-<!--                   id="flexCheckDefault">-->
-<!--            <label class="form-check-label" for="flexCheckDefault">-->
-
-<!--              -->
-<!--            </label>-->
-<!--          </div>-->
-<!--        </li>-->
-
-<!--  <div class="row justify-content-around mt-4 mb-4">-->
-<!--    <div class="col-lg-3 col-md-2">-->
-<!--      <ul class="productCategories">-->
-<!--        <li *ngFor="let productCategory of productCategories">-->
-<!--          <div class="form-check">-->
-<!--            <input (change)="filter($event, productCategory.id)" class="form-check-input" type="checkbox" value=""-->
-<!--                   id="flexCheckDefault">-->
-<!--            <label class="form-check-label" for="flexCheckDefault">-->
-<!--              {{productCategory.productCategoryName}}-->
-<!--            </label>-->
-<!--          </div>-->
-<!--        </li>-->
-<!--      </ul>-->
+<!--<p>Cover-Type</p>-->
+<!--<ul class="cover-types">-->
+<!--  <li *ngFor="let coverType of coverTypes">-->
+<!--    <div class="form-check">-->
+<!--      <input (change)="coverTypeChecked(coverType.id)" class="form-check-input" type="checkbox" value=""-->
+<!--             id="flexboxCover">-->
+<!--      <label class="form-check-label" for="flexboxCover">-->
+<!--        {{coverType.coverTypeName}}-->
+<!--      </label>-->
 <!--    </div>-->
+<!--  </li>-->
+<!--</ul>-->
+
+<!--<p>Genre</p>-->
+<!--<ul class="genres">-->
+<!--  <li *ngFor="let genre of genres">-->
+<!--    <div class="form-check">-->
+<!--      <input (change)="genreChecked(genre.id)" class="form-check-input" type="checkbox" value="" id="flexboxGenre">-->
+<!--      <label class="form-check-label" for="flexboxGenre">-->
+<!--        {{genre.genreName}}-->
+<!--      </label>-->
+<!--    </div>-->
+<!--  </li>-->
+<!--</ul>-->
+
+<!--<p>Language</p>-->
+<!--<ul class="languages">-->
+<!--  <li *ngFor="let language of languages">-->
+<!--    <div class="form-check">-->
+<!--      <input (change)="languageChecked(language.id)" class="form-check-input" type="checkbox" value=""-->
+<!--             id="flexboxLanguage">-->
+<!--      <label class="form-check-label" for="flexboxLanguage">-->
+<!--        {{language.languageName}}-->
+<!--      </label>-->
+<!--    </div>-->
+<!--  </li>-->
+<!--</ul>-->
+
+<!--<p>Publisher</p>-->
+<!--<ul class="publishers">-->
+<!--  <li *ngFor="let publisher of publishers">-->
+<!--    <div class="form-check">-->
+<!--      <input (change)="publisherChecked(publisher.id)" class="form-check-input" type="checkbox" value=""-->
+<!--             id="flexboxPublisher">-->
+<!--      <label class="form-check-label" for="flexboxPublisher">-->
+<!--        {{publisher.publisherName}}-->
+<!--      </label>-->
+<!--    </div>-->
+<!--  </li>-->
+<!--</ul>-->

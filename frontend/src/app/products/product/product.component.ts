@@ -22,7 +22,7 @@ export class ProductComponent implements OnInit {
 
   ngOnInit(): void {
     this.getProduct();
-    // console.log(this.product.id)
+    console.log(this.product.id);
   }
 
   getProduct(): void {

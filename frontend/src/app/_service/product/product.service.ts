@@ -40,7 +40,7 @@ export class ProductService {
   }
 
   getProduct(id: number): Observable<Product> {
-    const url = `${this.productsUrl}/getById/${id}`;
+    const url = `${this.productsUrl}/get-by-id/${id}`;
     return this.http.get<Product>(url)
       .pipe(
         catchError(this.handleError<Product>(`getProduct id=${id}`))
