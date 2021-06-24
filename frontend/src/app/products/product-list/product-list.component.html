@@ -10,7 +10,8 @@
       </select>
     </div>
     <div class="col-lg-9 col-md-10">
-      <app-product-search (searchValue)="getSearchedProducts($event)" (cancelFilters)="cancelFilters()"></app-product-search>
+      <app-product-search (searchValue)="getSearchedProducts($event)"
+                          (cancelFilters)="cancelFilters()"></app-product-search>
     </div>
 
 
@@ -31,8 +32,8 @@
 
       </div>
       <div class="row  justify-content-around">
-        <ngb-pagination [collectionSize]="amountOfProducts" [(page)]="page" [pageSize]="size" [maxSize]="5" [boundaryLinks]="true"></ngb-pagination>
-        <ngb-pagination [collectionSize]="amountOfProducts" [(page)]="page" [pageSize]="size" aria-label="Default pagination"></ngb-pagination>
+        <ngb-pagination [collectionSize]="amountOfProducts" [(page)]="page" [pageSize]="size" [maxSize]="5"
+                        [rotate]="true" [boundaryLinks]="true" (pageChange)="onPageChange(page)"></ngb-pagination>
       </div>
     </div>
   </div>
