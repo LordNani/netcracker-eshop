@@ -43,4 +43,10 @@ export class ProductComponent implements OnInit {
     this.location.back();
   }
 
+  hasDiscount():boolean{
+    if (this.product.productDiscount>0){
+      return true;
+    }
+  }
+
 }
