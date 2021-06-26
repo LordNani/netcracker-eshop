@@ -34,6 +34,7 @@ export class ProfileComponent implements OnInit {
     role: new FormControl(''),
     status: new FormControl('')
   });
+
 data = [
   {
     id: 1,

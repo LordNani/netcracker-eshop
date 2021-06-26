@@ -55,11 +55,21 @@ public class SearchController {
         return new ResponseEntity<>("Employee is deleted",HttpStatus.OK);
 
         }
-
-        @PutMapping("/edit")
-        public ResponseEntity<?> edit(@RequestBody Employee employee){
-            employeeService.editEmployee(employee);
-            return new ResponseEntity<>("Employee is updated",HttpStatus.OK);
+        @CrossOrigin
+        @PutMapping("/edit/{id}")
+        public ResponseEntity<?> edit(@RequestBody Employee employee, String id){
+            boolean status = employeeService.editEmployee(employee, id);
+            if(status == true) {
+                return new ResponseEntity<>("Employee is updated", HttpStatus.OK);
+            }
+            else {
+                return new ResponseEntity<>("Such employee is not found", HttpStatus.NOT_FOUND);
+            }
+        }
+        @GetMapping("/{id}")
+        public ResponseEntity<?> getEmployee(@PathVariable ("id")String id){
+            employeeService.getEmployee(id);
+            return new ResponseEntity<>("Employee is found", HttpStatus.OK);
 
         }
     }

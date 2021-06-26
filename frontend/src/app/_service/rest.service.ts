@@ -23,6 +23,7 @@ export class RestService {
   private addNewUrl = 'http://localhost:8081/search/new';
   private getAllUrl = 'http://localhost:8081/search/all';
   private deleteUrl = 'http://localhost:8081/search/delete';
+  private getEmployeeUrl = 'http://localhost:8081/search';
   getManagers(): Observable<any> {
     return this.http.get<Managers[]>(this.getAllUrl);
   }
@@ -41,5 +42,7 @@ export class RestService {
     return selObj;
   }
 
-
+  getUserById(id: number): Observable<Managers> {
+    return this.http.get<Managers>(this.getEmployeeUrl + id);
+  }
 }
