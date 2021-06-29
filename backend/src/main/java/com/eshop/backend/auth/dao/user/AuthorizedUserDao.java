@@ -13,6 +13,8 @@ public interface AuthorizedUserDao extends CrudDao<AuthorizedUserModel> {
     AuthorizedUserModel getFilteredByStatusOn(String status);
     AuthorizedUserModel getRoleByLogin(String login);
     AuthorizedUserModel getByToken(String token);
+    String getLoginById(Long id);
+    void setStatus(AuthorizedUserModel user);
     void createVerificationToken(AuthorizedUserModel user, String token);
 
     List<AuthorizedUserModel> getAllUsers();

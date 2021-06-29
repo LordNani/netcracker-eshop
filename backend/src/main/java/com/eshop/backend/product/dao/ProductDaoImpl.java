@@ -7,9 +7,11 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.stereotype.Repository;
 
+import java.sql.Connection;
 import java.sql.Date;
-import java.sql.PreparedStatement;
 import java.util.ArrayList;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.Collections;
 import java.util.List;
 
@@ -23,14 +25,14 @@ public class ProductDaoImpl implements ProductDao {
     public void create(ProductModel productModel) {
         String SQL = "insert into product (productname, productamount,\n" +
                 "                     productprice, productdiscount,\n" +
-                "                     productdate, productdescription,\n" +
+                "                     productdate, productpict, productdescription,\n" +
                 "                     productstatus, genre, " +
                 "                     covertype, author," +
                 "                     language, publisher)\n" +
-                "                     values (?,?,?,?,?,?,?,?,?,?,?,?)";
+                "                     values (?,?,?,?,?,?,?,?,?,?,?,?,?)";
         template.update(SQL, productModel.getProductName(), productModel.getProductAmount(),
                 productModel.getProductPrice(), productModel.getProductDiscount(),
-                productModel.getProductDate(), productModel.getProductDescription(),
+                new Date(System.currentTimeMillis()), productModel.getProductPict(), productModel.getProductDescription(),
                 productModel.getProductStatus(), productModel.getGenre(),
                 productModel.getCoverType(), productModel.getAuthor(),
                 productModel.getLanguage(), productModel.getPublisher());
@@ -118,7 +120,6 @@ public class ProductDaoImpl implements ProductDao {
         return template.query(sql, new ProductMapper(), filter.toArray());
     }
 
-    //delete later
     @Override
     public List<ProductModel> getAllOrderBy(int page, int size, String orderBy) {
         String sql = ProductMapper.SELECT_SQL + " order by p." + orderBy +

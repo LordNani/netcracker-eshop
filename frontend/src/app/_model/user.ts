@@ -3,12 +3,14 @@ import {Role} from './role';
 export class User{
   constructor() {
   }
-  id: string;
-  firstName: string;
-  lastName: string;
+  id: number;
+  userName: string;
+  userSurname: string;
   userLogin: string;
   userPassword: string;
-  role: Role;
+  userNumber: string;
+  userAddress: string;
+  userRole: Role;
   status: string;
   recaptchaResponse: string;
 }

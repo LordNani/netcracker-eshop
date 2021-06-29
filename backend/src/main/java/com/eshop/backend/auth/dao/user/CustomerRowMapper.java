@@ -17,6 +17,7 @@ public class CustomerRowMapper implements RowMapper<AuthorizedUserModel> {
         authorizedUsersModel.setUserPassword(rs.getString("userpassword"));
         authorizedUsersModel.setUserRole(rs.getString("userrole"));
         authorizedUsersModel.setUserName(rs.getString("username"));
+        authorizedUsersModel.setUserSurname(rs.getString("usersurname"));
         authorizedUsersModel.setUserRegistrationDate(rs.getDate("userregistrationdate"));
         authorizedUsersModel.setUserStatus(rs.getString("userstatus"));
         authorizedUsersModel.setUserAddress(rs.getString("useraddress"));

@@ -8,15 +8,15 @@ table{
 nav{
   width: 50%;
   justify-content: center;
-  /*display: flex;*/
+  display: flex;
 
 }
 button{
   float: left;
 }
-/*mat-icon{*/
-/*  align-self: flex-end;*/
-/*}*/
+mat-icon{
+  align-self: flex-end;
+}
 .nav-bar{
   display: inline;
 }

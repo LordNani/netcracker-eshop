@@ -14,24 +14,24 @@
       <li class="nav-item" *ngIf="authService.role=='MANAGER'" >
         <app-product-catalog-link></app-product-catalog-link>
       </li>
-      <li class="nav-item" *ngIf="authService.role=='MANAGER'" >
-        <p>MANAGER---</p>
-      </li>
-      <li class="nav-item" *ngIf="authService.role=='ADMIN'" >
-        <p>ADMIN---</p>
-      </li>
-      <li class="nav-item" *ngIf="authService.role=='USER'" >
-        <p>USER---</p>
-      </li>
-      <li class="nav-item" *ngIf="authService.status=='ANONYMOUS'" >
-        <p>ANONYMOUS</p>
-      </li>
-      <li class="nav-item" *ngIf="authService.role=='COURIER'" >
-        <p>COURIER---</p>
-      </li>
-      <li class="nav-item" *ngIf="authService.status=='AUTHORIZED'" >
-        <p>AUTHORIZED</p>
-      </li>
+<!--      <li class="nav-item" *ngIf="authService.role=='MANAGER'" >-->
+<!--        <p>MANAGER-&#45;&#45;</p>-->
+<!--      </li>-->
+<!--      <li class="nav-item" *ngIf="authService.role=='ADMIN'" >-->
+<!--        <p>ADMIN-&#45;&#45;</p>-->
+<!--      </li>-->
+<!--      <li class="nav-item" *ngIf="authService.role=='USER'" >-->
+<!--        <p>USER-&#45;&#45;</p>-->
+<!--      </li>-->
+<!--      <li class="nav-item" *ngIf="authService.status=='ANONYMOUS'" >-->
+<!--        <p>ANONYMOUS</p>-->
+<!--      </li>-->
+<!--      <li class="nav-item" *ngIf="authService.role=='COURIER'" >-->
+<!--        <p>COURIER-&#45;&#45;</p>-->
+<!--      </li>-->
+<!--      <li class="nav-item" *ngIf="authService.status=='AUTHORIZED'" >-->
+<!--        <p>AUTHORIZED</p>-->
+<!--      </li>-->
 <!--      <li class="nav-item">-->
 <!--        <p>{{authService.globalRole}}</p>-->
 <!--      </li>-->
@@ -40,7 +40,7 @@
 
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link" style="cursor:pointer"  routerLink="/settings" routerLinkActive="active" >
+        <a class="nav-link" *ngIf="authService.status!=='ANONYMOUS'" style="cursor:pointer"  routerLink="/settings" routerLinkActive="active" >
           <img src="../../../../assets/img/person.png" width="30" height="30"/>
         </a>
       </li>

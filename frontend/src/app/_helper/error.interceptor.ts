@@ -14,9 +14,9 @@ export class ErrorInterceptor implements HttpInterceptor {
     return next.handle(request).pipe(catchError(err => {
       if ([401, 403].includes(err.status)) {
         if (err.url.includes('login')){
-          // this.alertService.error(`
-          //               <h4>Wrong password or email</h4>
-          //           `, { autoClose: false, keepAfterRouteChange: true });
+          this.alertService.error(`
+                        <h4>Wrong password or email</h4>
+                    `, { autoClose: false, keepAfterRouteChange: true });
         }
         console.log('now is log out this app');
         this.authService.logout();

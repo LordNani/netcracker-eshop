@@ -24,11 +24,11 @@ export class RegistrationComponent implements OnInit {
 
   ngOnInit(): void {
     this.registerForm = this.formBuilder.group({
-      firstName: ['', [Validators.required, Validators.maxLength(50)]],
-      lastName: ['', [Validators.required, Validators.maxLength(50)]],
+      firstName: ['', [Validators.required, Validators.min(1), Validators.maxLength(35)]],
+      lastName: ['', [Validators.required, Validators.min(1), Validators.maxLength(35)]],
       email: ['', [Validators.required,  Validators.email]],
       password: ['', [Validators.required,
-        Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[A-Za-z\d].{8,20}')]]
+        Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,20}$')]]
     });
   }
 
@@ -54,8 +54,8 @@ export class RegistrationComponent implements OnInit {
       return;
     }
 
-    this.registerUserData.firstName = this.registerForm.controls.firstName.value;
-    this.registerUserData.lastName = this.registerForm.controls.lastName.value;
+    this.registerUserData.userName = this.registerForm.controls.firstName.value;
+    this.registerUserData.userSurname = this.registerForm.controls.lastName.value;
     this.registerUserData.userLogin = this.registerForm.controls.email.value;
     this.registerUserData.userPassword = this.registerForm.controls.password.value;
 

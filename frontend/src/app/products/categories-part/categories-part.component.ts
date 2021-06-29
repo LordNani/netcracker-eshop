@@ -131,34 +131,34 @@ export class CategoriesPartComponent implements OnInit {
     this.authorService.getAllAuthors()
       .subscribe(authors => {
         this.authors = authors;
-      })
+      });
   }
 
   getCoverTypes(): void {
     this.coverTypeService.getAllCoverTypes()
       .subscribe(coverTypes => {
         this.coverTypes = coverTypes;
-      })
+      });
   }
 
   getGenres(): void {
     this.genreService.getAllGenres()
       .subscribe(genres => {
         this.genres = genres;
-      })
+      });
   }
 
   getLanguages(): void {
     this.languageService.getAllLanguages()
       .subscribe(languages => {
         this.languages = languages;
-      })
+      });
   }
 
   getPublishers(): void {
     this.publisherService.getAllPublishers()
       .subscribe(publishers => {
         this.publishers = publishers;
-      })
+      });
   }
 }

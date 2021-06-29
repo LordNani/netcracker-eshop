@@ -1,0 +1,104 @@
+<div class = "order-history">
+  <h2 class="text-center">Orders history</h2>
+  <div *ngIf="orderCards.length == 0">
+    <h3 class="text-center">No orders</h3>
+  </div>
+  <div class="bg-white card mb-4 order-list test" *ngFor="let orderCard of orderCards">
+    <div class="gold-members p-4">
+      <div class="media">
+        <div class="media-body">
+            <span class="float-right text-info">Delivery time: {{orderCard.deliveryTime}}</span>
+            <p class="text-gray mb-1"><i class="icofont-location-arrow"></i> Customer name: {{orderCard.userName}}
+          </p>
+          <p class="text-gray mb-1"><i class="icofont-location-arrow"></i> Delivery address: {{orderCard.fullAddress}}
+          </p>
+          <p class="text-gray mb-1"><i class="icofont-location-arrow"></i> Order status: {{orderCard.orderStatus}}
+          </p>
+          <p class="text-gray mb-3"><i class="icofont-list"></i> ORDER #{{orderCard.id}}</p>
+          <p class="text-dark">{{orderCard.packageDescription}}
+          </p>
+          <hr>
+          <div class="float-right">
+            <button type="button" class="btn btn-secondary"
+                    (click)="viewDetails(orderCard.id)">View details
+            </button>
+<!--            <a class="btn btn-sm btn-primary" routerLink ="/settings/order-details">View details</a>-->
+          </div>
+          <p class="mb-0 text-black text-primary pt-2"><span class="text-black font-weight-bold"> Total Price:</span>
+            ${{orderCard.totalPrice}}
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <!--  <div class="bg-white card mb-4 order-list">-->
+  <!--    <div class="gold-members p-4">-->
+  <!--      <a href="#">-->
+  <!--      </a>-->
+  <!--      <div class="media">-->
+
+  <!--        <div class="media-body">-->
+  <!--          <a href="#">-->
+  <!--            <span class="float-right text-info">Delivered on Mon, Nov 12, 7:18 PM <i-->
+  <!--              class="icofont-check-circled text-success"></i></span>-->
+  <!--          </a>-->
+  <!--          <h6 class="mb-2">-->
+  <!--            <a href="#"></a>-->
+  <!--            <a href="#" class="text-black">Jimmy's Famous American Tavern</a>-->
+  <!--          </h6>-->
+  <!--          <p class="text-gray mb-1"><i class="icofont-location-arrow"></i> 1733 Ocean Ave, Santa Monica, CA 90401, USA-->
+  <!--          </p>-->
+  <!--          <p class="text-gray mb-3"><i class="icofont-list"></i> ORDER #25102589748 <i-->
+  <!--            class="icofont-clock-time ml-2"></i> Mon, Nov 12, 6:26 PM</p>-->
+  <!--          <p class="text-dark">Package description-->
+  <!--          </p>-->
+  <!--          <hr>-->
+  <!--          <div class="float-right">-->
+  <!--            <a class="btn btn-sm btn-outline-primary" href="#"><i class="icofont-headphone-alt"></i> HELP</a>-->
+  <!--            <a class="btn btn-sm btn-primary" href="#"><i class="icofont-refresh"></i> REORDER</a>-->
+  <!--          </div>-->
+  <!--          <p class="mb-0 text-black text-primary pt-2"><span class="text-black font-weight-bold"> Total Paid:</span>-->
+  <!--            $500-->
+  <!--          </p>-->
+  <!--        </div>-->
+  <!--      </div>-->
+
+  <!--    </div>-->
+  <!--  </div>-->
+  <!--  <div class="bg-white card  order-list">-->
+  <!--    <div class="gold-members p-4">-->
+  <!--      <a href="#">-->
+  <!--      </a>-->
+  <!--      <div class="media">-->
+  <!--        <div class="media-body">-->
+  <!--          <a href="#">-->
+  <!--            <span class="float-right text-info">Delivered on Mon, Nov 12, 7:18 PM <i-->
+  <!--              class="icofont-check-circled text-success"></i></span>-->
+  <!--          </a>-->
+  <!--          <h6 class="mb-2">-->
+  <!--            <a href="#"></a>-->
+  <!--            <a href="#" class="text-black">The Famous Restaurant</a>-->
+  <!--          </h6>-->
+  <!--          <p class="text-gray mb-1"><i class="icofont-location-arrow"></i> 953 S Main St, Centerville, OH 45459, USA-->
+  <!--          </p>-->
+  <!--          <p class="text-gray mb-3"><i class="icofont-list"></i> ORDER #25102589748 <i-->
+  <!--            class="icofont-clock-time ml-2"></i> Mon, Nov 12, 6:26 PM</p>-->
+  <!--          <p class="text-dark">Veg Masala Roll x 5, Veg Penne Pasta in Red Sauce x 1-->
+  <!--          </p>-->
+  <!--          <hr>-->
+  <!--          <div class="float-right">-->
+  <!--            <a class="btn btn-sm btn-outline-primary" href="#"><i class="icofont-headphone-alt"></i> HELP</a>-->
+  <!--            <a class="btn btn-sm btn-primary" href="#"><i class="icofont-refresh"></i> REORDER</a>-->
+  <!--          </div>-->
+  <!--          <p class="mb-0 text-black text-primary pt-2"><span class="text-black font-weight-bold"> Total Paid:</span>-->
+  <!--            $420-->
+  <!--          </p>-->
+  <!--        </div>-->
+  <!--      </div>-->
+  <!--    </div>-->
+  <!--  </div>-->
+  <div class="row  justify-content-around">
+    <ngb-pagination [pageSize]="size" [collectionSize]="amountOfProducts" [(page)]="page" (pageChange)="onPageChange(page)" aria-label="Default pagination"></ngb-pagination>
+  </div>
+</div>

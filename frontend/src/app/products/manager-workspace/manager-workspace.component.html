@@ -1,0 +1,49 @@
+<div class="container">
+
+  <div class="row justify-content-around mt-4 mb-4">
+    <!--    <app-product-search></app-product-search>-->
+    <app-product-search (searchValue)="getSearchedProducts($event)"></app-product-search>
+  </div>
+  <button mat-button (click)="onCreate()">
+    Create
+    <mat-icon matSuffix>add_circle_outline</mat-icon>
+  </button>
+
+  <div class="row justify-content-around mt-4 mb-4">
+    <div class="col-lg-3 col-md-2">
+      <app-categories-part></app-categories-part>
+    </div>
+
+    <div class="col-lg-9 col-md-10">
+      <div class="row">
+        <div *ngFor="let product of products">
+          <app-product-manager [product]="product"
+                               [author] = "authors[product.author]"
+                               [language] = "languages[product.language]"
+                               [publisher] = "publishers[product.publisher]"
+                               [coverType] = "coverTypes[product.coverType]"
+                               [genre] = "genres[product.genre]"
+                               (editProductEvent)="update($event)"></app-product-manager>
+          <div class="card-body">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<!--  <div class="footer-pagination">-->
+<!--    <mat-paginator [length]="length"-->
+<!--                   [pageSize]="pageSize"-->
+<!--                   [pageIndex]="pageIndex"-->
+<!--                   (page)="pageEvent = getServerData($event)">-->
+<!--    </mat-paginator>-->
+<!--  </div>-->
+
+  <div class="row  justify-content-around">
+    <ngb-pagination [pageSize]="size" [collectionSize]="amountOfProducts" [(page)]="page" (pageChange)="onPageChange(page)" aria-label="Default pagination"></ngb-pagination>
+  </div>
+
+</div>
+
+
+
+

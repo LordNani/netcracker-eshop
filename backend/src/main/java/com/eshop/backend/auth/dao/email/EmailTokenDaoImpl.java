@@ -36,7 +36,8 @@ public class EmailTokenDaoImpl implements EmailTokenDao {
     @Override
     public EmailTokenModel getByToken(String token, String name) {
         try{
-            String getByTokenSql = "SELECT id, tokenname , tokenvalue, tokenexpirydate, authorizeduserid FROM verificationtoken WHERE tokenvalue = ?" +
+            String getByTokenSql = "SELECT id, tokenname , tokenvalue, tokenexpirydate, authorizeduserid " +
+                    "FROM verificationtoken WHERE tokenvalue = ?" +
                     " AND tokenname = ?";
             return jdbcTemplate.queryForObject(getByTokenSql, (rs, rowNum) ->
                     new EmailTokenModel(

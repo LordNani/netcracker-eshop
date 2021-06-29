@@ -108,3 +108,10 @@ create table verificationToken(
                                   tokenExpiryDate DATE NOT NULL,
                                   authorizedUserid integer NOT NULL
 );
+
+create table orderProduct (
+                              id BIGSERIAL PRIMARY KEY,
+                              productId BIGSERIAL NOT NULL,
+                              orderCardId BIGSERIAL NOT NULL,
+                              inCardProductAmount BIGSERIAL
+);

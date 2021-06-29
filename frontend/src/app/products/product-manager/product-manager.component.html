@@ -1,0 +1,55 @@
+  <table class="table table-bordered">
+  <tbody>
+  <tr>
+    <td colspan="2" class="td-img">
+        <div>
+          <img src="../../../assets/img/default.png" class="img-fluid"/>
+        </div>
+    </td>
+    <td colspan="6">
+      <h5 class="post-title">{{product.productName}}</h5>
+      <p class="card-text">{{product.productDescription}}</p>
+    </td>
+
+  </tr>
+  <tr>
+    <td colspan="2" class="td-product">Price:</td>
+    <td colspan="2" class="td-product">{{product.productPrice}}</td>
+    <td colspan="2">Author:</td>
+    <td colspan="2">{{author?.authorName}}</td>
+  </tr>
+  <tr>
+    <td colspan="2">Amount:</td>
+    <td colspan="2">{{product.productAmount}}</td>
+    <td colspan="2" class="td-product">Publisher:</td>
+    <td colspan="2" class="td-product">{{publisher?.publisherName}}</td>
+  </tr>
+  <tr>
+    <td colspan="2" class="td-product">Date:</td>
+    <td colspan="2" class="td-product">{{product.productDate}}</td>
+    <td colspan="2">Language:</td>
+    <td colspan="2">{{language?.languageName}}</td>
+  </tr>
+  <tr>
+    <td colspan="2">Discount:</td>
+    <td colspan="2">{{product.productDiscount}}</td>
+    <td colspan="2" class="td-product">Cover Type:</td>
+    <td colspan="2" class="td-product">{{coverType?.coverTypeName}}</td>
+  </tr>
+  <tr>
+    <td colspan="2" class="td-product">Status:</td>
+    <td colspan="2" class="td-product">{{product.productStatus}}</td>
+    <td colspan="2">Genre:</td>
+    <td colspan="2">{{genre?.genreName}}</td>
+  </tr>
+  <tr>
+    <td colspan="4" class="td-button">
+      <button type="button" class="btn btn-primary"  *ngIf="product.productStatus == 'false'"  (click)="onChangeStatus(product.id)">Activate</button>
+      <button type="button" class="btn btn-primary"  *ngIf="product.productStatus == 'true'" (click)="onChangeStatus(product.id)">Deactivate</button>
+    </td>
+    <td colspan="4" class="td-button"><button type="button" class="btn btn-primary" (click)="onCreate()">Edit</button></td>
+  </tr>
+  </tbody>
+</table>
+
+

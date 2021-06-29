@@ -21,42 +21,60 @@ import {AlertComponent} from './alert/alert.component';
 import {appInitializer} from './_helper/app.initializer';
 import {ErrorInterceptor} from './_helper/error.interceptor';
 import {CookieService} from 'ngx-cookie-service';
+import {ProfileComponent} from './account/profile/profile.component';
+import {AdminWorkSpaceLinkComponent} from './nav-bar/components/admin-work-space-link/admin-work-space-link.component';
 import {SearchComponent} from './account/search/search.component';
-import {ProfileComponent} from "./account/profile/profile.component";
-import {AdminWorkSpaceLinkComponent} from "./nav-bar/components/admin-work-space-link/admin-work-space-link.component";
-import {MatIconModule} from "@angular/material/icon";
-import {MatFormFieldModule} from "@angular/material/form-field";
-import {MatRadioModule} from "@angular/material/radio";
+import {MatIconModule} from '@angular/material/icon';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatRadioModule} from '@angular/material/radio';
+import {MatOptionModule} from '@angular/material/core';
+import {MatInputModule} from '@angular/material/input';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import {MatButtonModule} from '@angular/material/button';
+import { EditSettingsComponent } from './settings/edit/edit-settings/edit-settings.component';
+import {OrderHistoryComponent} from './settings/order-history/order-history.component';
+import {OrderDetailsComponent} from './settings/order-history/order-details/order-details.component';
+import {NgbPaginationModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    MainPageComponent,
-    AlertComponent,
-    SettingsComponent,
-    ShoppingCartComponent,
-    ProductCatalogComponent,
-    TempProductComponent,
-    ProfileComponent,
-    AdminWorkSpaceLinkComponent,
-    SearchComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    AuthorizationModule,
-    AuctionsModule,
-    ProductsModule,
-    HttpClientModule,
-    CommonModule,
-    NavBarModule,
-    FormsModule,
-    JwPaginationModule,
-    ReactiveFormsModule,
-    MatIconModule,
-    MatFormFieldModule,
-    MatRadioModule
-  ],
+    declarations: [
+        AppComponent,
+        MainPageComponent,
+        AlertComponent,
+        SettingsComponent,
+        ShoppingCartComponent,
+        ProductCatalogComponent,
+        ProfileComponent,
+        AdminWorkSpaceLinkComponent,
+        SearchComponent,
+        EditSettingsComponent,
+        OrderHistoryComponent,
+        OrderDetailsComponent
+    ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        AuthorizationModule,
+        AuctionsModule,
+        ProductsModule,
+        HttpClientModule,
+        CommonModule,
+        NavBarModule,
+        FormsModule,
+        JwPaginationModule,
+        ReactiveFormsModule,
+        MatIconModule,
+        MatFormFieldModule,
+        MatRadioModule,
+        MatOptionModule,
+        MatInputModule,
+        MatDatepickerModule,
+        MatButtonModule,
+        MatFormFieldModule,
+        MatNativeDateModule,
+        NgbPaginationModule,
+    ],
   providers: [AuthService, CookieService,
     {
       provide: HTTP_INTERCEPTORS,

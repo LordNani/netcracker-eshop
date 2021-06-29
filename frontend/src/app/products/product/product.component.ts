@@ -30,7 +30,7 @@ export class ProductComponent implements OnInit {
     this.productService.getProduct(id)
       .subscribe(product => {
         console.log(product);
-        this.product = product
+        this.product = product;
       }, error => console.log(error));
 
     // this.product=

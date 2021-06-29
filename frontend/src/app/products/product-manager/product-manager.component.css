@@ -1,0 +1,29 @@
+.img-fluid {
+  /*width: 100px;*/
+}
+
+.td-img {
+  text-align: center;
+  width: 100%;
+  height: 100%;
+}
+
+.post-title {
+  text-align: center;
+}
+
+.td-product {
+  background-color: rgba(0,0,0,.05);
+}
+.td-button {
+  text-align: center;
+  background-color: darkgrey;
+}
+
+/*.table tr td {*/
+/*  width:12.5%;*/
+/*}*/
+
+th, td {
+  width:20%;
+}

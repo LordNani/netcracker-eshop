@@ -14,8 +14,8 @@ public class ControllerAdvisor {
 
     @ExceptionHandler({UserAlreadyExistsException.class, NeedMailConfirmationException.class,
                         NoUserWithThisEmailException.class, NewPasswordSameAsOldException.class,
-                        WrongEmailOrPasswordException.class})
-    public ResponseEntity<ErrorMessageDTO> handleCityNotFoundException(
+                        ChangeExistMailException.class})
+    public ResponseEntity<ErrorMessageDTO> handleException(
             Exception ex, WebRequest request) {
 
         ErrorMessageDTO message = new ErrorMessageDTO(

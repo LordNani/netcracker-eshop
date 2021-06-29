@@ -47,6 +47,11 @@ export class ProductService {
       );
   }
 
+  updateProduct(product: Product): Observable<any> {
+    const url = `${this.productsUrl}/update`;
+    return this.http.put(url, product);
+  }
+
   addProduct(product: Product): Observable<Product> {
     return this.http.post<Product>(this.productsUrl, product, this.httpOptions)
       .pipe(

@@ -4,11 +4,11 @@ import {LinkService} from '../../services/link.service';
 
 @Component({
   selector: 'app-product-catalog-link',
-  templateUrl: '../base-link/base-link.component.html',
+  templateUrl: '../product-catalog-link/product-catalog-link.component.html',
   styleUrls: ['./product-catalog-link.component.css', '../base-link/base-link.component.css']
 })
 export class ProductCatalogLinkComponent extends BaseLinkComponent{
-  url = 'product-catalog';
+  url = 'manager';
   constructor(linkService: LinkService) {
     super(linkService);
   }

@@ -3,8 +3,8 @@ import {Observable, Subject} from 'rxjs';
 import {
   debounceTime, distinctUntilChanged, switchMap
 } from 'rxjs/operators';
-import {Product} from "../../_model/product";
-import {ProductService} from "../../_service/product/product.service";
+import {Product} from '../../_model/product';
+import {ProductService} from '../../_service/product/product.service';
 
 
 @Component({

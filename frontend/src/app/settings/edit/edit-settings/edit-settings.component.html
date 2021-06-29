@@ -1,0 +1,110 @@
+<form [formGroup]="editForm" (ngSubmit)="onSubmit()" *ngIf="this.editForm">
+<div class="container">
+  <h2 class="text-center"> Settings</h2>
+  <div class="container">
+    <div class="row justify-content-around mt-4 mb-4">
+      <div class="col-md-8">
+        <div class="card mb-3">
+          <div class="card-body">
+              <div class="row">
+                <div class="col-sm-3">
+                  <h6 class="mb-0">First Name</h6>
+                </div>
+                <div class="col-sm-9 ">
+                  <div class="form-group">
+                    <input type="text" formControlName="userName" class="form-control"
+                           [ngClass]="{ 'is-invalid': editForm.controls.userName.errors }"/>
+                    <div class="invalid-feedback">
+                      <div *ngIf="editForm.controls.userName.errors?.required" _ngcontent-sdw-c58=""
+                           class="alert alert-danger">First Name is required
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-sm-3">
+                  <h6 class="mb-0">Last Name</h6>
+                </div>
+                <div class="col-sm-9 ">
+                  <div class="form-group">
+                    <input type="text" formControlName="userSurname" class="form-control"
+                           [ngClass]="{ 'is-invalid': editForm.controls.userSurname.errors }"/>
+                    <div  class="invalid-feedback">
+                      <div *ngIf="editForm.controls.userSurname.errors?.required" _ngcontent-sdw-c58=""
+                           class="alert alert-danger">Last Name is required
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-sm-3">
+                  <h6 class="mb-0">Email</h6>
+                </div>
+                <div class="col-sm-9 ">
+                  <div class="form-group">
+                    <input type="text" formControlName="userLogin" class="form-control"
+                           [ngClass]="{ 'is-invalid': editForm.controls.userLogin.errors }"/>
+                    <div *ngIf="editForm.controls.userLogin.errors" class="invalid-feedback">
+                      <div *ngIf="editForm.controls.userLogin.errors?.required" _ngcontent-sdw-c58=""
+                           class="alert alert-danger">Last Name is required
+                        <div *ngIf="editForm.controls.userLogin.errors?.email" _ngcontent-sdw-c58=""
+                             class="alert alert-danger">Email must be a valid email address
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <h6 class="mb-0">Address</h6>
+              </div>
+              <div class="col-sm-9 ">
+                <div class="form-group">
+                  <input type="text" formControlName="userAddress" class="form-control"
+                         [ngClass]="{ 'is-invalid': editForm.controls.userAddress.errors }"/>
+                  <div *ngIf="editForm.controls.userAddress.errors" class="invalid-feedback">
+                    <div *ngIf="editForm.controls.userAddress.errors?.required" _ngcontent-sdw-c58=""
+                         class="alert alert-danger">User address is required
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <hr>
+              <div class="row">
+                <div class="col-sm-3">
+                  <h6 class="mb-0">Mobile</h6>
+                </div>
+                <div class="col-sm-9 ">
+                  <div class="form-group">
+                    <input type="text" formControlName="userNumber" class="form-control"
+                           [ngClass]="{ 'is-invalid': editForm.controls.userNumber.errors }"/>
+                    <div *ngIf="editForm.controls.userNumber.errors" class="invalid-feedback">
+                      <div *ngIf="editForm.controls.userNumber.errors?.required" _ngcontent-sdw-c58=""
+                           class="alert alert-danger">User phone number is required
+                      </div>
+                      <div *ngIf="editForm.controls.userNumber.errors.pattern" _ngcontent-sdw-c58="" class="alert alert-danger">pattern error</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr>
+
+              <div class="row">
+                <button  class="btn btn-secondary" [disabled]="editForm.invalid" type="submit">
+                  Submit
+                </button>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</form>

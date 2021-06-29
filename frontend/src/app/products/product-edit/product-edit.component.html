@@ -1,0 +1,105 @@
+    <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+
+      <mat-dialog-content>
+      <div class="container">
+
+        <mat-form-field appearance="fill">
+          <mat-label>Product Name</mat-label>
+          <input matInput placeholder="Product Name" formControlName="productName">
+          <mat-error *ngIf="editForm.get('productName')?.invalid">Error</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Product Description</mat-label>
+          <textarea matInput placeholder="Product Description" formControlName="productDescription"></textarea>
+          <mat-error *ngIf="editForm.get('productDescription')?.invalid">Error</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" floatLabel="always">
+          <mat-label>Product Price</mat-label>
+          <input matInput formControlName="productPrice" type="number" min="0" class="example-right-align" placeholder="0">
+          <span matPrefix>$&nbsp;</span>
+          <span matSuffix>.00</span>
+          <mat-error *ngIf="editForm.get('productPrice')?.invalid">Error</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Product Amount</mat-label>
+          <input matInput formControlName="productAmount" type="number" min="0" class="example-right-align">
+          <mat-error *ngIf="editForm.get('productAmount')?.invalid">Error</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" floatLabel="always">
+          <mat-label>Product Discount</mat-label>
+          <input matInput formControlName="productDiscount" type="number" min="0" class="example-right-align" placeholder="0">
+          <span matPrefix>%&nbsp;</span>
+          <mat-error *ngIf="editForm.get('productDiscount')?.invalid">Error</mat-error>
+        </mat-form-field>
+
+<!--        <mat-form-field appearance="fill">-->
+<!--          <mat-label>Product Status</mat-label>-->
+<!--          <input matInput formControlName="productStatus" min="0">-->
+<!--          <mat-error *ngIf="editForm.get('productStatus')?.invalid">Error</mat-error>-->
+<!--        </mat-form-field>-->
+
+        <mat-form-field appearance="fill">
+          <mat-label>Author</mat-label>
+          <mat-select formControlName="author">
+            <mat-option *ngFor="let author of authors" [value]="author?.id">
+              {{author?.authorName}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Publisher</mat-label>
+          <mat-select formControlName="publisher">
+            <mat-option *ngFor="let publisher of publishers" [value]="publisher?.id">
+              {{publisher?.publisherName}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Language</mat-label>
+          <mat-select formControlName="language">
+            <mat-option *ngFor="let language of languages" [value]="language?.id">
+              {{language?.languageName}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Cover Type</mat-label>
+          <mat-select formControlName="coverType">
+            <mat-option *ngFor="let coverType of coverTypes" [value]="coverType?.id">
+              {{coverType?.coverTypeName}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Genre</mat-label>
+          <mat-select formControlName="genre">
+            <mat-option *ngFor="let genre of genres" [value]="genre?.id">
+              {{genre?.genreName}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+            <div class="add-bottom-padding">
+              <mat-radio-group formControlName="productStatus">
+                <mat-radio-button value="true">Activated</mat-radio-button>
+                <mat-radio-button value="false">Deactivated</mat-radio-button>
+              </mat-radio-group>
+            </div>
+
+        <div class="footer-buttons">
+          <button  mat-raised-button color="primary" [disabled]="editForm.invalid" type="submit">
+            Submit
+          </button>
+          <button mat-raised-button color="primary"  (click)="onClose()">Cancel</button>
+        </div>
+      </div>
+      </mat-dialog-content>
+    </form>

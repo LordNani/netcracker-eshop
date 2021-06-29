@@ -48,7 +48,7 @@ public class ProductCRUDController {
     }
 
     @PostMapping("/add")
-    public ResponseEntity<?> addProduct(@RequestBody ProductModel productModel) {
+    public ResponseEntity<?> addProduct(@RequestBody (required=false) ProductModel productModel) {
         productService.create(productModel);
         return new ResponseEntity<>(HttpStatus.OK);
     }

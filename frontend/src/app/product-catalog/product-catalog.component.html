@@ -1,267 +1,267 @@
 
 
-<!--    <h2 class="text-center p-1">Manager workspace</h2>-->
-<!--    <form class="form-inline my-2 my-lg-0">-->
-<!--      <input type="search" (ngModelChange)="searchProduct(key.value)" #key="ngModel" ngModel-->
-<!--             name="key" id="searchName" class="form-control mr-sm-2" placeholder="Search products..." required>-->
-<!--    </form>-->
-<!--    <button (click)="onOpenModal(null, 'add')">ADD</button>-->
-<!--    <div class="row justify-content-around mt-4">-->
-<!--      <div class="col-md-3">-->
-<!--        <h2 class="text-center p-1">Sort</h2>-->
-<!--        <div id="sortContainer">-->
-<!--          <div class="form-check">-->
-<!--            <input (change)="changeSort($event)" class="form-check-input" type="radio" value="price" name="sortBy" [ngModel]="orderBy"-->
-<!--                   id="sortByPrice">-->
-<!--            <label class="form-check-label" for="sortByPrice">-->
-<!--              By price descending-->
-<!--            </label>-->
-<!--          </div>-->
-<!--          <div class="form-check">-->
-<!--            <input (change)="changeSort($event)" class="form-check-input" value="name" type="radio" name="sortBy" [ngModel]="orderBy"-->
-<!--                   id="sortByName">-->
-<!--            <label class="form-check-label" for="sortByName">-->
-<!--              By name-->
-<!--            </label>-->
-<!--          </div>-->
-<!--          <div class="form-check">-->
-<!--            <input (change)="changeSort($event)" class="form-check-input" value="newest" type="radio" name="sortBy" [ngModel]="orderBy"-->
-<!--                   id="sortByNewest">-->
-<!--            <label class="form-check-label" for="sortByNewest">-->
-<!--              By newest-->
-<!--            </label>-->
+<!--&lt;!&ndash;    <h2 class="text-center p-1">Manager workspace</h2>&ndash;&gt;-->
+<!--&lt;!&ndash;    <form class="form-inline my-2 my-lg-0">&ndash;&gt;-->
+<!--&lt;!&ndash;      <input type="search" (ngModelChange)="searchProduct(key.value)" #key="ngModel" ngModel&ndash;&gt;-->
+<!--&lt;!&ndash;             name="key" id="searchName" class="form-control mr-sm-2" placeholder="Search products..." required>&ndash;&gt;-->
+<!--&lt;!&ndash;    </form>&ndash;&gt;-->
+<!--&lt;!&ndash;    <button (click)="onOpenModal(null, 'add')">ADD</button>&ndash;&gt;-->
+<!--&lt;!&ndash;    <div class="row justify-content-around mt-4">&ndash;&gt;-->
+<!--&lt;!&ndash;      <div class="col-md-3">&ndash;&gt;-->
+<!--&lt;!&ndash;        <h2 class="text-center p-1">Sort</h2>&ndash;&gt;-->
+<!--&lt;!&ndash;        <div id="sortContainer">&ndash;&gt;-->
+<!--&lt;!&ndash;          <div class="form-check">&ndash;&gt;-->
+<!--&lt;!&ndash;            <input (change)="changeSort($event)" class="form-check-input" type="radio" value="price" name="sortBy" [ngModel]="orderBy"&ndash;&gt;-->
+<!--&lt;!&ndash;                   id="sortByPrice">&ndash;&gt;-->
+<!--&lt;!&ndash;            <label class="form-check-label" for="sortByPrice">&ndash;&gt;-->
+<!--&lt;!&ndash;              By price descending&ndash;&gt;-->
+<!--&lt;!&ndash;            </label>&ndash;&gt;-->
+<!--&lt;!&ndash;          </div>&ndash;&gt;-->
+<!--&lt;!&ndash;          <div class="form-check">&ndash;&gt;-->
+<!--&lt;!&ndash;            <input (change)="changeSort($event)" class="form-check-input" value="name" type="radio" name="sortBy" [ngModel]="orderBy"&ndash;&gt;-->
+<!--&lt;!&ndash;                   id="sortByName">&ndash;&gt;-->
+<!--&lt;!&ndash;            <label class="form-check-label" for="sortByName">&ndash;&gt;-->
+<!--&lt;!&ndash;              By name&ndash;&gt;-->
+<!--&lt;!&ndash;            </label>&ndash;&gt;-->
+<!--&lt;!&ndash;          </div>&ndash;&gt;-->
+<!--&lt;!&ndash;          <div class="form-check">&ndash;&gt;-->
+<!--&lt;!&ndash;            <input (change)="changeSort($event)" class="form-check-input" value="newest" type="radio" name="sortBy" [ngModel]="orderBy"&ndash;&gt;-->
+<!--&lt;!&ndash;                   id="sortByNewest">&ndash;&gt;-->
+<!--&lt;!&ndash;            <label class="form-check-label" for="sortByNewest">&ndash;&gt;-->
+<!--&lt;!&ndash;              By newest&ndash;&gt;-->
+<!--&lt;!&ndash;            </label>&ndash;&gt;-->
+<!--&lt;!&ndash;          </div>&ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;        <h2 class="text-center p-1">Filter</h2>&ndash;&gt;-->
+<!--&lt;!&ndash;        <div id="filetContainerCategory">&ndash;&gt;-->
+<!--&lt;!&ndash;          <div class="form-check">&ndash;&gt;-->
+<!--&lt;!&ndash;            <input type="checkbox" value="Fiction" (change)="chooseFilerCategory($event)"/>&ndash;&gt;-->
+<!--&lt;!&ndash;            <label class="form-check-label">&ndash;&gt;-->
+<!--&lt;!&ndash;              Fiction&ndash;&gt;-->
+<!--&lt;!&ndash;            </label>&ndash;&gt;-->
+<!--&lt;!&ndash;          </div>&ndash;&gt;-->
+<!--&lt;!&ndash;          <div class="form-check">&ndash;&gt;-->
+<!--&lt;!&ndash;            <input type="checkbox" value="Non-fiction" (change)="chooseFilerCategory($event)"/>&ndash;&gt;-->
+<!--&lt;!&ndash;            <label class="form-check-label">&ndash;&gt;-->
+<!--&lt;!&ndash;              Non-Fiction&ndash;&gt;-->
+<!--&lt;!&ndash;            </label>&ndash;&gt;-->
+<!--&lt;!&ndash;          </div>&ndash;&gt;-->
+<!--&lt;!&ndash;          <div class="form-check">&ndash;&gt;-->
+<!--&lt;!&ndash;            <input type="checkbox" value="Detective" (change)="chooseFilerCategory($event)"/>&ndash;&gt;-->
+<!--&lt;!&ndash;            <label class="form-check-label">&ndash;&gt;-->
+<!--&lt;!&ndash;              Detective&ndash;&gt;-->
+<!--&lt;!&ndash;            </label>&ndash;&gt;-->
+<!--&lt;!&ndash;          </div>&ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;        <h2 class="text-center p-1">Price</h2>&ndash;&gt;-->
+<!--&lt;!&ndash;        <div id="filetContainerPrice">&ndash;&gt;-->
+<!--&lt;!&ndash;          <div class="form-check">&ndash;&gt;-->
+<!--&lt;!&ndash;            <input type="checkbox" value="Price200_400" (change)="chooseFilerPrice($event)"/>&ndash;&gt;-->
+<!--&lt;!&ndash;            <label class="form-check-label">&ndash;&gt;-->
+<!--&lt;!&ndash;              200 - 400&ndash;&gt;-->
+<!--&lt;!&ndash;            </label>&ndash;&gt;-->
+<!--&lt;!&ndash;          </div>&ndash;&gt;-->
+<!--&lt;!&ndash;          <div class="form-check">&ndash;&gt;-->
+<!--&lt;!&ndash;            <input type="checkbox" value="Price400_600" (change)="chooseFilerPrice($event)"/>&ndash;&gt;-->
+<!--&lt;!&ndash;            <label class="form-check-label">&ndash;&gt;-->
+<!--&lt;!&ndash;              400 - 600&ndash;&gt;-->
+<!--&lt;!&ndash;            </label>&ndash;&gt;-->
+<!--&lt;!&ndash;          </div>&ndash;&gt;-->
+<!--&lt;!&ndash;          <div class="form-check">&ndash;&gt;-->
+<!--&lt;!&ndash;            <input type="checkbox" value="Price600_1000" (change)="chooseFilerPrice($event)"/>&ndash;&gt;-->
+<!--&lt;!&ndash;            <label class="form-check-label">&ndash;&gt;-->
+<!--&lt;!&ndash;              600 - 1000&ndash;&gt;-->
+<!--&lt;!&ndash;            </label>&ndash;&gt;-->
+<!--&lt;!&ndash;          </div>&ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;      </div>&ndash;&gt;-->
+
+<!--      <div class="col-md-9">-->
+<!--        <div class="container">-->
+
+<!--&lt;!&ndash;          <div class="card text-center m-3" id = "main-container">&ndash;&gt;-->
+<!--&lt;!&ndash;            <h3 class="card-header">Angular 8 Pagination Example</h3>&ndash;&gt;-->
+<!--&lt;!&ndash;            <div class="card-body">&ndash;&gt;-->
+<!--&lt;!&ndash;              <div *ngFor="let item of pageOfItems">&ndash;&gt;-->
+<!--&lt;!&ndash;                <p>{{item.productName}} // {{item.productPrice}} // {{item.productDate}}</p>&ndash;&gt;-->
+<!--&lt;!&ndash;              </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            <div class="card-footer pb-0 pt-3">&ndash;&gt;-->
+<!--&lt;!&ndash;              <jw-pagination [items]="products" (changePage)="onChangePage($event)"></jw-pagination>&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;          </div>&ndash;&gt;-->
+
+<!--          <div>-->
+<!--            <div *ngFor="let product of products">-->
+<!--&lt;!&ndash;              <app-temp-product [product]="product"></app-temp-product>&ndash;&gt;-->
+<!--              <div class="card-body">-->
+<!--                <div class="float-right btn-group btn-group-sm">-->
+<!--                  <a (click)="onOpenModal(product, 'edit')" class="btn btn-primary tooltips" data-placement="top"-->
+<!--                     data-original-title="Edit"><i class="fa fa-pencil"></i> </a>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            </div>-->
 <!--          </div>-->
 <!--        </div>-->
-
-<!--        <h2 class="text-center p-1">Filter</h2>-->
-<!--        <div id="filetContainerCategory">-->
-<!--          <div class="form-check">-->
-<!--            <input type="checkbox" value="Fiction" (change)="chooseFilerCategory($event)"/>-->
-<!--            <label class="form-check-label">-->
-<!--              Fiction-->
-<!--            </label>-->
-<!--          </div>-->
-<!--          <div class="form-check">-->
-<!--            <input type="checkbox" value="Non-fiction" (change)="chooseFilerCategory($event)"/>-->
-<!--            <label class="form-check-label">-->
-<!--              Non-Fiction-->
-<!--            </label>-->
-<!--          </div>-->
-<!--          <div class="form-check">-->
-<!--            <input type="checkbox" value="Detective" (change)="chooseFilerCategory($event)"/>-->
-<!--            <label class="form-check-label">-->
-<!--              Detective-->
-<!--            </label>-->
-<!--          </div>-->
-<!--        </div>-->
-
-<!--        <h2 class="text-center p-1">Price</h2>-->
-<!--        <div id="filetContainerPrice">-->
-<!--          <div class="form-check">-->
-<!--            <input type="checkbox" value="Price200_400" (change)="chooseFilerPrice($event)"/>-->
-<!--            <label class="form-check-label">-->
-<!--              200 - 400-->
-<!--            </label>-->
-<!--          </div>-->
-<!--          <div class="form-check">-->
-<!--            <input type="checkbox" value="Price400_600" (change)="chooseFilerPrice($event)"/>-->
-<!--            <label class="form-check-label">-->
-<!--              400 - 600-->
-<!--            </label>-->
-<!--          </div>-->
-<!--          <div class="form-check">-->
-<!--            <input type="checkbox" value="Price600_1000" (change)="chooseFilerPrice($event)"/>-->
-<!--            <label class="form-check-label">-->
-<!--              600 - 1000-->
-<!--            </label>-->
-<!--          </div>-->
-<!--        </div>-->
-
 <!--      </div>-->
+<!--&lt;!&ndash;    </div>&ndash;&gt;-->
 
-      <div class="col-md-9">
-        <div class="container">
-
-<!--          <div class="card text-center m-3" id = "main-container">-->
-<!--            <h3 class="card-header">Angular 8 Pagination Example</h3>-->
-<!--            <div class="card-body">-->
-<!--              <div *ngFor="let item of pageOfItems">-->
-<!--                <p>{{item.productName}} // {{item.productPrice}} // {{item.productDate}}</p>-->
-<!--              </div>-->
-<!--            </div>-->
-<!--            <div class="card-footer pb-0 pt-3">-->
-<!--              <jw-pagination [items]="products" (changePage)="onChangePage($event)"></jw-pagination>-->
-<!--            </div>-->
+<!--    &lt;!&ndash; Add Product Modal &ndash;&gt;-->
+<!--    <div class="modal fade" id="addProductModal" tabindex="-1" role="dialog" aria-labelledby="addProductModalLabel"-->
+<!--         aria-hidden="true">-->
+<!--      <div class="modal-dialog" role="document">-->
+<!--        <div class="modal-content">-->
+<!--          <div class="modal-header">-->
+<!--            <h5 class="modal-title" id="addProductModalLabel">Add Product</h5>-->
+<!--            <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+<!--              <span aria-hidden="true">&times;</span>-->
+<!--            </button>-->
 <!--          </div>-->
-
-          <div>
-            <div *ngFor="let product of products">
-              <app-temp-product [product]="product"></app-temp-product>
-              <div class="card-body">
-                <div class="float-right btn-group btn-group-sm">
-                  <a (click)="onOpenModal(product, 'edit')" class="btn btn-primary tooltips" data-placement="top"
-                     data-original-title="Edit"><i class="fa fa-pencil"></i> </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-<!--    </div>-->
-
-    <!-- Add Product Modal -->
-    <div class="modal fade" id="addProductModal" tabindex="-1" role="dialog" aria-labelledby="addProductModalLabel"
-         aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="addProductModalLabel">Add Product</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <form #addForm="ngForm" (ngSubmit)="onAddProduct(addForm)">
-              <div class="form-group">
-                <label for="productName">Name</label>
-                <input type="text" ngModel name="productName" class="form-control" id="editProductName" placeholder="Name"
-                       required>
-              </div>
-              <div class="form-group">
-                <label for="productDescription">Description</label>
-                <input type="text" ngModel name="productDescription" class="form-control" id="editProductDescription"
-                       rows="3" placeholder="Description" required>
-              </div>
+<!--          <div class="modal-body">-->
+<!--            <form #addForm="ngForm" (ngSubmit)="onAddProduct(addForm)">-->
 <!--              <div class="form-group">-->
-<!--                <label for="productCategory">Category</label>-->
-<!--                <input type="text" ngModel name="productCategory" class="form-control" id="editProductCategory"-->
-<!--                       placeholder="Category" required>-->
+<!--                <label for="productName">Name</label>-->
+<!--                <input type="text" ngModel name="productName" class="form-control" id="editProductName" placeholder="Name"-->
+<!--                       required>-->
 <!--              </div>-->
-              <div class="form-group">
-                <label for="productAmount">Amount</label>
-                <input type="number" ngModel name="productAmount" class="form-control" id="editProductAmount"
-                       placeholder="Phone" required>
-              </div>
-              <div class="form-group">
-                <label for="productImageUrl">Image URL</label>
-                <input type="text" ngModel name="productImageUrl" class="form-control" id="editProductImageUrl"
-                       placeholder="Image URL" required>
-              </div>
-              <div class="form-group">
-                <label for="productPrice">Price</label>
-                <input type="number" ngModel name="productPrice" class="form-control" id="editProductPrice"
-                       placeholder="Price" required>
-              </div>
-              <div class="form-group">
-                <label for="productDiscount">Discount</label>
-                <input type="number" ngModel name="productDiscount" class="form-control" id="editProductDiscount"
-                       placeholder="Discount" required>
-              </div>
-              <div class="form-group">
-                <label for="productDate">Date</label>
-                <input type="date" ngModel name="productDate" class="form-control" id="editProductDate" placeholder="Date"
-                       required>
-              </div>
-              <div class="form-group">
-                <div class="col-12">
-                  <div class="row">
-                    <input type="radio" ngModel name="productStatus" id="editActive" value="true" checked>
-                    <label for="active">Active</label></div>
-                  <div class="row">
-                    <input type="radio" ngModel name="productStatus" id="editNotActive" value="false">
-                    <label for="NotActive">Not active</label></div>
-                </div>
-              </div>
-              <!--          <div class="form-group">-->
-              <!--            <label for="productStatus">Status</label>-->
-              <!--            <input type="text" ngModel name="status" class="form-control" id="productStatus" placeholder="Status" required>-->
-              <!--          </div>-->
-              <div class="modal-footer">
-                <button type="button" id="add-product-form" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button [disabled]="addForm.invalid" type="submit" class="btn btn-primary">Save changes</button>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Edit Modal -->
-    <div class="modal fade" id="editProductModal" tabindex="-1" role="dialog" aria-labelledby="productEditModalLabel"
-         aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="updateProductModalLabel">Edit Product {{editProduct?.productName}}</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <form #editForm="ngForm">
-              <div class="form-group">
-                <div class="form-group">
-                  <label for="productName">Name</label>
-                  <input type="text" ngModel="{{editProduct?.productName}}" name="productName" class="form-control"
-                         id="productName" placeholder="Name" required>
-                </div>
-                <input type="hidden" ngModel="{{editProduct?.id}}" name="id" class="form-control" id="id"
-                       placeholder="name">
-                <div class="form-group">
-                  <label for="productDescription">Description</label>
-                  <input type="text" ngModel="{{editProduct?.productDescription}}" name="productDescription"
-                         class="form-control" id="productDescription" rows="3" placeholder="Description" required>
-                </div>
-                <div class="form-group">
-<!--                  <label for="productCategory">Category</label>-->
-<!--                  <input type="text" ngModel="{{editProduct?.productCategory}}" name="productCategory" class="form-control"-->
-                         id="productCategory" placeholder="Category" required>
-                </div>
-                <div class="form-group">
-                  <label for="productAmount">Amount</label>
-                  <input type="number" ngModel="{{editProduct?.productAmount}}" name="productAmount" class="form-control"
-                         id="productAmount" placeholder="Phone" required>
-                </div>
-                <div class="form-group">
-                  <label for="productImageUrl">Image URL</label>
-                  <input type="text" name="productImageUrl" class="form-control" id="productImageUrl"
-                         placeholder="Image URL" required>
-                </div>
-                <div class="form-group">
-                  <label for="productPrice">Price</label>
-                  <input type="number" ngModel="{{editProduct?.productPrice}}" name="productPrice" class="form-control"
-                         id="productPrice" placeholder="Price" required>
-                </div>
-                <div class="form-group">
-                  <label for="productDiscount">Discount</label>
-                  <input type="number" ngModel="{{editProduct?.productDiscount}}" name="productDiscount"
-                         class="form-control" id="productDiscount" placeholder="Discount" required>
-                </div>
-                <div class="form-group">
-                  <label for="productDate">Date</label>
-                  <input type="date" ngModel="{{editProduct?.productDate}}" name="productDate" class="form-control"
-                         id="productDate" placeholder="Date" required>
-                </div>
-                <div class="form-group">
-                  <div class="col-12">
-                    <div class="row">
-                      <input type="radio" ngModel="{{editProduct?.productStatus}}" name="productStatus" id="active"
-                             value="true" checked>
-                      <label for="active">Active</label></div>
-                    <div class="row">
-                      <input type="radio" name="productStatus" id="NotActive" value="false">
-                      <label for="NotActive">Not active</label></div>
-                  </div>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" id="" data-dismiss="modal" class="btn btn-secondary">Close</button>
-                  <button (click)="onUpdateProduct(editForm.value)" data-dismiss="modal" class="btn btn-primary">Save
-                    changes
-                  </button>
-                </div>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
+<!--              <div class="form-group">-->
+<!--                <label for="productDescription">Description</label>-->
+<!--                <input type="text" ngModel name="productDescription" class="form-control" id="editProductDescription"-->
+<!--                       rows="3" placeholder="Description" required>-->
+<!--              </div>-->
+<!--&lt;!&ndash;              <div class="form-group">&ndash;&gt;-->
+<!--&lt;!&ndash;                <label for="productCategory">Category</label>&ndash;&gt;-->
+<!--&lt;!&ndash;                <input type="text" ngModel name="productCategory" class="form-control" id="editProductCategory"&ndash;&gt;-->
+<!--&lt;!&ndash;                       placeholder="Category" required>&ndash;&gt;-->
+<!--&lt;!&ndash;              </div>&ndash;&gt;-->
+<!--              <div class="form-group">-->
+<!--                <label for="productAmount">Amount</label>-->
+<!--                <input type="number" ngModel name="productAmount" class="form-control" id="editProductAmount"-->
+<!--                       placeholder="Phone" required>-->
+<!--              </div>-->
+<!--              <div class="form-group">-->
+<!--                <label for="productImageUrl">Image URL</label>-->
+<!--                <input type="text" ngModel name="productImageUrl" class="form-control" id="editProductImageUrl"-->
+<!--                       placeholder="Image URL" required>-->
+<!--              </div>-->
+<!--              <div class="form-group">-->
+<!--                <label for="productPrice">Price</label>-->
+<!--                <input type="number" ngModel name="productPrice" class="form-control" id="editProductPrice"-->
+<!--                       placeholder="Price" required>-->
+<!--              </div>-->
+<!--              <div class="form-group">-->
+<!--                <label for="productDiscount">Discount</label>-->
+<!--                <input type="number" ngModel name="productDiscount" class="form-control" id="editProductDiscount"-->
+<!--                       placeholder="Discount" required>-->
+<!--              </div>-->
+<!--              <div class="form-group">-->
+<!--                <label for="productDate">Date</label>-->
+<!--                <input type="date" ngModel name="productDate" class="form-control" id="editProductDate" placeholder="Date"-->
+<!--                       required>-->
+<!--              </div>-->
+<!--              <div class="form-group">-->
+<!--                <div class="col-12">-->
+<!--                  <div class="row">-->
+<!--                    <input type="radio" ngModel name="productStatus" id="editActive" value="true" checked>-->
+<!--                    <label for="active">Active</label></div>-->
+<!--                  <div class="row">-->
+<!--                    <input type="radio" ngModel name="productStatus" id="editNotActive" value="false">-->
+<!--                    <label for="NotActive">Not active</label></div>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--              &lt;!&ndash;          <div class="form-group">&ndash;&gt;-->
+<!--              &lt;!&ndash;            <label for="productStatus">Status</label>&ndash;&gt;-->
+<!--              &lt;!&ndash;            <input type="text" ngModel name="status" class="form-control" id="productStatus" placeholder="Status" required>&ndash;&gt;-->
+<!--              &lt;!&ndash;          </div>&ndash;&gt;-->
+<!--              <div class="modal-footer">-->
+<!--                <button type="button" id="add-product-form" class="btn btn-secondary" data-dismiss="modal">Close</button>-->
+<!--                <button [disabled]="addForm.invalid" type="submit" class="btn btn-primary">Save changes</button>-->
+<!--              </div>-->
+<!--            </form>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    &lt;!&ndash; Edit Modal &ndash;&gt;-->
+<!--    <div class="modal fade" id="editProductModal" tabindex="-1" role="dialog" aria-labelledby="productEditModalLabel"-->
+<!--         aria-hidden="true">-->
+<!--      <div class="modal-dialog" role="document">-->
+<!--        <div class="modal-content">-->
+<!--          <div class="modal-header">-->
+<!--            <h5 class="modal-title" id="updateProductModalLabel">Edit Product {{editProduct?.productName}}</h5>-->
+<!--            <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+<!--              <span aria-hidden="true">&times;</span>-->
+<!--            </button>-->
+<!--          </div>-->
+<!--          <div class="modal-body">-->
+<!--            <form #editForm="ngForm">-->
+<!--              <div class="form-group">-->
+<!--                <div class="form-group">-->
+<!--                  <label for="productName">Name</label>-->
+<!--                  <input type="text" ngModel="{{editProduct?.productName}}" name="productName" class="form-control"-->
+<!--                         id="productName" placeholder="Name" required>-->
+<!--                </div>-->
+<!--                <input type="hidden" ngModel="{{editProduct?.id}}" name="id" class="form-control" id="id"-->
+<!--                       placeholder="name">-->
+<!--                <div class="form-group">-->
+<!--                  <label for="productDescription">Description</label>-->
+<!--                  <input type="text" ngModel="{{editProduct?.productDescription}}" name="productDescription"-->
+<!--                         class="form-control" id="productDescription" rows="3" placeholder="Description" required>-->
+<!--                </div>-->
+<!--                <div class="form-group">-->
+<!--&lt;!&ndash;                  <label for="productCategory">Category</label>&ndash;&gt;-->
+<!--&lt;!&ndash;                  <input type="text" ngModel="{{editProduct?.productCategory}}" name="productCategory" class="form-control"&ndash;&gt;-->
+<!--                         id="productCategory" placeholder="Category" required>-->
+<!--                </div>-->
+<!--                <div class="form-group">-->
+<!--                  <label for="productAmount">Amount</label>-->
+<!--                  <input type="number" ngModel="{{editProduct?.productAmount}}" name="productAmount" class="form-control"-->
+<!--                         id="productAmount" placeholder="Phone" required>-->
+<!--                </div>-->
+<!--                <div class="form-group">-->
+<!--                  <label for="productImageUrl">Image URL</label>-->
+<!--                  <input type="text" name="productImageUrl" class="form-control" id="productImageUrl"-->
+<!--                         placeholder="Image URL" required>-->
+<!--                </div>-->
+<!--                <div class="form-group">-->
+<!--                  <label for="productPrice">Price</label>-->
+<!--                  <input type="number" ngModel="{{editProduct?.productPrice}}" name="productPrice" class="form-control"-->
+<!--                         id="productPrice" placeholder="Price" required>-->
+<!--                </div>-->
+<!--                <div class="form-group">-->
+<!--                  <label for="productDiscount">Discount</label>-->
+<!--                  <input type="number" ngModel="{{editProduct?.productDiscount}}" name="productDiscount"-->
+<!--                         class="form-control" id="productDiscount" placeholder="Discount" required>-->
+<!--                </div>-->
+<!--                <div class="form-group">-->
+<!--                  <label for="productDate">Date</label>-->
+<!--                  <input type="date" ngModel="{{editProduct?.productDate}}" name="productDate" class="form-control"-->
+<!--                         id="productDate" placeholder="Date" required>-->
+<!--                </div>-->
+<!--                <div class="form-group">-->
+<!--                  <div class="col-12">-->
+<!--                    <div class="row">-->
+<!--                      <input type="radio" ngModel="{{editProduct?.productStatus}}" name="productStatus" id="active"-->
+<!--                             value="true" checked>-->
+<!--                      <label for="active">Active</label></div>-->
+<!--                    <div class="row">-->
+<!--                      <input type="radio" name="productStatus" id="NotActive" value="false">-->
+<!--                      <label for="NotActive">Not active</label></div>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--                <div class="modal-footer">-->
+<!--                  <button type="button" id="" data-dismiss="modal" class="btn btn-secondary">Close</button>-->
+<!--                  <button (click)="onUpdateProduct(editForm.value)" data-dismiss="modal" class="btn btn-primary">Save-->
+<!--                    changes-->
+<!--                  </button>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            </form>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
 

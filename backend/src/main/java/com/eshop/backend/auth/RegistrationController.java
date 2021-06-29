@@ -53,15 +53,15 @@ public class RegistrationController {
                     .userLogin(request.getUserLogin())
                     .userPassword(request.getUserPassword())
                     .userRole(Role.USER.name())
-                    .userName(request.getFirstName())
-                    .userSurname(request.getLastName())
+                    .userName(request.getUserName())
+                    .userSurname(request.getUserSurname())
                     .userRegistrationDate(new Date(System.currentTimeMillis()))
                     .userStatus(Role.ANONYMOUS.name())
                     .build();
 
             authorizedUsersDao.create(user);
 
-            emailSenderService.sendEmail(user, "emailVerify");
+            emailSenderService.sendEmail(authorizedUsersDao.getByLogin(user.getUserLogin()), "emailVerify");
 
         } else new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
 
@@ -81,7 +81,7 @@ public class RegistrationController {
             if ((emailTokenModel.getTokenExpiryDate().getTime() - cal.getTime().getTime()) >= 0 &&
                     user != null) {
                 user.setUserStatus(Role.AUTHORIZED.name());
-                authorizedUsersDao.update(user);
+                authorizedUsersDao.setStatus(user);
 
                 emailTokenDao.deleteByValue(confirmationToken);
 
