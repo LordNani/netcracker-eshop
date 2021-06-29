@@ -1,17 +1,62 @@
-.footer-pagination {
-  position: fixed;
-  bottom: 0px;
-  width: 80%;
-}
+/*.footer-pagination {*/
+/*  position: fixed;*/
+/*  bottom: 0px;*/
+/*  width: 80%;*/
+/*}*/
 
-::ng-deep .mat-paginator-container {
-  /*box-shadow: 0 2px 6px 0 rgb(218 218 253 / 65%), 0 2px 6px 0 rgb(206 206 238 / 54%);*/
-  /*box-shadow: -1px -2px 6px 0 rgba(34, 60, 80, 0.65);*/
-  box-shadow: -1px -2px 6px 0 rgba(34, 60, 80, 0.3), -1px -2px 6px 0 rgba(34, 60, 80, 0.3);
+/*::ng-deep .mat-paginator-container {*/
+/*  !*box-shadow: 0 2px 6px 0 rgb(218 218 253 / 65%), 0 2px 6px 0 rgb(206 206 238 / 54%);*!*/
+/*  !*box-shadow: -1px -2px 6px 0 rgba(34, 60, 80, 0.65);*!*/
+/*  box-shadow: -1px -2px 6px 0 rgba(34, 60, 80, 0.3), -1px -2px 6px 0 rgba(34, 60, 80, 0.3);*/
+/*  background-color: white;*/
+/*  color: black;*/
+/*}*/
+
+/*::ng-deep .mat-paginator-page-size{*/
+/*  display: none !important;*/
+/*}*/
+
+
+ngb-pagination ::ng-deep .pagination > li > a
+{
   background-color: white;
-  color: black;
+  color: #5A4181;
 }
 
-::ng-deep .mat-paginator-page-size{
-  display: none !important;
+ngb-pagination ::ng-deep .pagination > li > a:focus
+{
+  color: #d5d5d5;
+  background-color: #eee;
+  border-color: #ddd;
+}
+ngb-pagination ::ng-deep .pagination > li > a:hover
+{
+  color: #989898;
+  background-color: #f9f9f9;
+  border-color: #ddd;
+}
+ngb-pagination ::ng-deep .pagination > li > span:focus
+{
+  color: #989898;
+  background-color: #eee;
+  border-color: #ddd;
+}
+ngb-pagination ::ng-deep .pagination > li > span:hover
+{
+  color: #fff118;
+  background-color: #eee;
+  border-color: #ddd;
+}
+
+ngb-pagination ::ng-deep .pagination > .active > a
+{
+  color: white;
+  background-color: #1d1d1d !Important;
+  border: solid 1px #5A4181 !Important;
+}
+
+ngb-pagination ::ng-deep .pagination > .active > a:hover
+{
+  background-color: #363636 !Important;
+  border: solid 1px #5A4181;
 }

@@ -15,6 +15,7 @@ import {Publisher} from '../../_model/Publisher';
 import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 import {ProductCreateComponent} from '../product-create/product-create.component';
 import {PageEvent} from '@angular/material/paginator';
+import { Filters } from 'src/app/_model/filters';
 
 @Component({
   selector: 'app-manager-workspace',
@@ -38,24 +39,32 @@ export class ManagerWorkspaceComponent implements OnInit {
   genres: Genre[] = [];
   languages: Language[] = [];
   publishers: Publisher[] = [];
-  size = 5;
+  size = 6;
   amountOfProducts: number;
   page = 1;
 
+  searchValue: string;
+  filtersValue: Filters;
+  orderValue: string;
+
   ngOnInit(): void {
     this.getAllProducts();
+    this.searchValue = "";
+    this.filtersValue = {author: [], coverType: [], genre: [], language: [], publisher: []} as Filters;
+    this.orderValue = '';
     this.getProductsCount();
     this.getAuthors();
     this.getCoverTypes();
     this.getGenres();
     this.getLanguages();
     this.getPublishers();
+
   }
 
   getAllProducts(): void {
     this.productService.getAllProducts(this.page, this.size)
       .subscribe(products => {
-        console.log(products);
+        // console.log(products);
         this.products = products;
       }, error => console.log(error));
 
@@ -110,6 +119,8 @@ export class ManagerWorkspaceComponent implements OnInit {
   }
 
   onCreate(): void {
+    this.getAmountOfProducts();
+    console.log(this.getAmountOfProducts());
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = false;
     dialogConfig.autoFocus = true;
@@ -127,7 +138,7 @@ export class ManagerWorkspaceComponent implements OnInit {
   }
 
   private getProductsCount(): void {
-    this.productService.getProductsCount(null, null, null).subscribe(
+    this.productService.getProductsCount(this.searchValue, this.orderValue, this.filtersValue).subscribe(
       res => {
         this.amountOfProducts = res;
       }
@@ -137,5 +148,35 @@ export class ManagerWorkspaceComponent implements OnInit {
   onPageChange(currentPage: number): void {
     this.page = currentPage;
     this.getAllProducts();
+  }
+
+
+  cancelFilters(): void{
+    window.location.reload();
+  }
+
+  getOrderedProducts(value: string){
+    this.orderValue = value;
+    this.getSearchedOrderedFilteredProducts();
+  }
+
+  getFilteredProducts(filters: Filters): void{
+    this.filtersValue = filters;
+    this.getSearchedOrderedFilteredProducts();
+  }
+
+  getSearchedOrderedFilteredProducts(): void{
+    this.productService.searchOrderFilterProducts(this.page, this.size, this.searchValue, this.orderValue, this.filtersValue)
+      .subscribe(products => {
+        this.products = products;
+      });
+    this.getAmountOfProducts();
+  }
+
+  getAmountOfProducts(){
+    this.productService.getProductsCount(this.searchValue, this.orderValue, this.filtersValue)
+      .subscribe(numb => {
+        this.amountOfProducts = numb;
+      });
   }
 }
