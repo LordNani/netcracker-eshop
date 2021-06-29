@@ -1,10 +1,19 @@
 import {Component, OnInit, Pipe} from '@angular/core';
 import {ProductCategory} from "../../_model/productCategory";
-import {ProductCategoryService} from "../../_service/product-category/product-category.service";
 import {Product} from "../../_model/product";
 import {ProductService} from "../../_service/product/product.service";
 import {typesOfCategories} from "../../_model/typesOfCategories";
 import {Filters} from "../../_model/filters";
+import { Author } from 'src/app/_model/author';
+import { CoverType } from 'src/app/_model/cover-type';
+import { Genre } from 'src/app/_model/genre';
+import { Publisher } from 'src/app/_model/Publisher';
+import { Language } from 'src/app/_model/Language';
+import { AuthorService } from 'src/app/_service/categories/author.service';
+import { CoverTypeService } from 'src/app/_service/categories/cover-type.service';
+import { PublisherService } from 'src/app/_service/categories/publisher.service';
+import { GenreService } from 'src/app/_service/categories/genre.service';
+import { LanguageService } from 'src/app/_service/categories/language.service';
 
 @Component({
   selector: 'app-product-list',
@@ -19,13 +28,23 @@ export class ProductListComponent implements OnInit {
   size: number = 6;
   amountOfProducts: number;
   currentProducts: Product[] = [];
+  authors: Author[] = [];
+  coverTypes: CoverType[] = [];
+  genres: Genre[] = [];
+  languages: Language[] = [];
+  publishers: Publisher[] = [];
   searchValue: string;
   filtersValue: Filters;
   orderValue: string;
 
-
+  // @ts-ignore
   constructor(
     private productService: ProductService,
+    private authorService: AuthorService,
+    private coverTypeService: CoverTypeService,
+    private genreService: GenreService,
+    private languageService: LanguageService,
+    private publisherService: PublisherService,
   ) {
   }
 
@@ -35,6 +54,11 @@ export class ProductListComponent implements OnInit {
     this.filtersValue = {author: [], coverType: [], genre: [], language: [], publisher: []} as Filters;
     this.orderValue = '';
     this.getAmountOfProducts();
+    this.getAuthors();
+    this.getCoverTypes();
+    this.getGenres();
+    this.getLanguages();
+    this.getPublishers();
   }
 
   getProducts(): void {
@@ -83,6 +107,41 @@ export class ProductListComponent implements OnInit {
     this.productService.getProductsCount(this.searchValue, this.orderValue, this.filtersValue)
       .subscribe(numb => {
         this.amountOfProducts = numb;
+      });
+  }
+
+  getAuthors(): void {
+    this.authorService.getAllAuthors()
+      .subscribe(authors => {
+        this.authors = authors;
+      });
+  }
+
+  getCoverTypes(): void {
+    this.coverTypeService.getAllCoverTypes()
+      .subscribe(coverTypes => {
+        this.coverTypes = coverTypes;
+      });
+  }
+
+  getGenres(): void {
+    this.genreService.getAllGenres()
+      .subscribe(genres => {
+        this.genres = genres;
+      });
+  }
+
+  getLanguages(): void {
+    this.languageService.getAllLanguages()
+      .subscribe(languages => {
+        this.languages = languages;
+      });
+  }
+
+  getPublishers(): void {
+    this.publisherService.getAllPublishers()
+      .subscribe(publishers => {
+        this.publishers = publishers;
       });
   }
 }

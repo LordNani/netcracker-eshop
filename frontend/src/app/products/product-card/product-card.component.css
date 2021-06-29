@@ -4,3 +4,7 @@
 .text-product-link:hover, .text-product-link:active {
   color: #6c757d !important;
 }
+
+.has-discount-text{
+  color: brown;
+}

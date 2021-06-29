@@ -9,11 +9,9 @@ import org.springframework.stereotype.Repository;
 
 import java.sql.Connection;
 import java.sql.Date;
-import java.util.ArrayList;
+import java.util.*;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.util.Collections;
-import java.util.List;
 
 @Repository
 public class ProductDaoImpl implements ProductDao {
@@ -144,6 +142,42 @@ public class ProductDaoImpl implements ProductDao {
 
         sql.append(" OFFSET " + (page - 1) + " ROWS FETCH NEXT " + size + " ROWS ONLY");
         return template.query(sql.toString(), new ProductMapper(), paramsForQuery);
+    }
+
+    @Override
+    public List<String> getCategoriesOfProduct(int author, int coverType, int genre, int language, int publisher) {
+        List<String> categories = new ArrayList<>();
+        categories.add(getAuthorById(author));
+        categories.add(getCoverTypeById(coverType));
+        categories.add(getGenreById(genre));
+        categories.add(getLanguageById(language));
+        categories.add(getPublisherById(publisher));
+        return categories;
+    }
+
+    private String getAuthorById(int id){
+        String sql = "SELECT authorname from author where id = ?";
+        return template.queryForObject(sql, String.class, new Object[]{Long.valueOf(id)});
+    }
+
+    private String getCoverTypeById(int id){
+        String sql = "SELECT covertypename from covertype where id = ?";
+        return template.queryForObject(sql, String.class, new Object[]{Long.valueOf(id)});
+    }
+
+    private String getGenreById(int id){
+        String sql = "SELECT genrename from genre where id = ?";
+        return template.queryForObject(sql, String.class, new Object[]{Long.valueOf(id)});
+    }
+
+    private String getLanguageById(int id){
+        String sql = "SELECT languagename from language where id = ?";
+        return template.queryForObject(sql, String.class, new Object[]{Long.valueOf(id)});
+    }
+
+    private String getPublisherById(int id){
+        String sql = "SELECT publishername from publisher where id = ?";
+        return template.queryForObject(sql, String.class, new Object[]{Long.valueOf(id)});
     }
 
     private Object[] getSearchedOrderedFilteredBuilder(String search, FilterModel filterModel, StringBuilder sql){

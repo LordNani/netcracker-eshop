@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class ProductServiceImp implements ProductService {
@@ -52,6 +53,11 @@ public class ProductServiceImp implements ProductService {
     public List<ProductModel> getSearchedOrderedFiltered(int page, int size, String search, String orderBy, FilterModel filterModel) {
         page = getPageNumeration(page, size);
         return productdao.getSearchedOrderedFiltered(page, size, search, orderBy, filterModel);
+    }
+
+    @Override
+    public List<String> getCategoriesOfProduct(int author, int coverType, int genre, int language, int publisher) {
+        return productdao.getCategoriesOfProduct(author, coverType, genre, language, publisher);
     }
 
     public int getPageNumeration(int page, int size){

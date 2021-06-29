@@ -105,4 +105,13 @@ export class ProductService {
         catchError(this.handleError<number>('getProductsCount', ))
       );
   }
+
+  getCategoriesOfProduct(author: number, coverType: number, genre: number, language: number, publisher: number): Observable<string[]>{
+    const params = new HttpParams().set('author', String(author)).set('cover-type', String(coverType)).set('genre', String(genre)).set('language', String(language)).set('publisher', String(publisher));
+    const url = `${this.productsUrl}/get-categories-of-product`;
+    return this.http.get<string[]>(url, {params})
+      .pipe(
+        catchError(this.handleError<string[]>('getProductsCount', ))
+      );
+  }
 }

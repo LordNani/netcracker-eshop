@@ -1,5 +1,7 @@
 export interface ProductCategory{
-  id: number;
-  productCategoryName: string;
-  productSuperCategoryId: number;
+  author: string;
+  coverType:string;
+  language: string;
+  genre: string;
+  publisher: string;
 }

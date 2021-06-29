@@ -5,6 +5,7 @@ import com.eshop.backend.product.dao.models.ProductModel;
 import com.eshop.backend.utils.CrudDao;
 
 import java.util.List;
+import java.util.Map;
 
 public interface ProductDao extends CrudDao<ProductModel> {
     List<ProductModel> getProductPage(int page, int size);
@@ -13,5 +14,6 @@ public interface ProductDao extends CrudDao<ProductModel> {
     List<ProductModel> getByName(String name);
     List<ProductModel> getFiltered(int page, int size, FilterModel filterModel);
     List<ProductModel> getSearchedOrderedFiltered (int page, int size, String search, String orderBy, FilterModel filterModel);
+    List<String> getCategoriesOfProduct (int author, int coverType, int genre, int language, int publisher);
     Integer getNumberOfSearchedOrderedFiltered(String search, String orderBy, FilterModel filterModel);
 }

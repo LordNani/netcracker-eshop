@@ -11,9 +11,20 @@ export class ProductCardComponent implements OnInit {
   @Input()
   product?: Product;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
   }
 
+  hasDiscount(): boolean {
+    if (this.product.productDiscount > 0) {
+      return true;
+    }
+    return false;
+  }
+
+  getDiscountedPrice(): number{
+    return Math.round(this.product.productPrice * ( 1 - (this.product.productDiscount / 100) ));
+  }
 }

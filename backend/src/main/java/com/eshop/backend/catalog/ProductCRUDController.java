@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @CrossOrigin("*")
 
@@ -106,6 +107,16 @@ public class ProductCRUDController {
         FilterModel filterModel = objectMapper.readValue(filters, FilterModel.class);
         Integer amount = productService.getNumberOfSearchedOrderedFiltered(search, orderBy, filterModel);
         return new ResponseEntity<>(amount, HttpStatus.OK);
+    }
+
+    @GetMapping("get-categories-of-product")
+    public ResponseEntity<List<String>> getCategoriesOfProduct(@RequestParam("author") int author,
+                                                               @RequestParam("cover-type") int coverType,
+                                                               @RequestParam("genre") int genre,
+                                                               @RequestParam("language") int language,
+                                                               @RequestParam("publisher") int publisher){
+        List<String> categories = productService.getCategoriesOfProduct(author, coverType, genre, language, publisher);
+        return new ResponseEntity<>(categories, HttpStatus.OK);
     }
 
 }

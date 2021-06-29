@@ -1,11 +1,24 @@
 <div *ngIf="product">
-  <div class="card h-100">
+  <div class="card h-100 ">
     <img class="card-img-top" src="../../../assets/img/default.png" class="img-fluid" alt="">
     <div class="card-body">
-      <a class="text-product-link" routerLink="/product-list/product/{{product.id}}"><h5 class="post-title">{{product.productName}}</h5></a>
+      <a class="text-product-link" routerLink="/product-list/product/{{product.id}}"><h5 class="post-title">
+        {{product.productName}} <sup *ngIf="hasDiscount()"
+                                     class="badge badge-danger">-{{product.productDiscount}}%</sup></h5></a>
       <div class="row">
         <div class="col-sm-6">
-          <p>Price: ${{product.productPrice}}</p>
+          <div *ngIf="!hasDiscount()">
+            <p>Price:
+              ${{product.productPrice}}
+            </p>
+          </div>
+          <div *ngIf="hasDiscount()">
+            <p>Price:
+              <span class="has-discount-text">
+                ${{getDiscountedPrice()}}
+              </span>
+            </p>
+          </div>
         </div>
         <div class="col-sm-6">
           <a href="#" class="btn btn-secondary">Add to cart</a>
