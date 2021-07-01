@@ -1,0 +1,56 @@
+<div class="container">
+  <div class="row justify-content-around ">
+    <div class="col-lg-3 col-md-2">
+      <select class="custom-select">
+        <option selected (click)="getOrderedProducts('')">Default order</option>
+        <option value="1" (click)="getOrderedProducts('p.productprice asc ')">Price: Low to High</option>
+        <option value="2" (click)="getOrderedProducts('p.productprice desc ')">Price: High to Low</option>
+        <option value="3" (click)="getOrderedProducts('p.productdate desc')">Newest</option>
+      </select>
+    </div>
+    <div class="col-lg-9 col-md-10">
+      <app-product-search (searchValue)="getSearchedProducts($event)"
+                          (cancelFilters)="cancelFilters()"></app-product-search>
+    </div>
+  </div>
+
+  <div class="row justify-content-around mt-2">
+    <div class="col-lg-3 col-md-2">
+      <div>
+        <button (click)="onCreate()" class="btn btn-outline-secondary my-2 my-sm-0 temp mt-4 mb-4 btn-block" type="secondary">Create</button>
+      </div>
+      <div class="mt-4">
+        <app-categories-part (filterValue)="getFilteredProducts($event)"></app-categories-part>
+      </div>
+
+    </div>
+
+    <div class="col-lg-9 col-md-10">
+      <div class="row justify-content-around mb-2">
+        <ngb-pagination [collectionSize]="amountOfProducts" [(page)]="page" [pageSize]="size" [maxSize]="5"
+                        [rotate]="true" [boundaryLinks]="true" (pageChange)="onPageChange(page)"></ngb-pagination>
+      </div>
+
+      <div *ngFor="let product of products">
+        <app-product-manager [product]="product"
+                             [author]="authors[product.author]"
+                             [language]="languages[product.language]"
+                             [publisher]="publishers[product.publisher]"
+                             [coverType]="coverTypes[product.coverType]"
+                             [genre]="genres[product.genre]"
+                             (editProductEvent)="update($event)"></app-product-manager>
+        <div class="card-body">
+
+        </div>
+      </div>
+
+
+      <div class="row  justify-content-around">
+        <ngb-pagination [collectionSize]="amountOfProducts" [(page)]="page" [pageSize]="size" [maxSize]="5"
+                        [rotate]="true" [boundaryLinks]="true" (pageChange)="onPageChange(page)"></ngb-pagination>
+      </div>
+    </div>
+  </div>
+</div>
+
+

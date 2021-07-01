@@ -1,0 +1,35 @@
+<h2 class="text-center p-1 ">Shopping cart</h2>
+
+<div class="row justify-content-start cont">
+
+    <div class="col-lg-3 col-md-2">
+      <select class="custom-select" (change)="getOrderedProducts($event.target)">
+        <option selected value="asc">Newest</option>
+        <option value="desc">Oldest</option>
+      </select>
+    </div>
+
+    <div class="row justify-content-around mt-4 mb-4">
+
+      <div class="container" *ngFor="let product of products">
+        <app-product-in-cart [product]="product"
+                             [productsWithBadAmount]="productsWithBadAmount"
+                             (updateAmount)="updatePrice($event)"
+                             (remove)="removeProduct($event)"></app-product-in-cart>
+      </div>
+
+      <div class="container mt-5">
+        <div class="row">
+          <div class="col-md-6 justify-content-around">
+            <button (click)="confirmOrder()" class="btn btn-secondary mb-3">Go to order confirmation</button>
+          </div>
+          <div class="col-md-6 justify-content-around">
+            <p class="h3 text-right">Total before discount: {{this.total}}</p>
+            <p class="h3 text-right">Total: {{this.totalWithDiscount}}</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+

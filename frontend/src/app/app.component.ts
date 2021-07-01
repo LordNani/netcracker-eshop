@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
-import {Role} from './_model/role';
 import {AuthService} from './_service/auth.service';
 
 @Component({
@@ -11,7 +10,8 @@ import {AuthService} from './_service/auth.service';
 export class AppComponent implements OnInit{
   title = 'frontend';
   loggedIn = false;
-  role: Role;
+  role = this.authService.role;
+  status = this.authService.status;
   constructor(private router: Router,
               private authService: AuthService) {
   }
@@ -20,13 +20,11 @@ export class AppComponent implements OnInit{
   }
   logout(): void{
     this.loggedIn = false;
+    console.log('logout');
     this.router.navigate(['/main']);
   }
 
   ngOnInit(): void {
-    this.authService.getUserRole().subscribe(
-      res => this.role = res.role,
-      error => this.role = Role.ADMIN
-    );
+
   }
 }

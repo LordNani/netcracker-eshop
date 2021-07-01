@@ -1,0 +1,11 @@
+.img-fluid {
+  max-width: 50%;
+}
+
+.white {
+  background-color: white;
+}
+
+.grey {
+  background-color: grey;
+}

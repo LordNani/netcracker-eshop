@@ -1,0 +1,17 @@
+<head>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            font-size: 48px;
+        }
+    </style>
+</head>
+<body>
+<h4>Verification Email</h4>
+<p>Thanks for registering!</p>
+<p>Please click the below link to verify your email address:</p>
+<p th:text="${name}">
+    <a th:href="${name}">${verifyUrl}</a>
+</p>
+</body>
+</html>

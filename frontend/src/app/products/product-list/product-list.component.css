@@ -1,0 +1,44 @@
+ngb-pagination ::ng-deep .pagination > li > a
+{
+  background-color: white;
+  color: #5A4181;
+}
+
+ngb-pagination ::ng-deep .pagination > li > a:focus
+{
+  color: #d5d5d5;
+  background-color: #eee;
+  border-color: #ddd;
+}
+ngb-pagination ::ng-deep .pagination > li > a:hover
+{
+  color: #989898;
+  background-color: #f9f9f9;
+  border-color: #ddd;
+}
+ngb-pagination ::ng-deep .pagination > li > span:focus
+{
+  color: #989898;
+  background-color: #eee;
+  border-color: #ddd;
+}
+ngb-pagination ::ng-deep .pagination > li > span:hover
+{
+  color: #fff118;
+  background-color: #eee;
+  border-color: #ddd;
+}
+
+ngb-pagination ::ng-deep .pagination > .active > a
+{
+  color: white;
+  background-color: #1d1d1d !Important;
+  border: solid 1px #5A4181 !Important;
+}
+
+ngb-pagination ::ng-deep .pagination > .active > a:hover
+{
+  background-color: #363636 !Important;
+  border: solid 1px #5A4181;
+}
+

@@ -1,4 +1,6 @@
-export interface Product{
+export class Product {
+  constructor() {
+  }
   id: number;
   productName: string;
   productAmount: number;
@@ -13,4 +15,6 @@ export interface Product{
   author: number;
   language: number;
   publisher: number;
+
+
 }

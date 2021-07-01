@@ -7,7 +7,7 @@ import {RouterModule} from '@angular/router';
 import {BaseLinkComponent} from './components/base-link/base-link.component';
 import { CatalogueLinkComponent } from './components/catalogue-link/catalogue-link.component';
 import { ShoppingCartLinkComponent } from './components/shopping-cart-link/shopping-cart-link.component';
-import { AdminWorkSpaceLinkComponent } from './components/admin-work-space-link/admin-work-space-link.component';
+import { ProductCatalogLinkComponent } from './components/product-catalog-link/product-catalog-link.component';
 
 
 @NgModule({
@@ -17,7 +17,7 @@ import { AdminWorkSpaceLinkComponent } from './components/admin-work-space-link/
     BaseLinkComponent,
     CatalogueLinkComponent,
     ShoppingCartLinkComponent,
-    AdminWorkSpaceLinkComponent,
+    ProductCatalogLinkComponent,
   ],
   exports: [
     NavBarComponent

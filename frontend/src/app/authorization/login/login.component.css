@@ -1,0 +1,8 @@
+.error {
+  color: red;
+}
+
+.cont {
+  /*padding-bottom: 10.2%;*/
+  min-height: calc(100vh - 170px);
+}

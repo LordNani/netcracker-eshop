@@ -1,0 +1,29 @@
+.post-title {
+  border-bottom: 1px solid #CCCCCC
+}
+
+.card-text {
+  margin-top: 1.5rem
+}
+.card {
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2)
+}
+
+.btn-remove:hover {
+  background-color: #CC3333;
+  color: #FFF
+}
+.price {
+  color: #434990;
+  font-weight: 700;
+}
+
+.img {
+  width: 200px;
+  height: 250px;
+  text-align: center;
+  margin-top: 5px;
+}
+
+
+

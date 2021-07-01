@@ -1,38 +1,42 @@
 <div class="container">
 
-  <div class="row justify-content-around mt-4 mb-4">
-    <app-product-search></app-product-search>
+  <div class="row justify-content-around ">
+    <div class="col-lg-3 col-md-2">
+      <select class="custom-select" (change)="getOrderedProducts($event.target)">
+        <option selected value="">Default order</option>
+        <option value="p.productprice asc">Price: Low to High</option>
+        <option value="p.productprice desc">Price: High to Low</option>
+        <option value="p.productdate desc">Newest</option>
+      </select>
+    </div>
+
+    <div class="col-lg-9 col-md-10">
+      <app-product-search (searchValue)="getSearchedProducts($event)"
+                          (cancelFilters)="cancelFilters()"></app-product-search>
+    </div>
+
+
   </div>
 
   <div class="row justify-content-around mt-4 mb-4">
     <div class="col-lg-3 col-md-2">
-      <ul class="productCategories">
-        <li *ngFor="let productCategory of productCategories">
-          <div class="form-check">
-            <input (change)="filter($event, productCategory.id)" class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-            <label class="form-check-label" for="flexCheckDefault">
-              {{productCategory.productCategoryName}}
-            </label>
-          </div>
-      </ul>
+      <app-categories-part (filterValue)="getFilteredProducts($event)"></app-categories-part>
+
     </div>
 
     <div class="col-lg-9 col-md-10">
       <div class="row">
         <div class="col-md-4 col-sm-6 mb-4" *ngFor="let product of currentProducts">
-          <app-product-card [product]="product"></app-product-card>
+          <app-product-card [product]="product"
+                            (addProductToCart)="addProductToCart($event)"></app-product-card>
+
         </div>
-      </div>
 
-      <!--
-      <div class="col text-center after-posts">
-        <button type="button" class="btn btn-outline-secondary Load-more">
-          Load more
-          <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
-        </button>
       </div>
-      -->
-
+      <div class="row  justify-content-around">
+        <ngb-pagination [collectionSize]="amountOfProducts" [(page)]="page" [pageSize]="size" [maxSize]="5"
+                        [rotate]="true" [boundaryLinks]="true" (pageChange)="onPageChange(page)"></ngb-pagination>
+      </div>
     </div>
   </div>
 </div>

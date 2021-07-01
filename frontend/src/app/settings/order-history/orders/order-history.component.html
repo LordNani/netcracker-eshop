@@ -1,0 +1,38 @@
+<div class ="order-history">
+  <h2 class="text-center">Orders history</h2>
+  <div *ngIf="orderCards.length == 0">
+    <h3 class="text-center">No orders</h3>
+  </div>
+  <div class="bg-white card mb-4 order-list orders" *ngFor="let orderCard of orderCards">
+    <div class="p-4">
+      <div class="media">
+        <div class="media-body">
+            <span class="float-right text-info">Delivery time: {{orderCard.deliveryTime}}</span>
+            <p class="text-gray mb-1"><i class="icofont-location-arrow"></i> Customer name: {{orderCard.userName}}
+          </p>
+          <p class="text-gray mb-1"><i class="icofont-location-arrow"></i> Delivery address: {{orderCard.fullAddress}}
+          </p>
+          <p class="text-gray mb-1"><i class="icofont-location-arrow"></i> Order status: {{orderCard.orderStatus}}
+          </p>
+          <p class="text-gray mb-3"><i class="icofont-list"></i> ORDER #{{orderCard.id}}</p>
+          <p class="text-dark">{{orderCard.packageDescription}}
+          </p>
+          <hr>
+          <div class="float-right">
+            <button type="button" class="btn btn-secondary"
+                    (click)="viewDetails(orderCard.id)">View details
+            </button>
+<!--            <a class="btn btn-sm btn-primary" routerLink ="/settings/order-details">View details</a>-->
+          </div>
+          <p class="mb-0 text-black text-primary pt-2"><span class="text-black font-weight-bold"> Total Price:</span>
+            ${{orderCard.totalPrice}}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div  *ngIf="orderCards.length !== 0" class="row  justify-content-around ngbpagination">
+    <ngb-pagination  [pageSize]="size" [collectionSize]="amountOfProducts" [(page)]="page" (pageChange)="onPageChange(page)" aria-label="Default pagination"></ngb-pagination>
+  </div>
+</div>
+

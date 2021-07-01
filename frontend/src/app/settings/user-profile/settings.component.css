@@ -1,0 +1,31 @@
+
+.body{
+  background: #f7f7ff;
+  margin-top:20px;
+}
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 0 solid rgba(0,0,0,.125);
+  border-radius: .25rem;
+  margin-bottom: 1.5rem;
+  box-shadow: -1px -2px 6px 0 rgba(34, 60, 80, 0.3), -1px -2px 6px 0 rgba(34, 60, 80, 0.3);
+}
+.me-2 {
+  margin-right: .5rem!important;
+}
+
+.order-history {
+  padding-top: 100px;
+  height: 100%;
+}
+
+.cont {
+  /*padding-bottom: 10.2%;*/
+  min-height: calc(100vh - 170px);
+}

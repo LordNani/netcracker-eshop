@@ -1,0 +1,48 @@
+<form class [formGroup]="form">
+  <div class="card mt-4 " *ngIf="product">
+    <div class="card-body">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3 justify-content-around">
+            <img [src]="product?.productPict" class="rounded img"/></div>
+          <div class="col-md-6">
+            <div class="container">
+              <h5 class="post-title">{{product.productName}}</h5>
+              <p class="card-text">{{product.productDescription}}</p>
+            </div>
+          </div>
+          <div class="col-md-3">
+
+            <div class="container mt-3">
+              <p>
+                Price:
+                <span>{{product.productPrice}}</span>
+              </p>
+            </div>
+
+            <div class="container mt-3">
+              <input (change)="onChange($event)" matInput formControlName="productAmount" type="number" class="form-control"
+                     placeholder="1" min="1"/>
+              <div *ngIf="form.get('productAmount')?.invalid" class="alert alert-danger">
+                {{countErrorMessage}}
+              </div>
+              <div *ngIf="storeAmountProblem" class="alert alert-danger">
+                {{ErrorMessage}}
+              </div>
+            </div>
+
+            <div class="container mt-3">
+              <p>Total before discount: {{product.productPrice * amount}}</p>
+              <p>Total: {{priceWithDiscount}}</p>
+            </div>
+
+            <div class="container mt-3 ">
+                <button (click)="removeProduct()" class="btn btn-secondary mb-3 btn-remove">Remove</button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

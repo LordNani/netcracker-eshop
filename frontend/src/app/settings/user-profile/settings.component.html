@@ -1,0 +1,80 @@
+<div class="container  cont">
+  <h2 class="text-center">Personal data</h2>
+  <div class="container">
+    <div class="row justify-content-around mt-4 mb-4">
+      <div class="col-md-8">
+        <div class="card mb-3">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-sm-3">
+                <h6 class="mb-0">First Name</h6>
+              </div>
+              <div class="col-sm-9 ">
+                {{user?.userName}}
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <h6 class="mb-0">Last Name</h6>
+              </div>
+              <div class="col-sm-9 ">
+                {{user?.userSurname}}
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <h6 class="mb-0">Email</h6>
+              </div>
+              <div class="col-sm-9">
+                {{user?.userLogin}}
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <h6 class="mb-0">Password</h6>
+              </div>
+              <div class="col-sm-9">
+                <a routerLink="/forgot-password" routerLinkActive="active">Forgot Password?</a>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <h6 class="mb-0">Mobile</h6>
+              </div>
+              <div class="col-sm-9">
+                {{user?.userNumber}}
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <h6 class="mb-0">Address</h6>
+              </div>
+              <div class="col-sm-9 ">
+                {{user?.userAddress}}
+              </div>
+            </div>
+            <div *ngIf="user?.userRole === 'USER'">
+              <hr>
+              <div class="row">
+                <div class="col-sm-12">
+                  <a class="btn btn-secondary" routerLink="/settings/edit">Edit</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="user?.userRole === 'USER'">
+  <app-order-history [user]="user"></app-order-history>
+</div>
+
+

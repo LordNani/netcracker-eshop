@@ -15,11 +15,25 @@ mat-radio-button{
 .add-bottom-padding{
   margin-top: 10px;
 }
-button{
 
-  width: 40%;
-}
 .footer-buttons{
   display: flex;
   justify-content: space-between;
+  margin-top: 10px;
+}
+.status{
+  text-align: left;
+  width: 20%;
+
+}
+.st{
+  margin-left: 10px;
+}
+.select{
+  margin-top: 10px;
+  width: 100px;
+  /*visibility: hidden;*/
+}
+h6{
+  /*visibility: hidden;*/
 }

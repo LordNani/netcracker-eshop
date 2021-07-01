@@ -2,6 +2,8 @@ import {Component, Input, OnInit} from '@angular/core';
 import {Role} from '../../../_model/role';
 import {Router} from '@angular/router';
 import {AuthService} from '../../../_service/auth.service';
+import {Status} from '../../../_model/status';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-nav-bar',
@@ -9,13 +11,13 @@ import {AuthService} from '../../../_service/auth.service';
   styleUrls: ['./nav-bar.component.css']
 })
 export class NavBarComponent implements OnInit {
-  anonymous = Role.ANONYMOUS_USER;
-  authorized = Role.AUTHORIZED_USER;
-  admin = Role.ADMIN;
-  @Input()role = Role.ANONYMOUS_USER;
+
+@Input()role: Role;
+@Input()status: Status;
 
   constructor(private router: Router,
-              private authService: AuthService) { }
+              public authService: AuthService) {
+  }
 
   ngOnInit(): void {
   }

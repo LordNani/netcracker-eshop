@@ -1,0 +1,60 @@
+<div *ngIf="product">
+  <div class="row justify-content-around">
+    <div class="col-md-11">
+      <div class="card">
+        <div class="card-body">
+          <div class="row justify-content-around pb-3">
+            <div class="col-lg-5">
+              <img class="card-img-top img-fluid img-thumbnail" [src]="product?.productPict" alt="">
+            </div>
+            <div class="col-lg-7">
+              <h5 class="post-title">{{product.productName}}</h5>
+              <p class="card-text">{{product.productDescription}}</p>
+            </div>
+          </div>
+
+          <table class="table table-bordered table-sm">
+            <tbody>
+            <tr>
+              <td colspan="2" class="td-product">Price:</td>
+              <td colspan="2" class="td-product">{{product.productPrice}}</td>
+              <td colspan="2">Author:</td>
+              <td colspan="2">{{author?.authorName}}</td>
+            </tr>
+            <tr>
+              <td colspan="2">Amount:</td>
+              <td colspan="2">{{product.productAmount}}</td>
+              <td colspan="2" class="td-product">Publisher:</td>
+              <td colspan="2" class="td-product">{{publisher?.publisherName}}</td>
+            </tr>
+            <tr>
+              <td colspan="2" class="td-product">Date:</td>
+              <td colspan="2" class="td-product">{{product.productDate}}</td>
+              <td colspan="2">Language:</td>
+              <td colspan="2">{{language?.languageName}}</td>
+            </tr>
+            <tr>
+              <td colspan="2">Discount:</td>
+              <td colspan="2">{{product.productDiscount}}</td>
+              <td colspan="2" class="td-product">Cover Type:</td>
+              <td colspan="2" class="td-product">{{coverType?.coverTypeName}}</td>
+            </tr>
+            <tr>
+              <td colspan="2" class="td-product">Status:</td>
+              <td colspan="2" class="td-product">{{product.productStatus}}</td>
+              <td colspan="2">Genre:</td>
+              <td colspan="2">{{genre?.genreName}}</td>
+            </tr>
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-1">
+      <button type="button" class="btn btn-outline-secondary my-2 my-sm-0 edit-btn" (click)="onCreate()">Edit</button>
+      <button type="button" class="btn btn-outline-secondary my-2 my-sm-0"  *ngIf="product.productStatus == 'INACTIVE'"  (click)="onChangeStatus(product.id)">Activate</button>
+      <button type="button" class="btn btn-outline-secondary my-2 my-sm-0"  *ngIf="product.productStatus == 'ACTIVE'" (click)="onChangeStatus(product.id)">Deactivate</button>
+    </div>
+  </div>
+</div>

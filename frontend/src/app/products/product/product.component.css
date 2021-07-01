@@ -1,0 +1,11 @@
+.custom-table-header{
+  text-align: left;
+  margin-bottom: 10px;
+}
+
+.img {
+  width: 200px;
+  height: 250px;
+  text-align: center;
+  margin-top: 5px;
+}
