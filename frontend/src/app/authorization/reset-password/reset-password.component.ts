@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
-import {AlertService} from '../../_service/alert.service';
-import {AuthService} from '../../_service/auth.service';
+import {AlertService} from '../../_service/alert/alert.service';
+import {AuthService} from '../../_service/auth/auth.service';
 import {first} from 'rxjs/operators';
 import {ValidationMessages} from '../../_model/labels/validation.messages';
+import {ErrorMessages} from "../../_model/labels/error.messages";
 
 enum TokenStatus {
   Validating,
@@ -104,7 +105,7 @@ export class ResetPasswordComponent implements OnInit {
           this.router.navigate(['../login'], { relativeTo: this.route });
         },
         error: error => {
-          this.alertService.error(error);
+          this.alertService.error(ErrorMessages[error.error.message]);
           this.loading = false;
         }
       });

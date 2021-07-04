@@ -32,11 +32,13 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
     public boolean checkProductInStock(List<ProductModel> orderProducts) throws OrderCartAmountException{
         List<Object> problemProducts = new ArrayList<>();
         for (ProductModel product: orderProducts) {
-            if (product.getProductAmount() > shoppingCartDao.getProductsAmountById(product.getId())) {
+            if (product.getProductAmount() > shoppingCartDao.getProductsAmountById(product.getId())
+                    || productDao.getStatusById(product.getId()).equals("INACTIVE")) {
                 new ProductModel();
                 problemProducts.add(ProductModel.builder()
                         .id(product.getId())
                         .productAmount(product.getProductAmount() - shoppingCartDao.getProductsAmountById(product.getId()))
+                        .productStatus(productDao.getStatusById(product.getId()))
                         .build());
             }
         }

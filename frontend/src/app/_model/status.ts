@@ -1,4 +1,4 @@
 export enum Status{
-  AUTHORIZED= 'AUTHORIZED',
+  ACTIVE = 'ACTIVE',
   ANONYMOUS= 'ANONYMOUS'
 }

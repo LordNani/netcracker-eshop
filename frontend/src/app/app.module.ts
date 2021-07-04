@@ -8,13 +8,11 @@ import {AuctionsModule} from './auctions/auctions.module';
 import {ProductsModule} from './products/products.module';
 import {ShoppingCartComponent} from './shopping-cart/cart/shopping-cart.component';
 import {SettingsComponent} from './settings/user-profile/settings.component';
-import {AuthService} from './_service/auth.service';
-import {TokenInterceptorService} from './_service/token-interceptor.service';
+import {AuthService} from './_service/auth/auth.service';
+import {TokenInterceptorService} from './_service/auth/token-interceptor.service';
 import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import {CommonModule} from './common/common.module';
 import {NavBarModule} from './nav-bar/nav-bar.module';
-import {ProductCatalogComponent} from './product-catalog/product-catalog.component';
-import {TempProductComponent} from './product-catalog/temp-product/temp-product.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {JwPaginationModule} from 'jw-angular-pagination';
 import {AlertComponent} from './alert/alert.component';
@@ -36,13 +34,13 @@ import { EditSettingsComponent } from './settings/edit-settings/edit-settings.co
 import {OrderHistoryComponent} from './settings/order-history/orders/order-history.component';
 import {OrderDetailsComponent} from './settings/order-history/order-details/order-details.component';
 import {NgbPaginationModule} from '@ng-bootstrap/ng-bootstrap';
-
 import {CoucabComponent} from './account/courier-cabinet/coucab.component';
-import {NotificationComponent} from './socket/notifications/notification.component';
-
+// import {NotificationComponent} from './socket/notifications/notification.component';
 import { ProductInCartComponent } from './shopping-cart/product-in-cart/product-in-cart.component';
 import {MatSelectModule} from '@angular/material/select';
 import {MatDialogModule} from '@angular/material/dialog';
+import { CheckoutComponent } from './checkout/checkout.component';
+
 
 
 @NgModule ({
@@ -52,7 +50,6 @@ import {MatDialogModule} from '@angular/material/dialog';
     AlertComponent,
     SettingsComponent,
     ShoppingCartComponent,
-    ProductCatalogComponent,
     ProfileComponent,
     AdminWorkSpaceLinkComponent,
     SearchComponent,
@@ -60,7 +57,8 @@ import {MatDialogModule} from '@angular/material/dialog';
     OrderHistoryComponent,
     OrderDetailsComponent,
     ProductInCartComponent,
-    CoucabComponent
+    CoucabComponent,
+    CheckoutComponent
   ],
   imports: [
     BrowserModule,
@@ -85,7 +83,7 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatNativeDateModule,
     NgbPaginationModule,
     MatSelectModule,
-    MatDialogModule,
+    MatDialogModule
   ],
   providers: [AuthService, CookieService,
     {

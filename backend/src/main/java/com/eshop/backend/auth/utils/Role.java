@@ -7,5 +7,6 @@ public enum Role {
     MANAGER,
     COURIER,
     AUTHORIZED,
-    ANONYMOUS
+    ANONYMOUS,
+    ACTIVE
 }

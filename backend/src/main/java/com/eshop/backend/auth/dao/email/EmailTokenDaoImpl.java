@@ -8,6 +8,9 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Repository
@@ -25,6 +28,7 @@ public class EmailTokenDaoImpl implements EmailTokenDao {
         String SQL = "insert into verificationtoken (tokenname, tokenvalue," +
                 "tokenexpirydate, authorizeduserid)\n" +
                 "values (?,?,?,?)";
+
         try {
             jdbcTemplate.update(SQL, token.getTokenName(), token.getTokenValue(),
                     token.getTokenExpiryDate(), token.getAuthorizedUserId());
@@ -44,7 +48,7 @@ public class EmailTokenDaoImpl implements EmailTokenDao {
                             rs.getLong("id"),
                             rs.getString("tokenname"),
                             rs.getString("tokenvalue"),
-                            rs.getDate("tokenexpirydate"),
+                            rs.getTimestamp("tokenexpirydate").toLocalDateTime(),
                             rs.getLong("authorizeduserid")
                     ), token, name);
         } catch (DataAccessException e) {

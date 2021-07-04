@@ -7,7 +7,7 @@
             <img [src]="product?.productPict" class="rounded img"/></div>
           <div class="col-md-6">
             <div class="container">
-              <h5 class="post-title">{{product.productName}}</h5>
+              <h5 class="post-title text-product-link"><a routerLink="/product-list/product/{{product.id}}">{{product.productName}}</a></h5>
               <p class="card-text">{{product.productDescription}}</p>
             </div>
           </div>
@@ -16,7 +16,7 @@
             <div class="container mt-3">
               <p>
                 Price:
-                <span>{{product.productPrice}}</span>
+                <span>{{product.productPrice}}$</span>
               </p>
             </div>
 
@@ -27,13 +27,16 @@
                 {{countErrorMessage}}
               </div>
               <div *ngIf="storeAmountProblem" class="alert alert-danger">
-                {{ErrorMessage}}
+                {{stockErrorMessage}}
+              </div>
+              <div *ngIf="productStatusError" class="alert alert-danger">
+                This product deactivate please remove him from product cart
               </div>
             </div>
 
-            <div class="container mt-3">
-              <p>Total before discount: {{product.productPrice * amount}}</p>
-              <p>Total: {{priceWithDiscount}}</p>
+            <div class="container mt-3" *ngIf="!form.get('productAmount')?.invalid">
+              <p> Total before discount: {{product.productPrice * amount}}$</p>
+              <p>Total: {{priceWithDiscount}}$</p>
             </div>
 
             <div class="container mt-3 ">

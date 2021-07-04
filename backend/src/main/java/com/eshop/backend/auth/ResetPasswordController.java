@@ -17,6 +17,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.Calendar;
 
 @RestController
@@ -58,9 +59,7 @@ public class ResetPasswordController {
         if (confirmationToken != null) {
             EmailTokenModel emailTokenModel = emailTokenDao.getByToken(confirmationToken, "resetPassword");
 
-            Calendar cal = Calendar.getInstance();
-
-            if (emailTokenModel.getTokenExpiryDate().getTime() - cal.getTime().getTime() >= 0) {
+            if (emailTokenModel.getTokenExpiryDate().isAfter(LocalDateTime.now())) {
                 return new ResponseEntity<>(HttpStatus.OK);
             }
 

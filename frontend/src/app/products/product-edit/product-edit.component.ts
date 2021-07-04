@@ -1,8 +1,6 @@
-import {Component, Inject, OnInit, ViewChild} from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import {ProductManagerComponent} from '../product-manager/product-manager.component';
-import {ManagerWorkspaceComponent} from '../../work-space/manager-workspace/manager-workspace.component';
 import {AuthorService} from '../../_service/categories/author.service';
 import {Author} from '../../_model/author';
 import {CoverType} from '../../_model/cover-type';
@@ -14,8 +12,7 @@ import {PublisherService} from '../../_service/categories/publisher.service';
 import {Language} from '../../_model/Language';
 import {Publisher} from '../../_model/Publisher';
 import {Product} from '../../_model/product';
-import {ProductService} from '../../_service/product.service';
-import {HttpClient} from '@angular/common/http';
+import {ProductService} from '../../_service/product/product.service';
 import {ValidationMessages} from '../../_model/labels/validation.messages';
 
 @Component({

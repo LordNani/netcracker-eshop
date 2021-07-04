@@ -66,7 +66,7 @@ create table orderCart(
                           userID BIGSERIAL NOT NULL,
                           courierId BIGSERIAL NOT NULL,
                           packageDescription varchar(100) NOT NULL,
-                          orderStatus boolean NOT NULL,
+                          orderStatus varchar(100) NOT NULL,
                           totalPrice BIGSERIAL NOT NULL,
                           userName varchar(100) NOT NULL,
                           deliveryTime DATE NOT NULL,
@@ -95,7 +95,7 @@ create table verificationToken(
                                   id BIGSERIAL PRIMARY KEY,
                                   tokenName VARCHAR(100) NOT NULL,
                                   tokenValue VARCHAR(100) NOT NULL,
-                                  tokenExpiryDate DATE NOT NULL,
+                                  tokenExpiryDate TIMESTAMP NOT NULL,
                                   authorizedUserid integer NOT NULL
 );
 

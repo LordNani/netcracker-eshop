@@ -2,10 +2,10 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Router} from '@angular/router';
 import {BehaviorSubject, Observable, Subject} from 'rxjs';
-import {User} from '../_model/user';
+import {User} from '../../_model/user';
 import {map} from 'rxjs/operators';
-import {Role} from '../_model/role';
-import {Status} from '../_model/status';
+import {Role} from '../../_model/role';
+import {Status} from '../../_model/status';
 import {CookieService} from 'ngx-cookie-service';
 
 @Injectable({
@@ -73,6 +73,7 @@ export class AuthService {
     localStorage.removeItem('idUser');
     this.role = Role.USER;
     this.status = Status.ANONYMOUS;
+    this.stopRefreshTokenTimer();
     this.router.navigate(['/login']);
   }
 
@@ -103,6 +104,26 @@ export class AuthService {
 
   forgotPassword(email: string): Observable<any> {
     return this.http.post('http://localhost:8081/user/forgot-password', {email});
+  }
+
+
+  refreshToken(): Observable<any> {
+    console.log('refresh-token now');
+    return this.http.post<any>(`http://localhost:8081/user/refresh-token`, {}, { withCredentials: true })
+      .pipe(map((account) => {
+        this.startRefreshTokenTimer();
+        return account;
+      }));
+  }
+
+  startRefreshTokenTimer(): void {
+    // const timeout = Date.now() + (59 * 60 * 1000);
+    const timeout = (5 * 1000);
+    this.refreshTokenTimeout = setTimeout(() => this.refreshToken().subscribe(), timeout);
+  }
+
+  stopRefreshTokenTimer(): void {
+    clearTimeout(this.refreshTokenTimeout);
   }
 
 }

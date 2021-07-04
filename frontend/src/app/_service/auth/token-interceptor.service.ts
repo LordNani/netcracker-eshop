@@ -13,10 +13,7 @@ export class TokenInterceptorService implements HttpInterceptor {
   }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    // add auth header with jwt on request and take jwt on response
     const tokenRequest = (document.cookie.split(';').find(x => x.includes('Token')) || '=').split('=')[1];
-    // const tokenRequest = localStorage.getItem('token');
-    // console.log('get header from local storage: ' + tokenRequest);
     request = request.clone({
       setHeaders: {Authorization: `${tokenRequest}`}
     });
@@ -26,10 +23,8 @@ export class TokenInterceptorService implements HttpInterceptor {
           if (event instanceof HttpResponse) {
             const tokenResponse = event.headers.get('Authorization');
             if (tokenResponse !== null){
-              // localStorage.setItem('token', tokenResponse);
-              const expires = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toUTCString();
+              const expires = new Date(Date.now() + 4 * 60 * 60 * 1000).toUTCString();
               document.cookie = `Token=${tokenResponse}; expires=${expires}; path=/`;
-              // console.log('set token in local storage' + tokenResponse);
             }
           }
         }

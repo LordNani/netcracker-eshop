@@ -19,4 +19,5 @@ public interface ProductDao extends CrudDao<ProductModel> {
     Integer getNumberOfSearchedOrderedFiltered(String search, String orderBy, FilterModel filterModel);
     void updateAmountById(Long id, int price);
     Integer getAmountById(Long id);
+    String getStatusById(Long id);
 }

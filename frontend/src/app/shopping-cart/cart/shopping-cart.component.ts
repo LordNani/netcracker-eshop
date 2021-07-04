@@ -1,16 +1,17 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {Product} from '../../_model/product';
 import {ShoppingCartService} from '../../_service/shopping-cart/shopping-cart.service';
-import {AlertService} from '../../_service/alert.service';
+import {AlertService} from '../../_service/alert/alert.service';
 import {Router} from '@angular/router';
-import {AuthService} from '../../_service/auth.service';
+import {AuthService} from '../../_service/auth/auth.service';
+import {ErrorMessages} from '../../_model/labels/error.messages';
 
 @Component({
   selector: 'app-shopping-cart',
   templateUrl: './shopping-cart.component.html',
   styleUrls: ['./shopping-cart.component.css']
 })
-export class ShoppingCartComponent implements OnInit {
+export class ShoppingCartComponent implements OnInit{
 
 
   constructor(private router: Router,
@@ -24,7 +25,8 @@ export class ShoppingCartComponent implements OnInit {
   products: Product[] = [];
   amount = 1;
   userId = -1;
-  productsWithBadAmount: Product[] = [];
+  productsWithErrors: Product[] = [];
+  countError = false;
 
   ngOnInit(): void {
     this.products = JSON.parse(localStorage.getItem('productInCart'));
@@ -65,6 +67,9 @@ export class ShoppingCartComponent implements OnInit {
   confirmOrder(): void {
     const checkProducts: Array<Product> = [];
     this.products.forEach((x, index) => {
+      if (x.productStatus !== 'ACTIVE') {
+        this.countError = true;
+      }
       checkProducts.push(new Product());
       checkProducts[index].id = x.id;
       checkProducts[index].productAmount = x.productAmount;
@@ -75,12 +80,23 @@ export class ShoppingCartComponent implements OnInit {
       res => {
         localStorage.setItem('idUser', res);
         this.router.navigateByUrl('/');
+        this.countError = false;
       },
       error => {
         window.scroll(0, 0);
-        this.productsWithBadAmount = error.error.problemList;
-        this.alertService.error(error.error.message, {autoClose: false});
+        this.productsWithErrors = error.error.problemList;
+        this.alertService.error(ErrorMessages[error.error.message], {autoClose: false});
+        this.countError = true;
       }
     );
+    this.ngOnInit();
   }
+
+  changeCountError($event: any): void {
+    this.products.forEach(x => {
+      console.log(x.productStatus);
+    });
+    this.countError = $event;
+  }
+
 }

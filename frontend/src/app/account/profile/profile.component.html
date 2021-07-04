@@ -59,33 +59,45 @@
 <!--</form>-->
 
 <div mat-dialog-content>
+  <form [formGroup]="form">
   <mat-form-field appearance="fill">
     <mat-label>First name</mat-label>
-    <input matInput [(ngModel)]="data.userName">
+    <input matInput formControlName="firstName" [(ngModel)]="data.userName">
+    <mat-hint *ngIf="form.get('firstName').errors">First name is required</mat-hint>
+
   </mat-form-field>
   <mat-form-field appearance="fill">
     <mat-label>Last name</mat-label>
-    <input matInput [(ngModel)]="data.userSurname">
+    <input matInput formControlName="lastName" [(ngModel)]="data.userSurname">
+    <mat-hint *ngIf="form.get('lastName').errors">Last name is required</mat-hint>
   </mat-form-field>
   <mat-form-field appearance="fill">
     <mat-label>Email</mat-label>
-    <input matInput [(ngModel)]="data.userLogin">
+    <input  type="email" matInput formControlName="email" [(ngModel)]="data.userLogin">
+    <mat-hint *ngIf="form.get('email').errors">Email is required</mat-hint>
   </mat-form-field>
   <mat-form-field appearance="fill">
     <mat-label>Phone</mat-label>
-    <input matInput [(ngModel)]="data.userNumber">
+    <input matInput formControlName="phoneNumber"  [(ngModel)]="data.userNumber">
+    <mat-hint *ngIf="form.get('phoneNumber').errors">Phone number is required</mat-hint>
   </mat-form-field>
   <mat-form-field appearance="fill">
     <mat-label>Role</mat-label>
-    <input matInput [(ngModel)]="data.userRole">
+    <input matInput formControlName="role" [(ngModel)]="data.userRole">
+    <mat-hint *ngIf="form.get('role').errors">Role is required</mat-hint>
   </mat-form-field>
-  <mat-select   *ngIf="data.isEdit" name="my-select" (change)="selectChange(mySelect)" [(ngModel)]="data.userStatus">
+  <mat-select *ngIf="data.isEdit" name="my-select" (change)="selectChange(mySelect)" formControlName="status">
     <mat-option [value]="item.status" *ngFor="let item of selection" >
       {{item.status}}
     </mat-option>
+    <mat-hint *ngIf="form.get('status').errors">Status is required</mat-hint>
   </mat-select>
+  </form>
 </div>
+
 <div mat-dialog-actions>
   <button mat-button (click)="onClose()">No Thanks</button>
-  <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Ok</button>
+  <button mat-button [mat-dialog-close]="data" [disabled]="form.invalid" cdkFocusInitial>Ok</button>
+
 </div>
+

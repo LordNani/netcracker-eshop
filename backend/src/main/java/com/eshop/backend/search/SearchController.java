@@ -35,33 +35,27 @@ public class SearchController {
     public ResponseEntity<?> create(@RequestBody AuthorizedUserModel authorizedUserModel) {
 
         employeeService.createEmployee(authorizedUserModel);
-        return new ResponseEntity<>("Employee is created", HttpStatus.CREATED);
-        //return "New employee is successfully added";
+        return new ResponseEntity<>(authorizedUserModel, HttpStatus.CREATED);
+
 
     }
 
 
-//    @GetMapping("/test")
-//    public ResponseEntity<?> test() {
-//        Employee user = new Employee();
-//        user.setFirstName("testLogin");
-//        user.setLastName("some password");
-//        return new ResponseEntity<>(user, HttpStatus.OK);
-//    }
-
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<?> delete( @PathVariable ("id")Long id){
         employeeService.deleteEmployee(id);
-        return new ResponseEntity<>("Employee is deleted",HttpStatus.OK);
+        employeeService.getEmployees();
+        List<AuthorizedUserModel> emp = employeeService.getEmployees();
+        return new ResponseEntity<>(emp,HttpStatus.OK);
 
         }
 
-//        @PutMapping("/edit")
-//        public ResponseEntity<?> edit(@RequestBody Employee employee){
-//            employeeService.editEmployee(employee);
-//            return new ResponseEntity<>("Employee is updated",HttpStatus.OK);
-//
-//        }
+        @PutMapping("/edit/{id}")
+        public ResponseEntity<?> edit(@RequestBody AuthorizedUserModel authorizedUserModel, @PathVariable ("id")Long id ){
+            employeeService.editEmployee(authorizedUserModel);
+            return new ResponseEntity<>(authorizedUserModel,HttpStatus.OK);
+
+        }
     }
 
 

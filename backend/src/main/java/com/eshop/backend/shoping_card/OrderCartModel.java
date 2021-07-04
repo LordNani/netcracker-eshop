@@ -31,5 +31,5 @@ public class OrderCartModel {
 
     private String fullAddress;
 
-    private Boolean dontDisturb;
+    private boolean dontDisturb;
 }

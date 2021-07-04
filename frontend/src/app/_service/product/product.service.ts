@@ -53,7 +53,7 @@ export class ProductService {
   }
 
   addProduct(product: Product): Observable<Product> {
-    return this.http.post<Product>(this.productsUrl, product, this.httpOptions)
+    return this.http.post<Product>(`${this.productsUrl}/add`, product, this.httpOptions)
       .pipe(
         catchError(this.handleError<Product>('addProduct'))
       );

@@ -46,13 +46,6 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
-//        return httpSecurity -> httpSecurity.authorizeRequests()
-//       // Allow access without authentication to URIs from the array.
-//                .antMatchers(allowedOnlyForM2M).hasRole("M2M")
-//                .antMatchers(ALL_PATH).permitAll()  // No authentication required for all URI paths
-//                .and().logout().permitAll(false);            // Deny all paths after logout
-
-
         http
                 .cors().and().csrf().disable()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)

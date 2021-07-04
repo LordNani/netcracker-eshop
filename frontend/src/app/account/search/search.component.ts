@@ -44,20 +44,29 @@ export class SearchComponent implements OnInit {
     }
   }
 
-  onEdit(id: number, user: User): void{
+  onEdit(id: number): void{
     console.log(id);
     const managerData = this.getUserDataById(id);
     console.log(managerData);
     managerData.isEdit = true;
     const dialogRef = this.dialog.open(ProfileComponent, {
       maxWidth: '300px',
-      data: managerData
+      data: {
+        userName: managerData.userName,
+        userSurname: managerData.userSurname ,
+        userLogin: managerData.userLogin,
+        userNumber: managerData.userNumber,
+        userRole: managerData.userRole,
+        userStatus: managerData.userStatus,
+        id: managerData.id
+      }
     });
     dialogRef.afterClosed().subscribe(result => {
       // TODO method update call
       this.rs.updateUser(id, result).subscribe((response) => {
         console.log(response);
         localStorage.setItem('Users', JSON.stringify(response));
+        this.ngOnInit();
       });
       console.log('DialogData = ' + result);
     });
@@ -78,18 +87,13 @@ export class SearchComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe(result => {
       // TODO method creation call
+      console.log(result);
       this.rs.addMember(result).subscribe((response) => {
         console.log(response);
         localStorage.setItem('Users', JSON.stringify(response));
-      });
-      setTimeout(() => {
-        this.rs.getManagers().subscribe((response: User[]) => {
-          this.rs.users = response;
-          console.log(response);
+        this.rs.users.push(response);
         });
-      }, 1000);
-      console.log('DialogData = ' + result);
-    });
+      });
   }
   onDelete(id: number): void{
     console.log(id);
@@ -97,13 +101,6 @@ export class SearchComponent implements OnInit {
       this.rs.users = this.rs.users.filter(item => item.id !== id);
       console.log(this.rs.getManagers());
     });
-    setTimeout(() => {
-      this.rs.getManagers().subscribe((response: User[]) => {
-        this.rs.users = response;
-        console.log(response);
-      });
-    }, 1000);
-    // console.log(response);
   }
   getID(id: number): number{
     return this.clickedID = id;

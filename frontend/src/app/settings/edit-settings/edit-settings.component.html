@@ -86,10 +86,12 @@
                     <input type="text" formControlName="userNumber" class="form-control"
                            [ngClass]="{ 'is-invalid': editForm.controls.userNumber.errors }"/>
                     <div *ngIf="editForm.controls.userNumber.errors" class="invalid-feedback">
-                      <div *ngIf="editForm.controls.userNumber.errors?.required" _ngcontent-sdw-c58=""
+                      <div *ngIf="editForm.controls.userNumber.errors?.required"
                            class="alert alert-danger">User phone number is required
                       </div>
-                      <div *ngIf="editForm.controls.userNumber.errors.pattern" _ngcontent-sdw-c58="" class="alert alert-danger">pattern error</div>
+                      <div *ngIf="editForm.controls.userNumber.errors.pattern" _ngcontent-sdw-c58="" class="alert alert-danger">
+                        Please enter valid number
+                      </div>
                     </div>
                   </div>
                 </div>

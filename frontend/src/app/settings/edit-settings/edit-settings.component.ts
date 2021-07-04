@@ -3,7 +3,8 @@ import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {SettingsService} from '../../_service/settings/settings.service';
 import {User} from '../../_model/user';
 import {Router} from '@angular/router';
-import {AlertService} from '../../_service/alert.service';
+import {AlertService} from '../../_service/alert/alert.service';
+import {ErrorMessages} from "../../_model/labels/error.messages";
 
 @Component({
   selector: 'app-edit-settings',
@@ -65,7 +66,7 @@ export class EditSettingsComponent implements OnInit {
       },
       error => {
         console.log(error);
-        this.alertService.error(error.error.message, { autoClose: false });
+        this.alertService.error(ErrorMessages[error.error.message], { autoClose: false });
       }
     );
   }

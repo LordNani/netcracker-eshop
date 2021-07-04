@@ -15,7 +15,7 @@ public class ControllerAdvisor {
     @ExceptionHandler({UserAlreadyExistsException.class, NeedMailConfirmationException.class,
                         NoUserWithThisEmailException.class, NewPasswordSameAsOldException.class,
                         ChangeExistMailException.class, WrongEmailOrPasswordException.class,
-                        OrderCartAmountException.class})
+                        OrderCartAmountException.class, CaptchaException.class})
     public ResponseEntity<ErrorMessageDTO> handleException(
             WebException ex, WebRequest request) {
 

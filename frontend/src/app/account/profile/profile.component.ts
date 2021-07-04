@@ -27,14 +27,7 @@ export class ProfileComponent implements OnInit {
 
   emailRegx = /^(([^<>+()\[\]\\.,;:\s@"-#$%&=]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,3}))$/;
   // managers: Managers[] = [];
-  form = new FormGroup({
-    userName: new FormControl('', Validators.required),
-    userSurname: new FormControl('', Validators.required),
-    userLogin: new FormControl('', Validators.required),
-    userNumber: new FormControl('', Validators.required),
-    userRole: new FormControl('', Validators.required),
-    userStatus: new FormControl('', Validators.required)
-  });
+
   selection = [
     {
       id: 1,
@@ -51,55 +44,25 @@ export class ProfileComponent implements OnInit {
   ];
   selectedValue: any;
   mySelect = '2';
-
+  public form: FormGroup;
   ngOnInit(): void {
-   
-    // this.form = this.formBuilder.group({
-    //   firstName: ['', Validators.required],
-    //   lastName: ['', Validators.required],
-    //   email: ['', Validators.required],
-    //   phoneNumber: ['', Validators.required],
-    //   role: ['', Validators.required],
-    //   status: ['Active']
-    //  });
+    this.form = new FormGroup({
+      firstName: new FormControl('', [Validators.required]),
+      lastName: new FormControl('', Validators.required),
+      email: new FormControl('', [Validators.required, Validators.email]),
+      phoneNumber: new FormControl('', Validators.required),
+      role: new FormControl('', [Validators.required]),
+      status: new FormControl('')
+    });
+
+  }
+  public hasError = (controlName: string, errorName: string) => {
+    return this.form.controls[controlName].hasError(errorName);
   }
 
   // submit(): void {
-  //
-  //   if (!this.form.valid) {
-  //     return;
-  //   }
-  //   console.log(this.form.value);
-  // }
+ /** TODO: Обработка данных формы */
 
-  // Submit(): void{
-  //   const controls = this.form.controls;
-  //
-  //   /** Проверяем форму на валидность */
-  //   if (this.form.invalid) {
-  //     Object.keys(controls)
-  //       .forEach(controlName => controls[controlName].markAsTouched());
-  //
-  //     return;
-  //   }
-  //
-  //   /** TODO: Обработка данных формы */
-  //   console.log(this.form.value);
-  //   this.service.addMember(this.form.value).subscribe((result) => {
-  //     console.log(result);
-  //     localStorage.setItem('Users', JSON.stringify(this.form.value));
-  //   });
-  //   console.log('Start get all');
-  //   setTimeout(() => {
-  //     this.service.getManagers().subscribe((response: Managers[]) => {
-  //     this.service.managers = response;
-  //     console.log(response);
-  //     });
-  //     }, 1000);
-  //   console.log('End get all');
-  //
-  //   this.onClose();
-  // }
   onClose(): void {
     this.dialogRef.close();
   }
@@ -132,16 +95,18 @@ export class ProfileComponent implements OnInit {
 
   Submit(): void {
 
-
-    const controls = this.form.controls;
+console.log(this.form.valid);
+console.log(this.form.value);
+const controls = this.form.controls;
 
     /** Проверяем форму на валидность */
-    if (this.form.invalid) {
+if (this.form.invalid) {
       Object.keys(controls)
         .forEach(controlName => controls[controlName].markAsTouched());
 
       return;
     }
+this.onClose();
   }
 
 }

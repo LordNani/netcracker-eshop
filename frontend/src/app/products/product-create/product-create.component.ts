@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Product} from '../../_model/product';
 import {MatDialog, MatDialogRef} from '@angular/material/dialog';
-import {ProductService} from '../../_service/product.service';
+import {ProductService} from '../../_service/product/product.service';
 import {AuthorService} from '../../_service/categories/author.service';
 import {CoverTypeService} from '../../_service/categories/cover-type.service';
 import {GenreService} from '../../_service/categories/genre.service';

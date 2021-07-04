@@ -6,3 +6,9 @@
   /*padding-bottom: 10.2%;*/
   min-height: calc(100vh - 170px);
 }
+
+.captcha {
+  padding-top: 15px;
+  display: flex;
+  justify-content: center;
+}

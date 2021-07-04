@@ -23,3 +23,7 @@ mat-icon{
 .idNum{
   display: none;
 }
+
+.cont {
+  min-height: calc(100vh - 170px);
+}

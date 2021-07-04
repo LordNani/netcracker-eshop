@@ -7,6 +7,9 @@ import lombok.NoArgsConstructor;
 
 import java.sql.Date;
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.time.LocalDateTime;
 import java.util.Calendar;
 
 @Builder
@@ -20,21 +23,14 @@ public class EmailTokenModel {
     private Long id;
     private String tokenName;
     private String tokenValue;
-    private Date tokenExpiryDate;
+    private LocalDateTime tokenExpiryDate;
     private Long authorizedUserId;
 
     public EmailTokenModel(String tokenName, String tokenValue, Long authorizedUserId) {
         this.tokenName = tokenName;
         this.tokenValue = tokenValue;
         this.authorizedUserId = authorizedUserId;
-        this.tokenExpiryDate = calculateExpiryDate();
+        this.tokenExpiryDate =  LocalDateTime.now().plusSeconds(EXPIRATION);
     }
 
-
-    private Date calculateExpiryDate() {
-        Calendar cal = Calendar.getInstance();
-        cal.setTime(new Timestamp(cal.getTime().getTime()));
-        cal.add(Calendar.MINUTE, EmailTokenModel.EXPIRATION);
-        return new Date(cal.getTime().getTime());
-    }
 }

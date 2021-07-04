@@ -49,7 +49,7 @@ public class ProductDaoImpl implements ProductDao {
 
     @Override
     public List<ProductModel> getByName(String name) {
-        Object[] params = new Object[] {"%" + name + "%"};
+        Object[] params = new Object[]{"%" + name + "%"};
         StringBuilder sql = new StringBuilder(ProductMapper.SELECT_SQL);
         sql.append(" WHERE p.productname ILIKE ? and genre in (?)");
         return template.query(sql.toString(), new ProductMapper(), params);
@@ -158,6 +158,12 @@ public class ProductDaoImpl implements ProductDao {
     }
 
     @Override
+    public String getStatusById(Long id) {
+        String sql = "SELECT productstatus FROM product where id = ?";
+        return template.queryForObject(sql, String.class, id);
+    }
+
+    @Override
     public List<ProductModel> getSearchedOrderedFiltered(int page, int size, String search, String orderBy, FilterModel filterModel) {
         StringBuilder sql = new StringBuilder(ProductMapper.SELECT_SQL); //select ... from product p
         Object[] paramsForQuery = getSearchedOrderedFilteredBuilder(search, filterModel, sql);
@@ -197,32 +203,32 @@ public class ProductDaoImpl implements ProductDao {
         return template.query(sql, new ProductMapper(), new Object[]{(page - 1), size});
     }
 
-    private String getAuthorById(int id){
+    private String getAuthorById(int id) {
         String sql = "SELECT authorname from author where id = ?";
         return template.queryForObject(sql, String.class, new Object[]{Long.valueOf(id)});
     }
 
-    private String getCoverTypeById(int id){
+    private String getCoverTypeById(int id) {
         String sql = "SELECT covertypename from covertype where id = ?";
         return template.queryForObject(sql, String.class, new Object[]{Long.valueOf(id)});
     }
 
-    private String getGenreById(int id){
+    private String getGenreById(int id) {
         String sql = "SELECT genrename from genre where id = ?";
         return template.queryForObject(sql, String.class, new Object[]{Long.valueOf(id)});
     }
 
-    private String getLanguageById(int id){
+    private String getLanguageById(int id) {
         String sql = "SELECT languagename from language where id = ?";
         return template.queryForObject(sql, String.class, new Object[]{Long.valueOf(id)});
     }
 
-    private String getPublisherById(int id){
+    private String getPublisherById(int id) {
         String sql = "SELECT publishername from publisher where id = ?";
         return template.queryForObject(sql, String.class, new Object[]{Long.valueOf(id)});
     }
 
-    private Object[] getSearchedOrderedFilteredBuilder(String search, FilterModel filterModel, StringBuilder sql){
+    private Object[] getSearchedOrderedFilteredBuilder(String search, FilterModel filterModel, StringBuilder sql) {
         Object[] paramsForQuery;
         String paramLike = "";
         ArrayList<Long> paramsFilter = new ArrayList<>();
@@ -233,7 +239,7 @@ public class ProductDaoImpl implements ProductDao {
 
         if (!search.equals("")) {
             sql.append(" WHERE p.productname ILIKE ? "); //тут поиск по имени продукта
-            paramLike="%" + search + "%";
+            paramLike = "%" + search + "%";
             paramsForQueryLength++;
         }
         if ((filterModel.getAuthor().length != 0) ||
@@ -248,22 +254,22 @@ public class ProductDaoImpl implements ProductDao {
             }
 
             sql.append(filterSqlBuilder2(filterModel, paramsFilter)); //Тут собираю часть с выбранными фильтрами, (под номером 2 он временно)
-            paramsForQueryLength+=paramsFilter.size();
+            paramsForQueryLength += paramsFilter.size();
         }
 
 
         paramsForQuery = new Object[paramsForQueryLength];
 
-        if (!paramLike.equals("")){
+        if (!paramLike.equals("")) {
             paramsForQuery[paramsForQueryIterator] = paramLike;
             paramsForQueryIterator++;
         }
-        if (paramsFilter.size()!=0){
-            for (int i=0; i<paramsFilter.size(); i++){
+        if (paramsFilter.size() != 0) {
+            for (int i = 0; i < paramsFilter.size(); i++) {
                 paramsForQuery[paramsForQueryIterator] = paramsFilter.get(i);
                 paramsForQueryIterator++;
             }
-            paramsForQueryLength+=paramsFilter.size();
+            paramsForQueryLength += paramsFilter.size();
         }
 
         return paramsForQuery;

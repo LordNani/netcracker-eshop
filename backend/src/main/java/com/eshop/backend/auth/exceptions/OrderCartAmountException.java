@@ -13,8 +13,6 @@ public class OrderCartAmountException extends WebException {
     }
 
     public OrderCartAmountException(List<Object> problemProducts) {
-        super("<h4>Amount problem,</h4>\n" +
-                "<p>Some of your product is out of stock " +
-                "please check all product and change amount</p>\n", problemProducts);
+        super("OrderCartAmountException", problemProducts);
     }
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {AuthService} from '../../_service/auth.service';
-import {AlertService} from '../../_service/alert.service';
+import {AuthService} from '../../_service/auth/auth.service';
+import {AlertService} from '../../_service/alert/alert.service';
 
 enum EmailStatus {
   Verifying,

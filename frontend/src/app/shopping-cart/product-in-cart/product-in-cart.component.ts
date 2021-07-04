@@ -10,26 +10,31 @@ import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 export class ProductInCartComponent implements OnInit, OnChanges {
 
   @Input() product: Product;
-  @Input() productsWithBadAmount: Product[];
+  @Input() productsWithErrors: Product[];
   @Output() updateAmount = new EventEmitter<string>();
   @Output() remove = new EventEmitter<Product>();
+  @Output() countError = new EventEmitter<boolean>();
   amount: number;
   form: FormGroup;
   priceWithDiscount: number;
-  countErrorMessage = 'Count must be greater than 0';
-  ErrorMessage: string;
+  countErrorMessage = 'Count must be integer and greater than 0';
+  stockErrorMessage: string;
   storeAmountProblem: boolean;
+  productStatusError: boolean;
 
   constructor(private formBuilder: FormBuilder) {
   }
 
   ngOnInit(): void {
-    this.ErrorMessage = 'Not enough product in stock, please remove productCount products';
+    const a = this.productsWithErrors;
+    this.stockErrorMessage = 'Not enough product in stock, please remove productCount products';
     this.storeAmountProblem = false;
+    this.productStatusError = false;
     this.amount = this.product.productAmount;
     this.initForm();
-    this.priceWithDiscount = Math.round(this.product.productPrice * ( 1 - (this.product.productDiscount / 100) ) * this.amount);
+    this.priceWithDiscount = Math.round(this.product.productPrice * (1 - (this.product.productDiscount / 100)) * this.amount);
     this.checkAmount();
+    this.countError.emit(this.form.get('productAmount')?.invalid);
   }
 
   private initForm(): void {
@@ -42,13 +47,15 @@ export class ProductInCartComponent implements OnInit, OnChanges {
   onChange($event: Event): void {
     this.amount = this.form.value.productAmount;
     this.storeAmountProblem = false;
-    this.priceWithDiscount = Math.round(this.product.productPrice * ( 1 - (this.product.productDiscount / 100)) * this.amount);
+    this.priceWithDiscount = Math.round(this.product.productPrice * (1 - (this.product.productDiscount / 100)) * this.amount);
     this.product.productAmount = this.amount;
+    this.countError.emit(this.form.get('productAmount')?.invalid);
     this.updateAmount.emit('updatePrice');
   }
 
   removeProduct(): void {
     this.remove.emit(this.product);
+    this.countError.emit(this.form.get('productAmount')?.invalid);
   }
 
   ngOnChanges(): void {
@@ -56,10 +63,17 @@ export class ProductInCartComponent implements OnInit, OnChanges {
   }
 
   checkAmount(): void {
-    const num = this.productsWithBadAmount.find(x => x.id === this.product.id);
-    if (num !== undefined) {
-      this.storeAmountProblem = true;
-      this.ErrorMessage = this.ErrorMessage.replace('productCount', String(num.productAmount));
+    if (this.productsWithErrors) {
+      const num = this.productsWithErrors.find(x => x.id === this.product.id);
+      if (num !== undefined) {
+        if (num.productStatus !== 'ACTIVE') {
+          this.productStatusError = true;
+        }
+        if (num.productAmount >= 0) {
+          this.storeAmountProblem = true;
+          this.stockErrorMessage = this.stockErrorMessage.replace('productCount', String(num.productAmount));
+        }
+      }
     }
   }
 }

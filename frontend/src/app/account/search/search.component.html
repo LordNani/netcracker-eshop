@@ -4,38 +4,45 @@
 <!--         mdbInput>-->
 <!--    <mat-icon matPrefix>search</mat-icon>-->
 <!--  </div>-->
+  <h1>Search</h1>
+  <div>
 
-<h1>Search</h1>
-<div>
-
-<!--  <a class="nav-link" routerLink="/account/profile" routerLinkActive="active"></a>-->
-<button mat-button (click)="onCreate()">
-  Create
-  <mat-icon matSuffix>add_circle_outline</mat-icon>
-</button>
+    <!--  <a class="nav-link" routerLink="/account/profile" routerLinkActive="active"></a>-->
+    <button mat-button (click)="onCreate()">
+      Create
+      <mat-icon matSuffix>add_circle_outline</mat-icon>
+    </button>
 
 
-<nav class="navbar" >
+    <nav class="navbar">
 
-  <input class="form-control" type="text" name="firstName" [(ngModel)]="firstName" (ngModelChange)="Search()"
-         placeholder="Enter First name">
-</nav>
-</div>
+      <input class="form-control" type="text" name="firstName" [(ngModel)]="firstName" (ngModelChange)="Search()"
+             placeholder="Enter First name">
+    </nav>
+  </div>
   <mat-icon matPrefix>search</mat-icon>
-<tbody>
-<tr>
-  <td><button class="btn btn-lg " (click)="getAllManager()">Managers</button></td>
-  <td><button class="btn btn-lg " (click)="getAllCoriers()">Coriers</button></td>
-  <td><button class="btn btn-lg " (click)="getEmployee()">All</button></td>
-  <td><button class="btn btn-lg " (click)="getOnDuty()">On-Duty</button></td>
-</tr>
-</tbody>
+  <tbody>
+  <tr>
+    <td>
+      <button class="btn btn-lg " (click)="getAllManager()">Managers</button>
+    </td>
+    <td>
+      <button class="btn btn-lg " (click)="getAllCoriers()">Coriers</button>
+    </td>
+    <td>
+      <button class="btn btn-lg " (click)="getEmployee()">All</button>
+    </td>
+    <td>
+      <button class="btn btn-lg " (click)="getOnDuty()">On-Duty</button>
+    </td>
+  </tr>
+  </tbody>
   <table class="table table-bordered">
     <thead>
     <tr>
 
       <th> First name</th>
-      <th> Last name </th>
+      <th> Last name</th>
       <th> Email</th>
       <th> Phone number</th>
       <th> Role</th>
@@ -46,7 +53,7 @@
     <tbody>
     <tr *ngFor="let user of rs.users">
 
-      <td class ="idNum" (click)="getID(user.id)"></td>
+      <td class="idNum" (click)="getID(user.id)"></td>
 
       <td>{{user.userName}}</td>
       <td>{{user.userSurname}}</td>
@@ -55,8 +62,12 @@
       <td>{{user.userRole}}</td>
       <td>{{user.userStatus}}</td>
 
-      <button mat-icon-button color="primary"  title="Edit Contact" (click)="onEdit(user.id, user)"><mat-icon>edit</mat-icon></button>
-      <button mat-icon-button color="primary" (click)="onDelete(user.id)" title="Delete Contact"><mat-icon>delete</mat-icon></button>
+      <button mat-icon-button color="primary" title="Edit Contact" (click)="onEdit(user.id, user)">
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button mat-icon-button color="primary" (click)="onDelete(user.id)" title="Delete Contact">
+        <mat-icon>delete</mat-icon>
+      </button>
     </tr>
     </tbody>
   </table>

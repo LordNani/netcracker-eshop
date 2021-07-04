@@ -32,18 +32,16 @@
                     (click)="onSubmit()">Submit
             </button>
           </div>
-          <div class="text-xs-center" *ngIf="failedRegistration >= 5">
+          <div class = "captcha">
+          <div *ngIf="failedRegistration >= 5">
             <ngx-recaptcha2 #captchaElem
                             [siteKey]="siteKey"
                             formControlName="recaptcha">
             </ngx-recaptcha2>
             <div class="form-group">
-              <div class="g-recaptcha" data-sitekey="6Lf8SSgbAAAAALxW_hIMBPJeKQzgvvg7NmbCzVO2"></div>
-              <div *ngIf="submitted && loginForm.controls.recaptcha.errors" class="error">
-                <div *ngIf="loginForm.controls.recaptcha.errors.required" class="error">Recaptcha not verified.</div>
-              </div>
-              <div *ngIf="captchaError" class="error">Recaptcha not verified.</div>
+              <div *ngIf="captchaError" class="alert alert-danger">Recaptcha not verified.</div>
             </div>
+          </div>
           </div>
         </form>
         <div class="text-center mt-3">

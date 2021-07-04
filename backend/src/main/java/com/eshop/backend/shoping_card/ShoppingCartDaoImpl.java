@@ -72,16 +72,21 @@ public class ShoppingCartDaoImpl implements ShoppingCartDao {
 
     @Override
     public void createOrderCart(OrderCartModel orderCartModel) {
-        String SQL = "insert into ordercart (userid, courierid," +
-                "packagedescription, orderstatus, totalprice, username, deliverytime," +
-                "fulladdress, dontdisturb)\n" +
-                "values (?,?,?,?,?,?,?,?,?)";
+        try {
+            String SQL = "insert into ordercart (userid, courierid," +
+                    "packagedescription, orderstatus, totalprice, username, deliverytime," +
+                    "fulladdress, dontdisturb)\n" +
+                    "values (?,?,?,?,?,?,?,?,?)";
 
-        jdbcTemplate.update(SQL, orderCartModel.getUserId(), orderCartModel.getCourierId(),
-                orderCartModel.getPackageDescription(), orderCartModel.getOrderStatus(),
-                orderCartModel.getTotalPrice(), orderCartModel.getUserName(),
-                orderCartModel.getDeliveryTime(), orderCartModel.getFullAddress(),
-                orderCartModel.getDontDisturb());
+            jdbcTemplate.update(SQL, orderCartModel.getUserId(), orderCartModel.getCourierId(),
+                    orderCartModel.getPackageDescription(), orderCartModel.getOrderStatus(),
+                    orderCartModel.getTotalPrice(), orderCartModel.getUserName(),
+                    orderCartModel.getDeliveryTime(), orderCartModel.getFullAddress(),
+                    orderCartModel.isDontDisturb());
+        } catch (Exception e) {
+            String str = e.toString();
+        }
+
 
     }
 

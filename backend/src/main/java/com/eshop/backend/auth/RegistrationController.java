@@ -16,6 +16,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.Date;
+import java.time.LocalDateTime;
 import java.util.Calendar;
 
 @RestController
@@ -78,11 +79,9 @@ public class RegistrationController {
             EmailTokenModel emailTokenModel = emailTokenDao.getByToken(confirmationToken, "emailVerify");
             AuthorizedUserModel user = authorizedUserDao.getById(emailTokenModel.getAuthorizedUserId());
 
-            Calendar cal = Calendar.getInstance();
-
-            if ((emailTokenModel.getTokenExpiryDate().getTime() - cal.getTime().getTime()) >= 0 &&
-                    user != null) {
-                user.setUserStatus(Role.AUTHORIZED.name());
+            if ( user != null &&
+                    emailTokenModel.getTokenExpiryDate().isAfter(LocalDateTime.now())) {
+                user.setUserStatus(Role.ACTIVE.name());
                 authorizedUserDao.setStatus(user);
 
                 emailTokenDao.deleteByValue(confirmationToken);
