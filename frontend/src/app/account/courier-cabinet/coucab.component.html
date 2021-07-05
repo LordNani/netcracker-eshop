@@ -17,6 +17,7 @@
     <th> DeliveryTime</th>
     <th>Price</th>
     <th>Status </th>
+    <th>Checked</th>
     <th>Description</th>
     <th>More</th>
   </tr>
@@ -31,13 +32,16 @@
     <td>{{courierPackage.deliverytime}}</td>
     <td>{{courierPackage.totalprice}}</td>
     <td>{{courierPackage.orderstatus}}</td>
-    <td> <input type="checkbox"  [checked]="courierPackage.orderstatus == 't'"   (click)="setNewStatus( courierPackage.id ,courierPackage.orderstatus , courierPackage.deliverytime ) " /></td>
+    <td> <input type="checkbox"  [checked]="courierPackage.orderstatus == 'DELIVERED'"   (click)="setNewStatus( courierPackage.id ,courierPackage.orderstatus , courierPackage.deliverytime ) " /></td>
     <td>{{courierPackage.packagedescription}}</td>
-    <td><button class="btn btn-lg ">Description</button></td>
+    <td>
+      <button class="btn btn-lg " mat-button (click)="onCreate()">Description
+        <mat-icon matSuffix>add_circle_outline</mat-icon>
+      </button>
+    </td>
 
 
-<!--    <button mat-icon-button color="primary"  title="Edit Contact"><mat-icon>edit</mat-icon></button>-->
-<!--    <button mat-icon-button color="primary" (click)="onDelete(courierPackage.id)" title="Delete Contact"><mat-icon>delete</mat-icon></button>-->
+
   </tr>
 
   </tbody>

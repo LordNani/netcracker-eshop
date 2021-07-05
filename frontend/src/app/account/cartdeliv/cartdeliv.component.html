@@ -1,0 +1,101 @@
+<div class="container-fluid my-5 d-flex justify-content-center" style="width: 75%" *ngIf="products.length > 0">
+  <div class="card card-1">
+    <div class="card-header bg-white">
+      <div class="media flex-sm-row flex-column-reverse justify-content-between ">
+        <div class="col my-auto">
+          <h4 class="mb-0">Your Order</h4>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="row" *ngFor="let product of products">
+        <div class="col">
+          <div class="card card-2 main-content">
+            <div class="card-body">
+              <div class="media">
+                <div class="sq align-self-center "><img
+                  class="img my-auto align-self-center rounded img" [src]="product?.productPict" alt=""
+                  width="135" height="135"/></div>
+                <ul class="list-unsettled">
+                  <li class="media">
+                    <div class="media-body my-auto text-center ">
+                      <div class="row my-auto flex-column flex-md-row">
+                        <div class="col my-auto">
+                          <small class="mb-0">Name:</small>
+                        </div>
+                        <div class="col-auto my-auto"><small>Price:</small></div>
+                        <div class="col my-auto"><small>Discount:</small></div>
+                        <div class="col my-auto"><small>Count:</small></div>
+                        <div class="col my-auto">
+                          <small class="mb-0"></small>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="media">
+                    <div class="media-body my-auto text-center ">
+                      <div class="row my-auto flex-column flex-md-row">
+                        <div class="col my-auto">
+                          <small class="mb-0">{{product.productName}}</small>
+                        </div>
+                        <div class="col-auto my-auto"><small>{{product.productPrice}}$</small></div>
+                        <div class="col my-auto"><small>{{product.productDiscount}}%</small></div>
+                        <div class="col my-auto"><small>{{product.productAmount}}</small></div>
+                        <div class="col my-auto">
+                          <small class="mb-0"></small>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <hr>
+                  <li class="media">
+                    <div class="media-body my-auto text-center">
+                      <div class="row my-auto flex-column flex-md-row">
+                        <div class="col my-auto">
+                          <small class="mb-0">Author:</small>
+                        </div>
+                        <div class="col-auto my-auto"><small>Genre:</small></div>
+                        <div class="col my-auto"><small>Publisher:</small></div>
+                        <div class="col my-auto"><small>Language:</small></div>
+                        <div class="col my-auto">
+                          <small class="mb-0">Cover Type:</small>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="media">
+                    <div class="media-body my-auto text-center">
+                      <div class="row my-auto flex-column flex-md-row">
+                        <div class="col my-auto">
+                          <small class="mb-0">{{authors[product.author].authorName}}</small>
+                        </div>
+                        <div class="col-auto my-auto"><small>{{genres[product.genre].genreName}}</small></div>
+                        <div class="col my-auto"><small>{{publishers[product.publisher].publisherName}}</small></div>
+                        <div class="col my-auto"><small>{{languages[product.language].languageName}}</small></div>
+                        <div class="col my-auto">
+                          <small class="mb-0">{{coverTypes[product.coverType].coverTypeName}}</small>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <hr>
+                  <li class="media">
+                    <div class="text-center">
+                      <div>
+                        <div>
+                          <small class="col-9">Lorem ipsum dolor sit amet, orem ipsum dolor sit amet, etur orem ipsum
+                            dolor sit amet, etur orem ipsum dolor sit amet, etur orem ipsum dolor sit amet, etur
+                            voluptatem. Eveniet, temporibus?</small>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

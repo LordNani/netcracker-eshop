@@ -24,34 +24,34 @@ public class ProductServiceImp implements ProductService {
         page = getPageNumeration(page, size);
         return productdao.getProductPage(page, size);
     }
+//
+//    @Override
+//    public List<ProductModel> getAllOrderByWithFilters(int page, int size, String orderBy, List<String> filter) {
+//        page = getPageNumeration(page, size);
+//        return productdao.getAllOrderByWithFilters(page, size, orderBy, filter);
+//    }
+
+//    @Override
+//    public List<ProductModel> getAllOrderBy(int page, int size, String orderBy) {
+//        page = getPageNumeration(page, size);
+//        return productdao.getAllOrderBy(page, size, orderBy);
+//    }
+
+//    @Override
+//    public List<ProductModel> getByName(String name) {
+//        return productdao.getByName(name);
+//    }
+
+//    @Override
+//    public List<ProductModel> getFiltered(int page, int size, FilterModel filterModel) {
+//        page = getPageNumeration(page, size);
+//        return productdao.getFiltered(page, size, filterModel);
+//    }
 
     @Override
-    public List<ProductModel> getAllOrderByWithFilters(int page, int size, String orderBy, List<String> filter) {
+    public List<ProductModel> getSearchedOrderedFiltered(int page, int size, String search, String orderBy, FilterModel filterModel, boolean isActive) {
         page = getPageNumeration(page, size);
-        return productdao.getAllOrderByWithFilters(page, size, orderBy, filter);
-    }
-
-    @Override
-    public List<ProductModel> getAllOrderBy(int page, int size, String orderBy) {
-        page = getPageNumeration(page, size);
-        return productdao.getAllOrderBy(page, size, orderBy);
-    }
-
-    @Override
-    public List<ProductModel> getByName(String name) {
-        return productdao.getByName(name);
-    }
-
-    @Override
-    public List<ProductModel> getFiltered(int page, int size, FilterModel filterModel) {
-        page = getPageNumeration(page, size);
-        return productdao.getFiltered(page, size, filterModel);
-    }
-
-    @Override
-    public List<ProductModel> getSearchedOrderedFiltered(int page, int size, String search, String orderBy, FilterModel filterModel) {
-        page = getPageNumeration(page, size);
-        return productdao.getSearchedOrderedFiltered(page, size, search, orderBy, filterModel);
+        return productdao.getSearchedOrderedFiltered(page, size, search, orderBy, filterModel, isActive);
     }
 
     @Override
@@ -88,13 +88,13 @@ public class ProductServiceImp implements ProductService {
     }
 
     @Override
-    public Integer getNumberOfSearchedOrderedFiltered(String search, String orderBy, FilterModel filterModel) {
-        return productdao.getNumberOfSearchedOrderedFiltered(search, orderBy, filterModel);
+    public Integer getNumberOfSearchedOrderedFiltered(String search, String orderBy, FilterModel filterModel, boolean isActive) {
+        return productdao.getNumberOfSearchedOrderedFiltered(search, orderBy, filterModel, isActive);
     }
 
-    public List<ProductModel> getAll() {
-        return null;
-    }
+//    public List<ProductModel> getAll() {
+//        return null;
+//    }
 
     @Override
     public void update(ProductModel model) {
@@ -102,7 +102,7 @@ public class ProductServiceImp implements ProductService {
     }
 
 
-    public void delete(Long id) {
-
-    }
+//    public void delete(Long id) {
+//
+//    }
 }

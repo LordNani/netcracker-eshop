@@ -2,7 +2,7 @@
   <div class="card-body">
     <div class="row justify-content-around mt-4">
       <div class="col-md-4">
-        <div class="text-center">
+        <div class="text-center mb-5">
           <img class="card-img-top rounded img" [src]="product.productPict" alt="First slide">
         </div>
         <table class="table table-sm">
@@ -26,6 +26,10 @@
           <tr>
             <td>Publisher:</td>
             <td>{{getCategoryValue(4)}}</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
           </tr>
           </tbody>
         </table>
@@ -52,8 +56,10 @@
               <a href="" class="btn btn-secondary mb-3 mr-3">Compare</a>
             </div>
             <div class="col-md-3">
-              <a *ngIf="product.productStatus === 'inCard'" routerLink="/shopping-cart" class="btn btn-secondary text-white">Already in cart</a>
-              <a *ngIf="product.productStatus !== 'inCard'" (click)="addToCart()" class="btn btn-secondary mb-3">Add to cart</a>
+              <a *ngIf="product.productStatus === 'inCard'" routerLink="/shopping-cart"
+                 class="btn btn-secondary text-white">Already in cart</a>
+              <a *ngIf="product.productStatus !== 'inCard'" (click)="addToCart()"
+                 class="btn btn-secondary text-white mb-3">Add to cart</a>
             </div>
           </div>
           <div class="card bg-light border-light">

@@ -28,7 +28,7 @@ public class CourierController {
     public ResponseEntity<?> setOrderCartStatus(@RequestParam("courierDto") String filters) throws JsonProcessingException {
         ObjectMapper objectMapper = new ObjectMapper();
         courierDto filterModel = objectMapper.readValue(filters, courierDto.class);
-        courierService.setOrderCartStatus(filterModel.cartId);
+        courierService.setOrderCartStatus(filterModel.cartId, filterModel.status);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }

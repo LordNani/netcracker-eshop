@@ -1,5 +1,6 @@
 package com.eshop.backend.auth.dao.user;
 
+import com.eshop.backend.admin.adminDto;
 import com.eshop.backend.auth.utils.Role;
 import com.eshop.backend.user.dao.models.AuthorizedUserModel;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,15 +55,8 @@ public class AuthorizedUserDaoImpl implements AuthorizedUserDao {
 
     }
 
-    @Override
-    public AuthorizedUserModel getFilteredByStatusOn(String status) {
-        return null;
-    }
 
-    //@Override
-    public AuthorizedUserModel getByStatus(String status) {
-        return null;
-    }
+
 
     @Override
     public AuthorizedUserModel getRoleByLogin(String login) {
@@ -125,143 +119,15 @@ public class AuthorizedUserDaoImpl implements AuthorizedUserDao {
 //        }
     }
 
-
-    @Override
-    public List<AuthorizedUserModel> getAllUsers() {
-        String getAllAuthorizedUsersSQL = "SELECT * FROM AUTHORIZEDUSER where userrole IN ('MANAGER','COURIER')";
-
-        RowMapper<AuthorizedUserModel> rowMapper = (rs, rowNum) -> new AuthorizedUserModel(
-                rs.getLong("id"),
-                rs.getString("userlogin"),
-                rs.getString("userpassword"),
-                rs.getString("userrole"),
-                rs.getString("username"),
-                rs.getString("usersurname"),
-                rs.getDate("userregistrationdate"),
-                rs.getString("userstatus"),
-                rs.getString("useraddress"),
-                rs.getString("usernumber"));
-        return jdbcTemplate.query(getAllAuthorizedUsersSQL, rowMapper);
-    }
-
-    @Override
-    public List<AuthorizedUserModel> getAllManager() {
-        String getAllAuthorizedUsersSQL = "SELECT * FROM AUTHORIZEDUSER where USERROLE='MANAGER'";
-
-        RowMapper<AuthorizedUserModel> rowMapper = (rs, rowNum) -> new AuthorizedUserModel(
-                rs.getLong("id"),
-                rs.getString("userlogin"),
-                rs.getString("userpassword"),
-                rs.getString("userrole"),
-                rs.getString("username"),
-                rs.getString("usersurname"),
-                rs.getDate("userregistrationdate"),
-                rs.getString("userstatus"),
-                rs.getString("useraddress"),
-                rs.getString("usernumber"));
-        return jdbcTemplate.query(getAllAuthorizedUsersSQL, rowMapper);
-    }
-
-    @Override
-    public List<AuthorizedUserModel> getAllCourier() {
-        String getAllAuthorizedUsersSQL = "SELECT * FROM AUTHORIZEDUSER where USERROLE='COURIER'";
-
-        RowMapper<AuthorizedUserModel> rowMapper = (rs, rowNum) -> new AuthorizedUserModel(
-                rs.getLong("id"),
-                rs.getString("userlogin"),
-                rs.getString("userpassword"),
-                rs.getString("userrole"),
-                rs.getString("username"),
-                rs.getString("usersurname"),
-                rs.getDate("userregistrationdate"),
-                rs.getString("userstatus"),
-                rs.getString("useraddress"),
-                rs.getString("usernumber"));
-        return jdbcTemplate.query(getAllAuthorizedUsersSQL, rowMapper);
-
-    }
-
-    @Override
-    public List<AuthorizedUserModel> getFilteredByStatusOn() {
-        String getAllAuthorizedUsersSQL = "SELECT * FROM AUTHORIZEDUSER where userstatus='ON' AND userrole IN ('MANAGER','COURIER')";
-
-        RowMapper<AuthorizedUserModel> rowMapper = (rs, rowNum) -> new AuthorizedUserModel(
-                rs.getLong("id"),
-                rs.getString("userlogin"),
-                rs.getString("userpassword"),
-                rs.getString("userrole"),
-                rs.getString("username"),
-                rs.getString("usersurname"),
-                rs.getDate("userregistrationdate"),
-                rs.getString("userstatus"),
-                rs.getString("useraddress"),
-                rs.getString("usernumber"));
-        return jdbcTemplate.query(getAllAuthorizedUsersSQL, rowMapper);
-    }
-
-    @Override
-    public List<AuthorizedUserModel> getFilteredByStatusOff() {
-        String getAllAuthorizedUsersSQL = "SELECT * FROM AUTHORIZEDUSER where userstatus='OFF' AND userrole IN ('MANAGER','COURIER') ";
-
-        RowMapper<AuthorizedUserModel> rowMapper = (rs, rowNum) -> new AuthorizedUserModel(
-                rs.getLong("id"),
-                rs.getString("userlogin"),
-                rs.getString("userpassword"),
-                rs.getString("getRole"),
-                rs.getString("getName"),
-                rs.getString("getSurname"),
-                rs.getDate("userregistrationdate"),
-                rs.getString("UserStatus"),
-                rs.getString("UserAddres"),
-                rs.getString("UserNumber"));
-        return jdbcTemplate.query(getAllAuthorizedUsersSQL, rowMapper);
-    }
-
-    //    @Override
-    public List<AuthorizedUserModel> getBySurname(String surname) {
-        String getAllAuthorizedUsersSQL = "SELECT * FROM AUTHORIZEDUSER where usersurname = " + surname;
-
-        RowMapper<AuthorizedUserModel> rowMapper = (rs, rowNum) -> new AuthorizedUserModel(
-                rs.getLong("id"),
-                rs.getString("userlogin"),
-                rs.getString("userpassword"),
-                rs.getString("getRole"),
-                rs.getString("getName"),
-                rs.getString("getSurname"),
-                rs.getDate("userregistrationdate"),
-                rs.getString("UserStatus"),
-                rs.getString("UserAddres"),
-                rs.getString("UserNumber"));
-        return jdbcTemplate.query(getAllAuthorizedUsersSQL, rowMapper);
-    }
-
     @Override
     public List<AuthorizedUserModel> getById(long id) {
-        try{
-            String getAllAuthorizedUsersSQL = "SELECT * FROM authorizeduser where id = ?";
-
-            RowMapper<AuthorizedUserModel> rowMapper = (rs, rowNum) -> new AuthorizedUserModel(
-                    rs.getLong("id"),
-                    rs.getString("userlogin"),
-                    rs.getString("userpassword"),
-                    rs.getString("userrole"),
-                    rs.getString("username"),
-                    rs.getString("usersurname"),
-                    rs.getDate("userregistrationdate"),
-                    rs.getString("userstatus"),
-                    rs.getString("useraddress"),
-                    rs.getString("usernumber"));
-            return jdbcTemplate.query(getAllAuthorizedUsersSQL, rowMapper, id);
-        } catch (Exception e) {
-            return null;
-        }
-
+        return null;
     }
 
+
     @Override
-    public List<AuthorizedUserModel> getByName(String name) {
-        String getAllAuthorizedUsersSQL = "SELECT * FROM AUTHORIZEDUSER where  USERNAME ILIKE '%" + name + "%' or USERSURNAME ILIKE '%" + name + "%'";
-        System.out.println(getAllAuthorizedUsersSQL);
+    public List<AuthorizedUserModel> getBy(adminDto admin) {
+        String getAllAuthorizedUsersSQL ="SELECT * FROM authorizeduser where (USERNAME ILIKE '%' || ? || '%' or USERSURNAME ILIKE  '%' || ? || '%') AND userrole  IN (?,?) AND  userstatus IN (?,?,?)";
         RowMapper<AuthorizedUserModel> rowMapper = (rs, rowNum) -> new AuthorizedUserModel(
                 rs.getLong("id"),
                 rs.getString("userlogin"),
@@ -273,8 +139,12 @@ public class AuthorizedUserDaoImpl implements AuthorizedUserDao {
                 rs.getString("userstatus"),
                 rs.getString("useraddress"),
                 rs.getString("usernumber"));
-        return jdbcTemplate.query(getAllAuthorizedUsersSQL, rowMapper);
+        String[] job = admin.job.split(",");
+        String[] status = admin.status.split(",");
+        return jdbcTemplate.query(getAllAuthorizedUsersSQL, rowMapper, admin.NS,admin.NS,job[0],job[1],status[0],status[1],status[2]);
     }
+
+
 
     @Override
     public AuthorizedUserModel getById(Long id) {

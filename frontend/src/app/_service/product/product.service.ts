@@ -59,37 +59,8 @@ export class ProductService {
       );
   }
 
-  searchProducts(term: string): Observable<Product[]> {
-    if (!term.trim()) {
-      return of([]);
-    }
-    const url = `${this.productsUrl}/get-by-name/${term}`;
-    return this.http.get<Product[]>(url)
-      .pipe(
-        catchError(this.handleError<Product[]>('getProductsByName', []))
-      );
-  }
-
-  filterProducts(page: number, size: number, filters: Filters): Observable<Product[]> {
-    // let params = new HttpParams().set("filters", encodeURIComponent(JSON.stringify(filters)));
-    // const url = `${this.productsUrl}/get-all-filtered?page=${page}&size=${size}&filters=${JSON.stringify(filters)}`;
-    const params = new HttpParams().set('page', String(page)).set('size', String(size)).set('filters', JSON.stringify(filters));
-    const url = `${this.productsUrl}/get-all-filtered`;
-
-    return this.http.get<Product[]>(url, {params});
-  }
-
-  orderProducts(page: number, size: number, orderBy: string): Observable<Product[]> {
-    const url = `${this.productsUrl}/get-all-order`;
-    const params = new HttpParams().set('page', String(page)).set('size', String(size)).set('orderBy', orderBy);
-    return this.http.get<Product[]>(url, {params})
-      .pipe(
-        catchError(this.handleError<Product[]>('orderProducts', []))
-      );
-  }
-
-  searchOrderFilterProducts(page: number, size: number, searchValue: string, orderValue: string, filters: Filters): Observable<Product[]>{
-    const params = new HttpParams().set('page', String(page)).set('size', String(size)).set('search', searchValue).set('orderBy', orderValue).set('filters', JSON.stringify(filters));
+  searchOrderFilterProducts(page: number, size: number, searchValue: string, orderValue: string, filters: Filters, isActive: boolean): Observable<Product[]>{
+    const params = new HttpParams().set('page', String(page)).set('size', String(size)).set('search', searchValue).set('orderBy', orderValue).set('filters', JSON.stringify(filters)).set('isActive', String(isActive));
     const url = `${this.productsUrl}/get-all-searched-ordered-filtered`;
     return this.http.get<Product[]>(url, {params})
       .pipe(
@@ -97,8 +68,8 @@ export class ProductService {
       );
   }
 
-  getProductsCount(searchValue: string, orderValue: string, filters: Filters): Observable<number>{
-    const params = new HttpParams().set('search', searchValue).set('orderBy', orderValue).set('filters', JSON.stringify(filters));
+  getProductsCount(searchValue: string, orderValue: string, filters: Filters, isActive: boolean): Observable<number>{
+    const params = new HttpParams().set('search', searchValue).set('orderBy', orderValue).set('filters', JSON.stringify(filters)).set('isActive', String(isActive));
     const url = `${this.productsUrl}/get-number-of-searched-ordered-filtered`;
     return this.http.get<number>(url, {params})
       .pipe(

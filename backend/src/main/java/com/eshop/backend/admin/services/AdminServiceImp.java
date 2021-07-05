@@ -1,5 +1,6 @@
 package com.eshop.backend.admin.services;
 
+import com.eshop.backend.admin.adminDto;
 import com.eshop.backend.auth.dao.user.AuthorizedUserDao;
 import com.eshop.backend.user.dao.models.AuthorizedUserModel;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,29 +18,40 @@ public class AdminServiceImp implements AdminService {
         this.authorizedUserDao = authorizedUserDao;
     }
 
+
     @Override
     public List<AuthorizedUserModel> getAllUsers() {
-        return authorizedUserDao.getAllUsers();    }
+        return null;
+    }
 
     @Override
-    public List<AuthorizedUserModel> getAllManager() {return authorizedUserDao.getAllManager();}
+    public List<AuthorizedUserModel> getAllManager() {
+        return null;
+    }
 
     @Override
-    public List<AuthorizedUserModel> getAllCourier() {return authorizedUserDao.getAllCourier();}
+    public List<AuthorizedUserModel> getAllCourier() {
+        return null;
+    }
 
     @Override
     public List<AuthorizedUserModel> getFilteredByStatusOn() {
-        return authorizedUserDao.getFilteredByStatusOn();
+        return null;
     }
 
     @Override
     public List<AuthorizedUserModel> getFilteredByStatusOff() {
-        return authorizedUserDao.getFilteredByStatusOff();
+        return null;
     }
 
     @Override
     public List<AuthorizedUserModel> getByName(String name) {
-        return authorizedUserDao.getByName(name);
+        return null;
+    }
+
+    @Override
+    public List<AuthorizedUserModel> getBy(adminDto admin) {
+        return authorizedUserDao.getBy(admin);
     }
 
     @Override

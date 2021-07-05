@@ -44,11 +44,11 @@ public class CourierServiceImp implements CourierService {
     }
 
     @Override
-    public void setOrderCartStatus(long id ) {
+    public void setOrderCartStatus(long id ,String status) {
         String SQL = "UPDATE ordercart " +
-                "SET orderstatus = NOT orderstatus " +
+                "SET orderstatus = ? " +
                 "WHERE id = ?";
-        jdbcTemplate.update(SQL,id);
+        jdbcTemplate.update(SQL,status,id);
     }
 
 

@@ -1,5 +1,6 @@
 package com.eshop.backend.admin.services;
 
+import com.eshop.backend.admin.adminDto;
 import com.eshop.backend.user.dao.models.AuthorizedUserModel;
 
 import java.util.Collection;
@@ -14,5 +15,5 @@ public interface AdminService {
     public List<AuthorizedUserModel> getByName(String name);
     public  List<AuthorizedUserModel> getBySurname(String surname);
     public  List<AuthorizedUserModel> getById(long id);
-
+    public  List<AuthorizedUserModel> getBy(adminDto filterModel);
 }

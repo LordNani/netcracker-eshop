@@ -11,6 +11,9 @@ import {MAT_DIALOG_DATA, MatDialog, MatDialogConfig} from '@angular/material/dia
 import {ProfileComponent} from '../profile/profile.component';
 import {MatDialogRef} from '@angular/material/dialog';
 import {User} from '../../_model/user';
+import {Admin} from '../../_model/admin';
+import {NgForm} from '@angular/forms';
+import {Subscription} from "rxjs";
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
@@ -18,30 +21,31 @@ import {User} from '../../_model/user';
 })
 
 export class SearchComponent implements OnInit {
-  // managers: Managers[] = [];
+   managers: Managers[] = [];
   clickedID: number;
   firstName: string;
-
+  subscription: Subscription;
+  admin = new Admin();
   constructor(public rs: RestService,
-              public dialog: MatDialog) {}
+              public dialog: MatDialog,
+  ) {}
   @Inject(MAT_DIALOG_DATA) public data: User;
+
   ngOnInit(): void {
+    this.admin.NS = '';
+    this.admin.job = 'ALL';
+    this.admin.status = 'ALL';
     this.getEmployee();
   }
+//   ngOnDestroy() {
+//     this.subscription.unsubscribe()
+//   }
+// }
+
   getEmployee(): void{
     this.rs.getManagers().subscribe((response: User[]) => {
       this.rs.users = response;
     });
-  }
-  Search(): void{
-    if (this.firstName === ''){
-      this.ngOnInit();
-    }
-    else{
-      this.rs.managers = this.rs.managers.filter(res => {
-        return res.firstName.toLocaleLowerCase().match(this.firstName.toLocaleLowerCase());
-      });
-    }
   }
 
   onEdit(id: number): void{
@@ -109,23 +113,30 @@ export class SearchComponent implements OnInit {
   private getUserDataById(id: number): User {
     return this.rs.users.find(x => x.id === id);
   }
+  // @ts-ignore
+  onFormSubmit(form: NgForm): void{
+    if (form.controls['job'].value === 'ALL') {
+      this.admin.job = 'COURIER,MANAGER';
+    }else {
+      this.admin.job = form.controls['job'].value + ', ';
+    }
 
+    if (form.controls['status'].value === 'ALL'){
+      this.admin.status = 'ACTIVE,INACTIVE,TERMINATED';
+    }
+    else {
+      this.admin.status = form.controls['status'].value + ', , ';
+    }
 
-  getAllManager(): void {
-    this.rs.getManager().subscribe((response) => {
-      this.rs.managers = response;
+    if ( form.controls['NS'].value == '')  {
+      this.admin.NS = '';
+  }else { this.admin.NS = form.controls['NS'].value ;
+    }
+
+    this.rs.getFromUsers(this.admin).subscribe((response: User[]) => {
+      this.rs.users = response;
+      console.log(response);
     });
-  }
 
-  getAllCoriers(): void {
-    this.rs.getCorier().subscribe((response) => {
-      this.rs.managers = response;
-    });
-  }
-
-  getOnDuty(): void {
-    this.rs.getOnDutyNow().subscribe((response) => {
-      this.rs.managers = response;
-    });
   }
 }

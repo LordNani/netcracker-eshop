@@ -13,30 +13,33 @@
       <mat-icon matSuffix>add_circle_outline</mat-icon>
     </button>
 
+<nav class="navbar" >
 
-    <nav class="navbar">
 
-      <input class="form-control" type="text" name="firstName" [(ngModel)]="firstName" (ngModelChange)="Search()"
-             placeholder="Enter First name">
-    </nav>
-  </div>
+</nav>
+</div>
   <mat-icon matPrefix>search</mat-icon>
-  <tbody>
-  <tr>
-    <td>
-      <button class="btn btn-lg " (click)="getAllManager()">Managers</button>
-    </td>
-    <td>
-      <button class="btn btn-lg " (click)="getAllCoriers()">Coriers</button>
-    </td>
-    <td>
-      <button class="btn btn-lg " (click)="getEmployee()">All</button>
-    </td>
-    <td>
-      <button class="btn btn-lg " (click)="getOnDuty()">On-Duty</button>
-    </td>
-  </tr>
-  </tbody>
+
+<form #userForm="ngForm" (ngSubmit)="onFormSubmit(userForm)" >
+  <input class="form-control" type="text" name="NS" [ngModel]="admin.NS" required #NS="ngModel"
+         placeholder="Enter First name">
+<br>
+  <input type="radio" value="ALL" name="job" [ngModel]="admin.job" checked required #job="ngModel" >All
+  <input type="radio" value="COURIER" name="job" [ngModel]="admin.job"  required #job="ngModel" >Coriers
+  <input type="radio" value="MANAGER" name="job" [ngModel]="admin.job"  required #job="ngModel" >Managers
+<br>
+  <input type="radio" value="ALL" name="status" [ngModel]="admin.status" checked required #job="ngModel" >All
+  <input type="radio" value="ACTIVE" name="status" [ngModel]="admin.status"  required #job="ngModel" >ACTIVE
+  <input type="radio" value="INACTIVE" name="status" [ngModel]="admin.status"  required #job="ngModel" >INACTIVE
+  <input type="radio" value="TERMINATED" name="status" [ngModel]="admin.status"  required #job="ngModel" >Terminated
+  <br>
+    <button>Submit</button>
+</form>
+<tbody>
+<tr>
+</tr>
+</tbody>
+
   <table class="table table-bordered">
     <thead>
     <tr>

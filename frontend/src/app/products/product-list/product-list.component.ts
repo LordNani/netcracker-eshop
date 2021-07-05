@@ -23,7 +23,7 @@ export class ProductListComponent implements OnInit {
   searchValue: string;
   filtersValue: Filters;
   orderValue: string;
-
+  isActive: boolean;
 
 
   constructor(
@@ -35,19 +35,10 @@ export class ProductListComponent implements OnInit {
   ngOnInit(): void {
     this.shoppingCartService.productInCart = JSON.parse(localStorage.getItem('productInCart'));
     this.searchValue = '';
+    this.isActive = true;
     this.filtersValue = {author: [], coverType: [], genre: [], language: [], publisher: []} as Filters;
     this.orderValue = '';
-    this.getProducts();
-    this.getAmountOfProducts();
-
-  }
-
-  getProducts(): void {
-    this.productService.getAllProducts(this.page, this.size)
-      .subscribe(products => {
-        this.currentProducts = products;
-        this.checkStatus();
-      });
+    this.getSearchedOrderedFilteredProducts();
     this.getAmountOfProducts();
   }
 
@@ -55,7 +46,6 @@ export class ProductListComponent implements OnInit {
     this.page = currentPage;
     this.getSearchedOrderedFilteredProducts();
   }
-
 
   getSearchedProducts(value: string): void{
     if (value !== ''){
@@ -71,7 +61,7 @@ export class ProductListComponent implements OnInit {
   }
 
   getSearchedOrderedFilteredProducts(): void{
-    this.productService.searchOrderFilterProducts(this.page, this.size, this.searchValue, this.orderValue, this.filtersValue)
+    this.productService.searchOrderFilterProducts(this.page, this.size, this.searchValue, this.orderValue, this.filtersValue, this.isActive)
       .subscribe(products => {
         this.currentProducts = products;
         this.checkStatus();
@@ -84,7 +74,7 @@ export class ProductListComponent implements OnInit {
   }
 
   getAmountOfProducts(): void{
-    this.productService.getProductsCount(this.searchValue, this.orderValue, this.filtersValue)
+    this.productService.getProductsCount(this.searchValue, this.orderValue, this.filtersValue, this.isActive)
       .subscribe(numb => {
         this.amountOfProducts = numb;
       });
@@ -109,6 +99,10 @@ export class ProductListComponent implements OnInit {
   getOrderedProducts(target: any): void {
     this.orderValue = target.value;
     this.getSearchedOrderedFilteredProducts();
+  }
+
+  ngOnDestroy(){
+
   }
 
 }

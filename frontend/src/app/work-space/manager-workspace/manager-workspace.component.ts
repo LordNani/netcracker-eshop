@@ -46,12 +46,15 @@ export class ManagerWorkspaceComponent implements OnInit {
   private searchValue: string;
   private orderValue: string;
   private filtersValue: Filters;
+  isActive: boolean;
 
   ngOnInit(): void {
     this.getAllProducts();
     this.searchValue = '';
     this.filtersValue = {author: [], coverType: [], genre: [], language: [], publisher: []} as Filters;
     this.orderValue = '';
+    this.isActive = false;
+
     this.getProductsCount();
 
     this.authors = this.authorService.getAuthors();
@@ -104,7 +107,7 @@ export class ManagerWorkspaceComponent implements OnInit {
     });
   }
   private getProductsCount(): void {
-    this.productService.getProductsCount(this.searchValue, this.orderValue, this.filtersValue).subscribe(
+    this.productService.getProductsCount(this.searchValue, this.orderValue, this.filtersValue, this.isActive).subscribe(
       res => {
         this.amountOfProducts = res;
       }
@@ -117,7 +120,7 @@ export class ManagerWorkspaceComponent implements OnInit {
   }
 
   getSearchedOrderedFilteredProducts(): void{
-    this.productService.searchOrderFilterProducts(this.page, this.size, this.searchValue, this.orderValue, this.filtersValue)
+    this.productService.searchOrderFilterProducts(this.page, this.size, this.searchValue, this.orderValue, this.filtersValue, this.isActive)
       .subscribe(products => {
         this.products = products;
         console.log(this.filtersValue);

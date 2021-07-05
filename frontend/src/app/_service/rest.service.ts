@@ -11,6 +11,7 @@ import {User} from '../_model/user';
 import {Filters} from '../_model/filters';
 import {Product} from '../_model/product';
 import {CourierDto} from '../_model/courierDto';
+import {Admin} from '../_model/admin';
 @Injectable({
   providedIn: 'root'
 
@@ -31,6 +32,8 @@ export class RestService {
   private getAllUrl = 'http://localhost:8081/search/all';
   private deleteUrl = 'http://localhost:8081/search/delete';
   private updateUrl = 'http://localhost:8081/search/edit';
+  private getSearchUrl = 'http://localhost:8081/admin/get';
+
   url = 'http://localhost:8081/admin/search/';
   getManagers(): Observable<any> {
     return this.http.get<User[]>(this.getAllUrl);
@@ -47,26 +50,9 @@ export class RestService {
   updateUser(id: number, user: User): Observable<any>{
     return this.http.put<User>(this.updateUrl + '/' + id, user);
   }
-
-  getManager(): Observable<any> {
-    const TUrll = 'http://localhost:8081/admin/search/manager';
-    const nUrl = `${TUrll}`;
-    return this.http.get(nUrl);
-  }
-  getCorier(): Observable<any> {
-    const TUrll = 'http://localhost:8081/admin/search/courier';
-    const nUrl = `${TUrll}`;
-    return this.http.get(nUrl);
-  }
-  getByName(name): Observable<any> {
-    const TUrll = 'http://localhost:8081/admin/getByName/' + name ;
-    const nUrl = `${TUrll}`;
-    return this.http.get(nUrl);
-  }
-  getOnDutyNow(): Observable<any> {
-    const TUrll = 'http://localhost:8081/admin/onDuty';
-    const nUrl = `${TUrll}`;
-    return this.http.get(nUrl);
+  getFromUsers(admin: Admin): Observable<any> {
+    const params = new HttpParams().set('Admin', JSON.stringify(admin));
+    return this.http.get<User[]>(this.getSearchUrl, {params});
   }
   getTask(id): Observable<any> {
     const TUrll = 'http://localhost:8081/courier/cabinet/get/' + id;

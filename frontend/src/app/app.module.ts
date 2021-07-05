@@ -20,6 +20,7 @@ import {appInitializer} from './_helper/app.initializer';
 import {ErrorInterceptor} from './_helper/error.interceptor';
 import {CookieService} from 'ngx-cookie-service';
 import {ProfileComponent} from './account/profile/profile.component';
+import {CartdelivComponent} from "./account/cartdeliv/cartdeliv.component";
 import {AdminWorkSpaceLinkComponent} from './nav-bar/components/admin-work-space-link/admin-work-space-link.component';
 import {SearchComponent} from './account/search/search.component';
 import {MatIconModule} from '@angular/material/icon';
@@ -57,6 +58,7 @@ import { CheckoutComponent } from './checkout/checkout.component';
     OrderHistoryComponent,
     OrderDetailsComponent,
     ProductInCartComponent,
+    CartdelivComponent,
     CoucabComponent,
     CheckoutComponent
   ],

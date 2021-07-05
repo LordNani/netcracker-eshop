@@ -11,4 +11,5 @@ public class courierDto {
     public long cartId;
     public long courierId;
     public String date;
+    public String status;
 }

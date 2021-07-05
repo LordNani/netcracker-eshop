@@ -1,11 +1,11 @@
 <div class="container">
 
-  <div class="row justify-content-around ">
+  <div class="row justify-content-around">
     <div class="col-lg-3 col-md-2">
       <select class="custom-select" (change)="getOrderedProducts($event.target)">
         <option selected value="">Default order</option>
-        <option value="p.productprice asc">Price: Low to High</option>
-        <option value="p.productprice desc">Price: High to Low</option>
+        <option value="ROUND(productprice - productprice * productdiscount/100) asc">Price: Low to High</option>
+        <option value="ROUND(productprice - productprice * productdiscount/100) desc">Price: High to Low</option>
         <option value="p.productdate desc">Newest</option>
       </select>
     </div>
