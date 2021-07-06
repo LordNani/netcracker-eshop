@@ -59,7 +59,8 @@ import { CompareComponent } from './compare/compare.component';
         NgbPaginationModule
     ],
     exports: [
-        ProductCardComponent
+        ProductCardComponent,
+        ManagerWorkspaceComponent
     ],
     providers: [
         CategoriesPartComponent

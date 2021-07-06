@@ -11,18 +11,10 @@
       <li class="nav-item">
         <app-shopping-cart-link></app-shopping-cart-link>
       </li>
-      <li class="nav-item">
-<!--        *ngIf="authService.role=='ADMIN'"-->
-
-        <a  routerLink="search" routerLinkActive="active">Admin</a>
-
-      </li>
-
-      <li class="nav-item" *ngIf="authService.role=='MANAGER'" >
-        <app-product-catalog-link></app-product-catalog-link>
+      <li class="nav-item" *ngIf="(authService.role=='MANAGER'||authService.role=='ADMIN'||authService.role=='COURIER')&&authService.status=='ACTIVE'" >
+        <app-workspace-link></app-workspace-link>
       </li>
     </ul>
-
 
     <ul class="navbar-nav">
       <li class="nav-item">

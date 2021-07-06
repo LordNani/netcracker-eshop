@@ -28,10 +28,10 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatRadioModule} from '@angular/material/radio';
 import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE, MatOptionModule} from '@angular/material/core';
 import {MatInputModule} from '@angular/material/input';
-import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatNativeDateModule } from '@angular/material/core';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
 import {MatButtonModule} from '@angular/material/button';
-import { EditSettingsComponent } from './settings/edit-settings/edit-settings.component';
+import {EditSettingsComponent} from './settings/edit-settings/edit-settings.component';
 import {OrderHistoryComponent} from './settings/order-history/orders/order-history.component';
 import {OrderDetailsComponent} from './settings/order-history/order-details/order-details.component';
 import {NgbPaginationModule} from '@ng-bootstrap/ng-bootstrap';
@@ -39,7 +39,8 @@ import {CoucabComponent} from './account/courier-cabinet/coucab.component';
 import { ProductInCartComponent } from './shopping-cart/product-in-cart/product-in-cart.component';
 import {MatSelectModule} from '@angular/material/select';
 import {MatDialogModule} from '@angular/material/dialog';
-import { CheckoutComponent } from './checkout/checkout.component';
+import {CheckoutComponent} from './checkout/checkout.component';
+import {WorkplaceComponent} from './workplace/workplace.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 
 
@@ -59,7 +60,8 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     ProductInCartComponent,
     CartdelivComponent,
     CoucabComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    WorkplaceComponent
   ],
   imports: [
     BrowserModule,
@@ -105,6 +107,9 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
       useClass: ErrorInterceptor,
       multi: true
     },
+  ],
+  exports: [
+    WorkplaceComponent
   ],
   bootstrap: [AppComponent]
 })

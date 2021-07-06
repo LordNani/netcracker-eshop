@@ -1,79 +1,86 @@
-<div class="card mb-5 bg-light border-light">
-  <div class="card-body">
-    <div class="row justify-content-around mt-4">
-      <div class="col-md-4">
-        <div class="text-center mb-5">
-          <img class="card-img-top rounded img" [src]="product.productPict" alt="">
+<div *ngIf="product">
+  <div class="card mb-5 bg-light border-light">
+    <div class="card-body">
+      <div class="row justify-content-around mt-4">
+        <div class="col-md-4">
+          <div class="text-center mb-5">
+            <img class="card-img-top rounded img" [src]="product.productPict" alt="">
+          </div>
+          <table class="table table-sm">
+            <tbody>
+            <tr>
+              <td>Author:</td>
+              <td>{{getCategoryValue(0)}}</td>
+            </tr>
+            <tr>
+              <td>Cover Type:</td>
+              <td>{{getCategoryValue(1)}}</td>
+            </tr>
+            <tr>
+              <td>Language:</td>
+              <td>{{getCategoryValue(2)}}</td>
+            </tr>
+            <tr>
+              <td>Genre:</td>
+              <td>{{getCategoryValue(3)}}</td>
+            </tr>
+            <tr>
+              <td>Publisher:</td>
+              <td>{{getCategoryValue(4)}}</td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+            </tr>
+            </tbody>
+          </table>
         </div>
-        <table class="table table-sm">
-          <tbody>
-          <tr>
-            <td>Author:</td>
-            <td>{{getCategoryValue(0)}}</td>
-          </tr>
-          <tr>
-            <td>Cover Type:</td>
-            <td>{{getCategoryValue(1)}}</td>
-          </tr>
-          <tr>
-            <td>Language:</td>
-            <td>{{getCategoryValue(2)}}</td>
-          </tr>
-          <tr>
-            <td>Genre:</td>
-            <td>{{getCategoryValue(3)}}</td>
-          </tr>
-          <tr>
-            <td>Publisher:</td>
-            <td>{{getCategoryValue(4)}}</td>
-          </tr>
-          <tr>
-            <td></td>
-            <td></td>
-          </tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="col-md-8 mt-5 ">
-        <div class="container mb-2">
-          <h2>{{product.productName}} <sup *ngIf="hasDiscount()"
-                                           class="badge badge-danger">-{{product.productDiscount}}%</sup></h2>
-          <div class="row mt-3 mb-2">
-            <div class="col-md-3">
-              <h4>In stock: {{product.productAmount}}</h4>
-            </div>
-            <div class="col-md-3">
-              <div *ngIf="!hasDiscount()">
-                <h4>Price: {{product.productPrice}}$</h4>
+        <div class="col-md-8 mt-5 ">
+          <div class="container mb-2">
+            <h2>{{product.productName}} <sup *ngIf="hasDiscount()"
+                                             class="badge badge-danger">-{{product.productDiscount}}%</sup></h2>
+            <div class="row mt-3 mb-2">
+              <div class="col-md-3">
+                <h4>In stock: {{product.productAmount}}</h4>
               </div>
-              <div *ngIf="hasDiscount()">
-                <h4>Price: {{getDiscountedPrice()}}$</h4>
+              <div class="col-md-3">
+                <div *ngIf="!hasDiscount()">
+                  <h4>Price: {{product.productPrice}}$</h4>
+                </div>
+                <div *ngIf="hasDiscount()">
+                  <h4>Price: {{getDiscountedPrice()}}$</h4>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="row mt-3 mb-2">
-            <div class="col-md-3">
-              <a *ngIf="beingCompared()" routerLink="/compare"
-                 class="btn btn-secondary text-white">Comparing</a>
-              <a *ngIf="!beingCompared()" (click)="addToCompare($event.target)"
-                 class="btn btn-secondary text-white mb-3">Compare</a>
+            <div class="row mt-3 mb-2">
+              <div class="col-md-3">
+                <a *ngIf="beingCompared()" routerLink="/compare"
+                   class="btn btn-secondary text-white">Comparing</a>
+                <a *ngIf="!beingCompared()" (click)="addToCompare($event.target)"
+                   class="btn btn-secondary text-white mb-3">Compare</a>
 
+              </div>
+              <div class="col-md-3">
+                <a *ngIf="product.productStatus === 'inCard'" routerLink="/shopping-cart"
+                   class="btn btn-secondary text-white">Already in cart</a>
+                <a *ngIf="product.productStatus !== 'inCard'" (click)="addToCart()"
+                   class="btn btn-secondary text-white mb-3">Add to cart</a>
+              </div>
             </div>
-            <div class="col-md-3">
-              <a *ngIf="product.productStatus === 'inCard'" routerLink="/shopping-cart"
-                 class="btn btn-secondary text-white">Already in cart</a>
-              <a *ngIf="product.productStatus !== 'inCard'" (click)="addToCart()"
-                 class="btn btn-secondary text-white mb-3">Add to cart</a>
-            </div>
-          </div>
-          <div class="card bg-light border-light">
-            <div class="card-body">
-              <h4>Product Description:</h4>
-              <p class="mt-3 mb-3 ml-3 mr-3">{{product.productDescription}}</p>
+            <div class="card bg-light border-light">
+              <div class="card-body">
+                <h4>Product Description:</h4>
+                <p class="mt-3 mb-3 ml-3 mr-3">{{product.productDescription}}</p>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+</div>
+
+<div class="text-center mt-5" *ngIf="!product">
+  <h3> 404 Product not found</h3>
+  <a class="btn btn-secondary btn-secondary text-white mt-3" routerLink="/product-list">Back to products</a>
 </div>

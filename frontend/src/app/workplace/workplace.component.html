@@ -1,0 +1,9 @@
+<div [ngSwitch]="authService.role">
+  <app-search *ngSwitchCase="'ADMIN'"></app-search>
+  <app-manager-workspace *ngSwitchCase="'MANAGER'"></app-manager-workspace>
+  <app-couriercabinet *ngSwitchCase="'COURIER'"></app-couriercabinet>
+  <div *ngSwitchDefault class="text-center mt-5">
+    <h3> 404 Page not found</h3>
+    <a class="btn btn-secondary btn-secondary text-white mt-3" routerLink="/main">Go to main page</a>
+  </div>
+</div>

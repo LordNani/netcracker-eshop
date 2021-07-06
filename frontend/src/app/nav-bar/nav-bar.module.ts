@@ -8,7 +8,7 @@ import {BaseLinkComponent} from './components/base-link/base-link.component';
 import { CatalogueLinkComponent } from './components/catalogue-link/catalogue-link.component';
 import { ShoppingCartLinkComponent } from './components/shopping-cart-link/shopping-cart-link.component';
 import { ProductCatalogLinkComponent } from './components/product-catalog-link/product-catalog-link.component';
-
+import { WorkspaceLinkComponent } from './components/workspace-link/workspace-link.component';
 
 @NgModule({
   declarations: [
@@ -18,14 +18,16 @@ import { ProductCatalogLinkComponent } from './components/product-catalog-link/p
     CatalogueLinkComponent,
     ShoppingCartLinkComponent,
     ProductCatalogLinkComponent,
+    WorkspaceLinkComponent,
   ],
-  exports: [
-    NavBarComponent
-  ],
-  imports: [
-    CommonModule,
-    HttpClientModule,
-    RouterModule
-  ]
+    exports: [
+        NavBarComponent,
+        ProductCatalogLinkComponent
+    ],
+    imports: [
+        CommonModule,
+        HttpClientModule,
+        RouterModule
+    ]
 })
 export class NavBarModule { }
