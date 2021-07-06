@@ -58,7 +58,10 @@ export class AuthService {
 
   logout(): void {
     this.cookie.deleteAll('/');
-    localStorage.clear();
+    localStorage.removeItem('globalRole');
+    localStorage.removeItem('globalStatus');
+    localStorage.removeItem('login');
+    localStorage.removeItem('idUser');
     this.role = Role.USER;
     this.status = Status.INACTIVE;
     this.router.navigate(['/login']);

@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LoginComponent } from './login/login.component';
-import { RegistrationComponent } from './registration/registration.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AppRoutingModule } from '../app-routing.module';
 import {AuthService} from '../_service/auth/auth.service';
@@ -14,10 +13,9 @@ import {NgxCaptchaModule} from 'ngx-captcha';
 @NgModule({
   declarations: [
     LoginComponent,
-    RegistrationComponent,
     VerifyEmailComponent,
     ResetPasswordComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
   ],
   imports: [
     CommonModule,

@@ -56,7 +56,7 @@ import { CompareComponent } from './compare/compare.component';
         MatDatepickerModule,
         ScrollingModule,
         MatPaginatorModule,
-        NgbPaginationModule
+        NgbPaginationModule,
     ],
     exports: [
         ProductCardComponent,

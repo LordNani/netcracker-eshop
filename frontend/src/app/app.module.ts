@@ -42,6 +42,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {CheckoutComponent} from './checkout/checkout.component';
 import {WorkplaceComponent} from './workplace/workplace.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import {RegistrationComponent} from './authorization/registration/registration.component';
 
 
 @NgModule ({
@@ -52,6 +53,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     SettingsComponent,
     ShoppingCartComponent,
     ProfileComponent,
+    RegistrationComponent,
     AdminWorkSpaceLinkComponent,
     SearchComponent,
     EditSettingsComponent,

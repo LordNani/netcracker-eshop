@@ -1,6 +1,5 @@
 package com.eshop.backend.checkout;
 
-import com.eshop.backend.product.dao.models.ProductModel;
 import com.eshop.backend.shoping_card.OrderCartModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -52,7 +51,6 @@ public class CheckoutDaoImpl implements CheckoutDao{
 
         RowMapper<Integer> rowMapper = (rs, rowNum) ->  rs.getInt("hour");
         try {
-            Date a = new Date();
             return jdbcTemplate.query(sql, rowMapper, deliveryDate, new Date());
         } catch (Exception e)  {
             e.toString();
