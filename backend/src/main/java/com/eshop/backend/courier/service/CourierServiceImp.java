@@ -9,6 +9,8 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -25,7 +27,7 @@ public class CourierServiceImp implements CourierService {
     public List<AuthorizedUserModel> getById(long id) {return null;}
 
     @Override
-    public List<CourierModel> getMyTimeTable(long courierid) {
+    public List<CourierModel> getMyTimeTable(Long courierid, Date date) {
         try {
             String TimeTableSQL = "SELECT " +
                     "dontdisturb,fulladdress,deliverytime,totalprice,orderstatus,hour,c.id,c.username,packagedescription " +
@@ -33,9 +35,10 @@ public class CourierServiceImp implements CourierService {
                     "inner join couriercalendar b " +
                     "on b.courierid = a.id " +
                     "inner join ordercart c on a.id = c.courierid " +
-                    "where c.courierid = ? ";
+                    "where c.courierid = ?" +
+                    "AND  calendardate = ?";
 
-            return jdbcTemplate.query(TimeTableSQL, new CustomerRowMapperForCourier(),courierid);
+            return jdbcTemplate.query(TimeTableSQL, new CustomerRowMapperForCourier(),courierid,date);
         }
         catch (DataAccessException e){}
         return null;

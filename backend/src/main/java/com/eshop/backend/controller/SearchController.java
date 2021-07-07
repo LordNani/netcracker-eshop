@@ -41,6 +41,10 @@ public class SearchController {
     @PostMapping("/new")
     public ResponseEntity<?> create(@RequestBody AuthorizedUserModel authorizedUserModel) {
         employeeService.createEmployee(authorizedUserModel);
+        Long UserID =  employeeService.getIdByName(authorizedUserModel);
+        if (authorizedUserModel.getUserRole().equals("COURIER")){
+         employeeService.setForCouriers(authorizedUserModel,UserID);
+        }
         emailSenderService.sendEmail(authorizedUserDao.getByLogin(authorizedUserModel.getUserLogin()), "resetPassword");
         return new ResponseEntity<>(authorizedUserModel, HttpStatus.CREATED);
 

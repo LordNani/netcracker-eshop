@@ -28,11 +28,33 @@ public class EmployeeService {
     }
 
 
+    public void setForCouriers(AuthorizedUserModel authorizedUserModel,long id){
+        try {
+
+            String SQL = " INSERT INTO couriercalendar (courierid,cartid,hour,calendardate) VALUES (?,?,?,?)";
+            Date date = new Date();
+            jdbcTemplate.update(SQL, id, -1, -1, date);
+        }catch(Exception e){
+            e.toString();
+        }
+    }
+
+
     public List<AuthorizedUserModel> getEmployees() {
         String sql = ("SELECT * FROM authorizeduser where USERROLE IN('MANAGER','COURIER')");
         return jdbcTemplate.query(sql, new EmployeeMapper());
     }
 
+    public Long getIdByName(AuthorizedUserModel authorizedUserModel) {
+       try {
+        String YT = authorizedUserModel.getUserName();
+        String sql = ("SELECT id FROM authorizeduser where username = ?  ");
+        return jdbcTemplate.queryForObject(sql, Long.class,YT);
+    }catch(Exception e){
+           e.toString();
+       }
+       return new Long(1);
+    };
 
     public Boolean createEmployee(AuthorizedUserModel authorizedUserModel) {
         String sql = ("INSERT INTO authorizeduser (username, usersurname, userlogin, usernumber,userrole, userstatus, userpassword, userregistrationdate, useraddress) VALUES(?,?,?,?,?,?,?,?,?)");
