@@ -1,5 +1,6 @@
 package com.eshop.backend.courier;
 
+import com.eshop.backend.courier.dto.calendar;
 import com.eshop.backend.courier.dto.courierDto;
 import com.eshop.backend.courier.model.CourierModel;
 import com.eshop.backend.courier.service.CourierService;
@@ -12,6 +13,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -19,9 +22,13 @@ public class CourierController {
     @Autowired
     CourierService courierService;
 
-    @GetMapping("/courier/cabinet/get/{courierid}")
-    public ResponseEntity<List<CourierModel>> getMyTimeTable(@PathVariable("courierid") long courierid) {
-        List<CourierModel> courierModel = courierService.getMyTimeTable(courierid);
+    @GetMapping("/courier/cabinet/get/")
+    public ResponseEntity<List<CourierModel>> getMyTimeTable(@RequestParam("calendar") String filters)throws JsonProcessingException {
+        ObjectMapper objectMapper = new ObjectMapper();
+        calendar filterModel = objectMapper.readValue(filters, calendar.class);
+        SimpleDateFormat formatter =new SimpleDateFormat("dd/MM/YYYY");
+        String dateString = formatter.format(filterModel.getDate());
+        List<CourierModel> courierModel = courierService.getMyTimeTable(filterModel.getId(),dateString);
         return new ResponseEntity<>(courierModel, HttpStatus.OK);
     }
     @GetMapping("/courier/cabinet/set/")

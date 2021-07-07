@@ -1,22 +1,22 @@
 <h1>Cor-cab</h1>
-<div>
 
-  <!--  <a class="nav-link" routerLink="/account/profile" routerLinkActive="active"></a>-->
-
-</div>
 <mat-icon matPrefix>search</mat-icon>
-
+<mat-form-field appearance="fill">
+  <mat-label>Choose a date</mat-label>
+  <input matInput [matDatepickerFilter]="myFilter" #ref [matDatepicker]="picker" formControlName="date" (dateChange)="findDeliveryHours(ref.value)">
+  <mat-datepicker-toggle  matSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker #picker></mat-datepicker>
+</mat-form-field>
 <table class="table table-bordered">
   <thead>
   <tr>
     <th> Deliveryhour </th>
-    <th> courierPackage id</th>
+    <th> CourierPackage id</th>
     <th> Client name</th>
-    <th> dontdisturb </th>
+    <th> Dontdisturb </th>
     <th> Adress</th>
     <th> DeliveryTime</th>
     <th>Price</th>
-    <th>Status </th>
     <th>Checked</th>
     <th>Description</th>
     <th>More</th>
@@ -27,11 +27,10 @@
     <td>{{courierPackage.hour}}</td>
     <td>{{courierPackage.id}}</td>
     <td>{{courierPackage.username}}</td>
-    <td>{{courierPackage.dontdisturb}}</td>
+    <td> <input type="checkbox" [disabled]="true"  [checked]="courierPackage.dontdisturb == 't'"/></td>
     <td>{{courierPackage.fulladdress}}</td>
     <td>{{courierPackage.deliverytime}}</td>
     <td>{{courierPackage.totalprice}}</td>
-    <td>{{courierPackage.orderstatus}}</td>
     <td> <input type="checkbox"  [checked]="courierPackage.orderstatus == 'DELIVERED'"   (click)="setNewStatus( courierPackage.id ,courierPackage.orderstatus , courierPackage.deliverytime ) " /></td>
     <td>{{courierPackage.packagedescription}}</td>
     <td>

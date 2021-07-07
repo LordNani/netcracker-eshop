@@ -12,7 +12,7 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Repository;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
@@ -48,7 +48,7 @@ public class AuthorizedUserDaoImpl implements AuthorizedUserDao {
         try {
             String getUserSql = "SELECT * FROM authorizeduser WHERE userlogin = ?";
             return jdbcTemplate.queryForObject(getUserSql, new CustomerRowMapper(), login);
-        } catch (EmptyResultDataAccessException e) {
+        } catch (Exception e) {
             return null;
         }
 
@@ -119,6 +119,32 @@ public class AuthorizedUserDaoImpl implements AuthorizedUserDao {
         String[] job = admin.job.split(",");
         String[] status = admin.status.split(",");
         return jdbcTemplate.query(getAllAuthorizedUsersSQL, rowMapper, admin.NS, admin.NS, job[0], job[1], status[0], status[1], status[2]);
+    }
+
+    @Override
+    public Integer GetCourierForCalendar(long hour, Date date) {
+        try {
+
+
+            String getUserSql = " SELECT a.id FROM authorizeduser a full outer join couriercalendar b  on b.courierid = a.id  full outer join ordercart c on a.id = c.courierid " +
+                    "where (hour != ?)AND(calendardate!= ?)AND (userrole = 'COURIER') order by a.id desc fetch first 1 rows only";
+            return jdbcTemplate.queryForObject(getUserSql, Integer.class, hour, date);
+        }catch (Exception e) {
+            e.toString();
+        };
+        return 0;
+    };
+
+    @Override
+    public void CreateNewDateCourierCalendar(long courierid, long ordercardid, long hour,Date date) {
+        String SQL = " INSERT INTO couriercalendar (courierid,cartid,hour,calendardate) VALUES (?,?,?,?)";
+try {
+        jdbcTemplate.update(SQL,courierid,ordercardid, hour,date);
+    }catch (Exception e) {
+        e.toString();
+    };
+
+
     }
 
     @Override

@@ -1,6 +1,8 @@
 package com.eshop.backend.checkout;
 
 import com.eshop.backend.auth.dao.user.AuthorizedUserDao;
+import com.eshop.backend.courier.model.CourierModel;
+import com.eshop.backend.courier.service.CourierServiceImp;
 import com.eshop.backend.shoping_card.OrderCartModel;
 import com.eshop.backend.shoping_card.ShoppingCartDao;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,5 +37,9 @@ public class CheckoutServiceImpl implements CheckoutService{
         authorizedUserDao.updateAfterCheckout(orderCheckoutDto);
         OrderCartModel orderCartModel = shoppingCartDao.getLastOrderCartByUserId(orderCheckoutDto.getUserId());
         checkoutDao.updateOrderCart(orderCheckoutDto, orderCartModel.getId());
+        long hour =orderCheckoutDto.getDeliveryTime();
+        Date date =orderCheckoutDto.getDate();
+        int courierModel = authorizedUserDao.GetCourierForCalendar(hour, date);
+        authorizedUserDao.CreateNewDateCourierCalendar(courierModel,orderCartModel.getId(),orderCheckoutDto.getDeliveryTime(), orderCheckoutDto.getDate());
     }
 }

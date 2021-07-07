@@ -42,7 +42,8 @@ export class CoucabComponent implements OnInit {
   }
   @Inject(MAT_DIALOG_DATA) public data: User;
   ngOnInit(): void {
-    this.rs.getTask(localStorage.getItem('idUser')).subscribe((response) => {
+    let date = new Date();
+    this.rs.getTask(localStorage.getItem('idUser'),date).subscribe((response) => {
       this.courierpackages = response;
     });
     console.log(this.orderstatus);
@@ -96,9 +97,19 @@ export class CoucabComponent implements OnInit {
     });
 
   }
-
-  // tslint:disable-next-line:typedef
+  myFilter = (date: Date | null): boolean => {
+    const todayDay = new Date();
+    todayDay.setDate(todayDay.getDate() - 1);
+    return date >= todayDay;
+  }
   private getUserDataById(id: any) {
     return ;
+  }
+
+  findDeliveryHours(value: Date): void {
+    this.rs.getTask(localStorage.getItem('idUser'), value).subscribe((response) => {
+      this.courierpackages = response;
+    });
+    console.log(this.orderstatus);
   }
 }
