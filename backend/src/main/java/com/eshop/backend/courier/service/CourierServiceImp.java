@@ -1,16 +1,14 @@
 package com.eshop.backend.courier.service;
 
-import com.eshop.backend.auth.dao.user.AuthorizedUserDao;
+import com.eshop.backend.repository.interfaces.AuthorizedUserDao;
 import com.eshop.backend.courier.CustomerRowMapperForCourier;
 import com.eshop.backend.courier.model.CourierModel;
-import com.eshop.backend.user.dao.models.AuthorizedUserModel;
+import com.eshop.backend.model.AuthorizedUserModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service

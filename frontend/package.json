@@ -31,6 +31,7 @@
     "express": "^4.17.1",
     "firebase": "^8.6.3",
     "jw-angular-pagination": "^1.2.0",
+    "net": "^1.0.2",
     "ng-recaptcha": "^8.0.0",
     "ngx-auto-unsubscribe": "^3.0.1",
     "ngx-captcha": "^9.0.1",

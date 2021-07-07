@@ -3,7 +3,6 @@ package com.eshop.backend.courier;
 import com.eshop.backend.courier.dto.courierDto;
 import com.eshop.backend.courier.model.CourierModel;
 import com.eshop.backend.courier.service.CourierService;
-import com.eshop.backend.product.dao.models.FilterModel;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;

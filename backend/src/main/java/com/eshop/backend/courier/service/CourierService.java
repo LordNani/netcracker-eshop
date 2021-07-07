@@ -1,6 +1,6 @@
 package com.eshop.backend.courier.service;
 import com.eshop.backend.courier.model.CourierModel;
-import com.eshop.backend.user.dao.models.AuthorizedUserModel;
+import com.eshop.backend.model.AuthorizedUserModel;
 import java.util.List;
 
 public interface CourierService {

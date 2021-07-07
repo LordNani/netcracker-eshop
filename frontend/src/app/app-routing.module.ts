@@ -29,6 +29,7 @@ import {CoucabComponent} from './account/courier-cabinet/coucab.component';
 import {CheckoutComponent} from './checkout/checkout.component';
 import {CompareComponent} from './products/compare/compare.component';
 import {WorkplaceComponent} from './workplace/workplace.component';
+import {NotificationComponent} from "./socket/notifications/notification.component";
 
 const routes: Routes = [
   {
