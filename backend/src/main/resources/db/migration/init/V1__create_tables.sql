@@ -52,7 +52,7 @@ create table product (
                          productDiscount int NOT NULL,
                          productDate DATE NOT NULL,
                          productPict VARCHAR(100),
-                         productDescription VARCHAR(100) NOT NULL,
+                         productDescription VARCHAR(3000) NOT NULL,
                          productStatus VARCHAR(100) NOT NULL,
                          genre bigserial NOT NULL,
                          coverType bigserial NOT NULL,
