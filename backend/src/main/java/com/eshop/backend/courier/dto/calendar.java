@@ -5,10 +5,13 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class calendar {
-    long id;
-    Date date;
+    Long id;
+    String date;
+
+
 }

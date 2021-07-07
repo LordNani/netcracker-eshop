@@ -7,6 +7,6 @@ import java.util.List;
 
 public interface CourierService {
     public List<AuthorizedUserModel> getById(long id);
-    public List<CourierModel> getMyTimeTable(long courierid , String date);
+    public List<CourierModel> getMyTimeTable(Long courierid , Date date);
     public void setOrderCartStatus(long courierid, String c);
 }

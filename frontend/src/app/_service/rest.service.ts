@@ -55,18 +55,18 @@ export class RestService {
     const params = new HttpParams().set('Admin', JSON.stringify(admin));
     return this.http.get<User[]>(this.getSearchUrl, {params});
   }
-  getTask(id, date): Observable<any> {
+  getTask(id , date: Date ): Observable<any> {
     const cour = new Calendar(id, date);
     const TUrll = 'http://localhost:8081/courier/cabinet/get/';
     const nUrl = `${TUrll}`;
     const params = new HttpParams().set('calendar', JSON.stringify(cour));
-    return this.http.get<string>(nUrl, {params});
+    return this.http.get<any>(nUrl, {params});
   }
   setStatus(coucab: CourierDto): Observable<any> {
     const TUrll = 'http://localhost:8081/courier/cabinet/set/';
     const nUrl = `${TUrll}`;
     const params = new HttpParams().set('courierDto', JSON.stringify(coucab));
-    return this.http.get<string>(nUrl, {params});
+    return this.http.get<any>(nUrl, {params});
   }
 
 }

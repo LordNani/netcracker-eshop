@@ -28,7 +28,7 @@ public class CourierServiceImp implements CourierService {
     public List<AuthorizedUserModel> getById(long id) {return null;}
 
     @Override
-    public List<CourierModel> getMyTimeTable(long courierid, String date) {
+    public List<CourierModel> getMyTimeTable(Long courierid, Date date) {
         try {
             String TimeTableSQL = "SELECT " +
                     "dontdisturb,fulladdress,deliverytime,totalprice,orderstatus,hour,c.id,c.username,packagedescription " +

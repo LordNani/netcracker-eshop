@@ -11,6 +11,7 @@ import {ProfileComponent} from '../profile/profile.component';
 import {CartdelivComponent} from '../cartdeliv/cartdeliv.component';
 import {MAT_DIALOG_DATA, MatDialog} from '@angular/material/dialog';
 import {User} from '../../_model/user';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 
 class Couriercabinets {
 }
@@ -35,6 +36,7 @@ export class CoucabComponent implements OnInit {
   packagedescription: string;
   erzacModel: CourierDto;
   theCheckbox: any;
+  form: FormGroup;
 
   constructor(public rs: RestService,
               private dialog: MatDialog
@@ -42,8 +44,9 @@ export class CoucabComponent implements OnInit {
   }
   @Inject(MAT_DIALOG_DATA) public data: User;
   ngOnInit(): void {
-    let date = new Date();
-    this.rs.getTask(localStorage.getItem('idUser'),date).subscribe((response) => {
+    this.initForm();
+    const date = new Date();
+    this.rs.getTask(localStorage.getItem('idUser'), date).subscribe((response) => {
       this.courierpackages = response;
     });
     console.log(this.orderstatus);
@@ -106,10 +109,18 @@ export class CoucabComponent implements OnInit {
     return ;
   }
 
-  findDeliveryHours(value: Date): void {
-    this.rs.getTask(localStorage.getItem('idUser'), value).subscribe((response) => {
-      this.courierpackages = response;
+  private initForm(): void {
+    this.form = new FormGroup({
+      date: new FormControl('', Validators.required)
     });
-    console.log(this.orderstatus);
+  }
+  findDeliveryHours(value: string): void {
+    const month = this.form.value.date.getUTCMonth() ;
+    const day = this.form.value.date.getUTCDate() + 2;
+    const year = this.form.value.date.getUTCFullYear();
+    this.rs.getTask(localStorage.getItem('idUser'), new Date(year, month, day)).subscribe((response) => {
+      this.courierpackages = response;
+      console.log(this.orderstatus);
+    });
   }
 }
