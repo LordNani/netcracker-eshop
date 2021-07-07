@@ -61,7 +61,7 @@ import {NotificationComponent} from './socket/notifications/notification.compone
     ProductInCartComponent,
     CartdelivComponent,
     CoucabComponent,
-    NotificationComponent,
+    // NotificationComponent,
     CheckoutComponent,
     WorkplaceComponent
   ],

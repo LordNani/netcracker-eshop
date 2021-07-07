@@ -1,8 +1,9 @@
 package com.eshop.backend.courier.service;
 import com.eshop.backend.courier.model.CourierModel;
-import com.eshop.backend.user.dao.models.AuthorizedUserModel;
+
 
 import java.util.Date;
+import com.eshop.backend.model.AuthorizedUserModel;
 import java.util.List;
 
 public interface CourierService {

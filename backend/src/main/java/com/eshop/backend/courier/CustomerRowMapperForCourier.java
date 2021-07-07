@@ -1,7 +1,6 @@
 package com.eshop.backend.courier;
 
 import com.eshop.backend.courier.model.CourierModel;
-import com.eshop.backend.user.dao.models.AuthorizedUserModel;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;
